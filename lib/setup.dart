@@ -11,7 +11,7 @@ Future<void> setup() async {
 String? token;
 
 Future<void> getStorageValues() async {
-  token = await AppStorage.$read(key: StorageKey.user);
+  token = await AppStorage.$read(key: StorageKey.accessToken);
   l.w(
     token ??
         "------\n------------\n-----------\n-------"

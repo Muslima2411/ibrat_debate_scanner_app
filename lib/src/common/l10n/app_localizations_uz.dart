@@ -15,6 +15,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get time => 'Vaqt';
 
   @override
+  String get statistics => 'Statistika';
+
+  @override
   String get profile => 'Profil';
 
   @override
@@ -30,7 +33,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get welcome => 'Xush kelibsiz';
 
   @override
-  String get debates => 'Munozaralar';
+  String get debates => 'Debatlar';
 
   @override
   String get location => 'Joylashuv';
@@ -93,8 +96,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get loginTitle => 'Kirish';
 
   @override
-  String get loginSubtitle =>
-      'Hisobingizga kirish uchun maʼlumotlaringizni kiriting';
+  String get loginSubtitle => 'Kirish uchun maʼlumotlaringizni kiriting';
 
   @override
   String get email => 'Elektron pochta';
@@ -107,4 +109,31 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get invalidCredentials => 'Noto‘g‘ri login yoki parol';
+
+  @override
+  String get username => 'Foydalanuvchi nomi';
+
+  @override
+  String get phone => 'Telefon';
+
+  @override
+  String get changePassword => 'Parolni o\'zgartirish';
+
+  @override
+  String get save => 'Saqlash';
+
+  @override
+  String get savedSuccessfully => 'Sozlamalar muvaffaqiyatli saqlandi!';
+
+  @override
+  String get profileInfo => 'Profil maʼlumotlari';
+
+  @override
+  String get light => 'Yorqin';
+
+  @override
+  String get dark => 'Qorong\'u';
+
+  @override
+  String get empty_page => 'Bu sahifa bo\'sh';
 }

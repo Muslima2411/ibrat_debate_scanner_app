@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               'John Doe',
               style: context.textTheme.bodyLarge?.copyWith(
-                color: context.colorScheme.onSurface.withOpacity(0.7),
+                color: context.colorScheme.onSurface,
               ),
             ),
           ],

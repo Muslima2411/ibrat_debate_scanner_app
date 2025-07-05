@@ -33,7 +33,7 @@ class MainWrapperPage extends ConsumerWidget {
         ref.read(navIndexProvider.notifier).state = index;
       },
       screens: _navScreens,
-      backgroundColor: context.colorScheme.inverseSurface,
+      backgroundColor: context.colorScheme.onTertiaryContainer,
       decoration: NavBarDecoration(
         colorBehindNavBar: context.colorScheme.surface,
         borderRadius: BorderRadius.only(

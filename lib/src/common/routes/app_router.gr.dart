@@ -11,6 +11,22 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [EmptyPage]
+class EmptyRoute extends PageRouteInfo<void> {
+  const EmptyRoute({List<PageRouteInfo>? children})
+    : super(EmptyRoute.name, initialChildren: children);
+
+  static const String name = 'EmptyRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const EmptyPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -22,6 +38,22 @@ class HomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const HomePage();
+    },
+  );
+}
+
+/// generated route for
+/// [InitPage]
+class InitRoute extends PageRouteInfo<void> {
+  const InitRoute({List<PageRouteInfo>? children})
+    : super(InitRoute.name, initialChildren: children);
+
+  static const String name = 'InitRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InitPage();
     },
   );
 }
@@ -44,46 +76,18 @@ class LoginRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MainWrapperPage]
-class MainWrapperRoute extends PageRouteInfo<MainWrapperRouteArgs> {
-  MainWrapperRoute({Key? key, List<PageRouteInfo>? children})
-    : super(
-        MainWrapperRoute.name,
-        args: MainWrapperRouteArgs(key: key),
-        initialChildren: children,
-      );
+class MainWrapperRoute extends PageRouteInfo<void> {
+  const MainWrapperRoute({List<PageRouteInfo>? children})
+    : super(MainWrapperRoute.name, initialChildren: children);
 
   static const String name = 'MainWrapperRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<MainWrapperRouteArgs>(
-        orElse: () => const MainWrapperRouteArgs(),
-      );
-      return MainWrapperPage(key: args.key);
+      return const MainWrapperPage();
     },
   );
-}
-
-class MainWrapperRouteArgs {
-  const MainWrapperRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'MainWrapperRouteArgs{key: $key}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! MainWrapperRouteArgs) return false;
-    return key == other.key;
-  }
-
-  @override
-  int get hashCode => key.hashCode;
 }
 
 /// generated route for
@@ -114,6 +118,22 @@ class QrCodeScannerRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const QrCodeScannerPage();
+    },
+  );
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+    : super(SettingsRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsPage();
     },
   );
 }

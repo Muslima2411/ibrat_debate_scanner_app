@@ -15,5 +15,8 @@ class Assets {
   static const String iconsProfileIcon = 'assets/icons/profile_icon.svg';
   static const String iconsQrCodeIcon = 'assets/icons/qr_code_icon.svg';
   static const String iconsStatsIcon = 'assets/icons/stats_icon.svg';
+  static const String imagesEnFlag = 'assets/images/en_flag.png';
   static const String imagesIbratFLogo = 'assets/images/ibrat_f_logo.png';
+  static const String imagesRuFlag = 'assets/images/ru_flag.png';
+  static const String imagesUzFlag = 'assets/images/uz_flag.png';
 }

@@ -10,6 +10,8 @@ enum StorageKey {
   PIN_SETUP_INCOMPLETE,
   CONFIRM_CODE,
   isBioOn,
+  accessToken,
+  refreshToken,
 }
 
 class AppStorage extends FlutterSecureStorage {
@@ -25,8 +27,10 @@ class AppStorage extends FlutterSecureStorage {
     return value;
   }
 
-  static Future<void> $write(
-      {required StorageKey key, required String value}) async {
+  static Future<void> $write({
+    required StorageKey key,
+    required String value,
+  }) async {
     await _storage.write(key: key.name, value: value);
   }
 

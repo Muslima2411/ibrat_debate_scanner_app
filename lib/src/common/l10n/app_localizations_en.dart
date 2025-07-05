@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get time => 'Time';
 
   @override
+  String get statistics => 'Statistics';
+
+  @override
   String get profile => 'Profile';
 
   @override
@@ -106,4 +109,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidCredentials => 'Invalid username or password';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get savedSuccessfully => 'Settings saved successfully!';
+
+  @override
+  String get profileInfo => 'Profile Information';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
+
+  @override
+  String get empty_page => 'This page is empty';
 }

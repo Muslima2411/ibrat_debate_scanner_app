@@ -1,10 +1,13 @@
 import "dart:ui";
 
+import "package:flutter/material.dart";
 import "package:meta/meta.dart";
 
 @immutable
 final class AppColors {
   const AppColors._();
+
+  static const Color transparent = Colors.transparent;
   static const Color primary = Color(0xFFFF8C00); // Orange
   static const Color primaryVariant = Color(0xFFFF7F00);
   static const Color onPrimary = Color(0xFFFFFFFF);

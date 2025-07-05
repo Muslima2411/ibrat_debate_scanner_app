@@ -1,69 +1,15 @@
-import "dart:convert";
+import 'package:json_annotation/json_annotation.dart';
 
-CheckPhone checkPhoneFromJson(String str) => CheckPhone.fromJson(json.decode(str) as Map<String, dynamic>);
+part 'user_login_model.g.dart';
 
-String checkPhoneToJson(CheckPhone data) => json.encode(data.toJson());
+@JsonSerializable()
+class UserLoginModel {
+  final String username, password;
 
-class CheckPhone {
+  UserLoginModel({required this.username, required this.password});
 
-  CheckPhone({
-    this.success,
-    this.data,
-  });
+  factory UserLoginModel.fromJson(Map<String, dynamic> json) =>
+      _$UserLoginModelFromJson(json);
 
-  factory CheckPhone.fromJson(Map<String, dynamic> json) => CheckPhone(
-    success: json["success"] as bool,
-    data: json["data"] == null ? null : Data.fromJson(json["data"] as Map<String, dynamic>),
-  );
-  final bool? success;
-  final Data? data;
-
-  CheckPhone copyWith({
-    bool? success,
-    Data? data,
-  }) =>
-      CheckPhone(
-        success: success ?? this.success,
-        data: data ?? this.data,
-      );
-
-  Map<String, dynamic> toJson() => {
-    "success": success,
-    "data": data?.toJson(),
-  };
-}
-
-class Data {
-
-  Data({
-    this.status,
-    this.smsCodeId,
-    this.code,
-  });
-
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-    status: json["status"] as String,
-    smsCodeId: json["smsCodeId"] as String,
-    code: json["code"] as String,
-  );
-  final String? status;
-  final String? smsCodeId;
-  final String? code;
-
-  Data copyWith({
-    String? status,
-    String? smsCodeId,
-    String? code,
-  }) =>
-      Data(
-        status: status ?? this.status,
-        smsCodeId: smsCodeId ?? this.smsCodeId,
-        code: code ?? this.code,
-      );
-
-  Map<String, dynamic> toJson() => {
-    "status": status,
-    "smsCodeId": smsCodeId,
-    "code": code,
-  };
+  Map<String, dynamic> toJson() => _$UserLoginModelToJson(this);
 }

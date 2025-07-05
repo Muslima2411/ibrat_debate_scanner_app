@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
+import '../../../common/widget/app_material_context.dart';
 import '../../settings/inherited/local_controller.dart';
 import '../widgets/language_bottom_sheet.dart';
 import '../widgets/theme_bottom_sheet.dart';
@@ -16,9 +17,6 @@ class ProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-
-    final localController = ref.watch(localVM);
-    final themeController = ref.watch(themeControllerProvider);
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -110,8 +108,10 @@ class ProfilePage extends ConsumerWidget {
                   icon: Icons.language,
                   text: context.localized.language,
                   trailing: Text(
-                    localController.selectedLanguage.toUpperCase(), // Dynamic
-                    style: textTheme.bodyMedium,
+                    localController.selectedLanguage,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colors.onSurface.withOpacity(0.7),
+                    ),
                   ),
                   colors: colors,
                   textTheme: textTheme,
@@ -132,7 +132,9 @@ class ProfilePage extends ConsumerWidget {
                   text: context.localized.theme,
                   trailing: Text(
                     themeController.isLight ? "Light" : "Dark", // Dynamic
-                    style: textTheme.bodyMedium,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colors.onSurface.withOpacity(0.7),
+                    ),
                   ),
                   colors: colors,
                   textTheme: textTheme,
@@ -176,7 +178,7 @@ class _ProfileCard extends StatelessWidget {
     return MaterialButton(
       height: 62.h,
       onPressed: onTap,
-      color: colors.inverseSurface,
+      color: colors.onTertiaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 0,
       child: ListTile(

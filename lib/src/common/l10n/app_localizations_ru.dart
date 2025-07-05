@@ -15,6 +15,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get time => 'Время';
 
   @override
+  String get statistics => 'Статистика';
+
+  @override
   String get profile => 'Профиль';
 
   @override
@@ -106,4 +109,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get invalidCredentials => 'Неверный логин или пароль';
+
+  @override
+  String get username => 'Имя пользователя';
+
+  @override
+  String get phone => 'Телефон';
+
+  @override
+  String get changePassword => 'Изменить пароль';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get savedSuccessfully => 'Настройки успешно сохранены!';
+
+  @override
+  String get profileInfo => 'Информация профиля';
+
+  @override
+  String get light => 'Светлая';
+
+  @override
+  String get dark => 'Темная';
+
+  @override
+  String get empty_page => 'Эта страница пуста';
 }

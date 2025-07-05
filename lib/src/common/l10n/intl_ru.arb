@@ -32,5 +32,15 @@
   "email": "Эл. почта",
   "password": "Пароль",
   "loginButton": "Войти",
-  "invalidCredentials": "Неверный логин или пароль"
+  "invalidCredentials": "Неверный логин или пароль",
+  "username": "Имя пользователя",
+  "phone": "Телефон",
+  "changePassword": "Изменить пароль",
+  "save": "Сохранить",
+  "savedSuccessfully": "Настройки успешно сохранены!",
+  "profileInfo": "Информация профиля",
+    "light": "Светлая",
+    "dark": "Темная",
+  "statistics": "Статистика",
+    "empty_page": "Эта страница пуста"
 }

@@ -68,6 +68,11 @@ class GeneratedLocalization {
     return Intl.message('Time', name: 'time', desc: '', args: []);
   }
 
+  /// `Statistics`
+  String get statistics {
+    return Intl.message('Statistics', name: 'statistics', desc: '', args: []);
+  }
+
   /// `Profile`
   String get profile {
     return Intl.message('Profile', name: 'profile', desc: '', args: []);
@@ -263,6 +268,71 @@ class GeneratedLocalization {
     return Intl.message(
       'Invalid username or password',
       name: 'invalidCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message('Username', name: 'username', desc: '', args: []);
+  }
+
+  /// `Phone`
+  String get phone {
+    return Intl.message('Phone', name: 'phone', desc: '', args: []);
+  }
+
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `Settings saved successfully!`
+  String get savedSuccessfully {
+    return Intl.message(
+      'Settings saved successfully!',
+      name: 'savedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile Information`
+  String get profileInfo {
+    return Intl.message(
+      'Profile Information',
+      name: 'profileInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get light {
+    return Intl.message('Light', name: 'light', desc: '', args: []);
+  }
+
+  /// `Dark`
+  String get dark {
+    return Intl.message('Dark', name: 'dark', desc: '', args: []);
+  }
+
+  /// `This page is empty`
+  String get empty_page {
+    return Intl.message(
+      'This page is empty',
+      name: 'empty_page',
       desc: '',
       args: [],
     );

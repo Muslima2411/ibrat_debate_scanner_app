@@ -87,7 +87,7 @@ class AppTextStyle {
       AppColors.textPrimaryDark,
     ),
     bodyMedium: _baseStyle(
-      FontSize.size14,
+      FontSize.size16,
       FontWeight.w400,
       AppColors.textPrimaryDark,
     ),

@@ -112,6 +112,12 @@ abstract class AppLocalizations {
   /// **'Time'**
   String get time;
 
+  /// No description provided for @statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get statistics;
+
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:
@@ -297,6 +303,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid username or password'**
   String get invalidCredentials;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get changePassword;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @savedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings saved successfully!'**
+  String get savedSuccessfully;
+
+  /// No description provided for @profileInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Information'**
+  String get profileInfo;
+
+  /// No description provided for @light.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get dark;
+
+  /// No description provided for @empty_page.
+  ///
+  /// In en, this message translates to:
+  /// **'This page is empty'**
+  String get empty_page;
 }
 
 class _AppLocalizationsDelegate
