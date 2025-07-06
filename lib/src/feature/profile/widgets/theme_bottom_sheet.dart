@@ -40,7 +40,7 @@ class ThemeBottomSheet extends ConsumerWidget {
                 child: IconButton(
                   iconSize: 18.sp,
                   icon: const Icon(Icons.close),
-                  onPressed: () => context.router.pop(),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
             ],
@@ -75,7 +75,7 @@ class ThemeBottomSheet extends ConsumerWidget {
 
           ElevatedButton(
             onPressed: () {
-              context.router.pop();
+              Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: colors.primary,

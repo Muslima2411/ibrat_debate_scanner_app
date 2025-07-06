@@ -49,7 +49,7 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 0
                   ? AppColors.primary
-                  : AppColors.onPrimary.withOpacity(.5),
+                  : context.colorScheme.onPrimaryContainer.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),
@@ -63,7 +63,7 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 1
                   ? AppColors.primary
-                  : AppColors.onPrimary.withOpacity(.5),
+                  : context.colorScheme.onPrimaryContainer.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),
@@ -77,7 +77,7 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 2
                   ? AppColors.primary
-                  : AppColors.onPrimary.withOpacity(.5),
+                  : context.colorScheme.onPrimaryContainer.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),

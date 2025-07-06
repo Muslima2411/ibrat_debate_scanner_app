@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 import '../../../setup.dart';
 import '../../common/routes/app_router.dart';
 
@@ -11,47 +13,67 @@ class InitPage extends StatefulWidget {
   State<InitPage> createState() => _InitPageState();
 }
 
-class _InitPageState extends State<InitPage> {
+class _InitPageState extends State<InitPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
   @override
   void initState() {
     super.initState();
+
+    // Setup fade animation
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+
+    // Start animation after build
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _controller.forward();
+    });
+
     _initializeApp();
   }
 
   Future<void> _initializeApp() async {
-    // Wait for 3 seconds
-    await Future.delayed(const Duration(seconds: 2));
+    // Wait for 2 seconds
+    await Future.delayed(const Duration(milliseconds: 1500));
 
-    // Check if widget is still mounted before navigating
     if (!mounted) return;
 
-    // Check token and navigate accordingly
+    // Navigate based on token
     if (token != null) {
-      // Token exists, navigate to main app
       context.router.replaceAll([const MainWrapperRoute()]);
     } else {
-      // No token, navigate to login
       context.router.replaceAll([const LoginRoute()]);
     }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CircularProgressIndicator(),
-            const SizedBox(height: 16),
-            Text(
-              'Initializing...',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-              ),
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: Text(
+            'Ibrat Debate Team',
+            style: context.textTheme.titleLarge?.copyWith(
+              fontSize: 28,
+              fontWeight: FontWeight.w600,
+              color: context.colorScheme.primary,
             ),
-          ],
+          ),
         ),
       ),
     );

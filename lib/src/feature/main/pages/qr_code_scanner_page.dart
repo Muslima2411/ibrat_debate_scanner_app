@@ -187,7 +187,10 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage>
             ),
             ElevatedButton(
               onPressed: () {
-                context.router.popAndPush(MainWrapperRoute());
+                Navigator.of(context).pop(); // Dismiss the dialog first
+                Future.microtask(() {
+                  context.router.replaceAll([const MainWrapperRoute()]);
+                });
               },
               child: Text(
                 context.localized.confirm,

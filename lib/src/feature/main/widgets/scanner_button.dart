@@ -65,8 +65,10 @@ class ScannerButton extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                context.router.pop();
-                context.router.push(QrCodeScannerRoute());
+                Navigator.of(context).pop();
+                Future.microtask(() {
+                  context.router.push(const QrCodeScannerRoute());
+                });
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: context.colorScheme.primary,
