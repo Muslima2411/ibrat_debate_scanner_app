@@ -136,4 +136,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get empty_page => 'Эта страница пуста';
+
+  @override
+  String get scanned_qr_code => 'QR-код отсканирован';
+
+  @override
+  String get successfully_scanned => 'Успешно отсканирован QR-код:';
+
+  @override
+  String get wanna_use => 'Вы хотите использовать этот QR-код?';
+
+  @override
+  String get scan_again => 'Сканировать снова';
+
+  @override
+  String get confirm => 'Подтвердить';
+
+  @override
+  String get camera_position => 'Расположите QR-код в рамке для сканирования';
+
+  @override
+  String get camera_error => 'Ошибка камеры:';
+
+  @override
+  String get go_back => 'Назад';
+
+  @override
+  String get scan_appbar => 'Сканировать QR';
+
+  @override
+  String get error_restarting_qrScanner => 'Ошибка перезапуска камеры:';
 }

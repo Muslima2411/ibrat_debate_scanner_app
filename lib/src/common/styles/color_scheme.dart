@@ -47,7 +47,7 @@ const ColorScheme darkColorScheme = ColorScheme(
   tertiary: AppColors.textSecondaryDark,
   onTertiary: AppColors.onSurfaceDark,
   tertiaryContainer: AppColors.surfaceDark,
-  onTertiaryContainer: AppColors.surfaceLight,
+  onTertiaryContainer: AppColors.backgroundDark,
   error: AppColors.error,
   onError: AppColors.onError,
   errorContainer: AppColors.warning, // Consider adding a darker red

@@ -136,4 +136,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get empty_page => 'This page is empty';
+
+  @override
+  String get scanned_qr_code => 'QR Code Scanned';
+
+  @override
+  String get successfully_scanned => 'Successfully scanned QR code:';
+
+  @override
+  String get wanna_use => 'Do you want to use this QR code?';
+
+  @override
+  String get scan_again => 'Scan again';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get camera_position => 'Position the QR code within the frame to scan';
+
+  @override
+  String get camera_error => 'Camera Error:';
+
+  @override
+  String get go_back => 'Go Back';
+
+  @override
+  String get scan_appbar => 'Scan QR';
+
+  @override
+  String get error_restarting_qrScanner => 'Error restarting camera:';
 }

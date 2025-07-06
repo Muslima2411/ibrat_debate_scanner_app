@@ -357,6 +357,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This page is empty'**
   String get empty_page;
+
+  /// No description provided for @scanned_qr_code.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code Scanned'**
+  String get scanned_qr_code;
+
+  /// No description provided for @successfully_scanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully scanned QR code:'**
+  String get successfully_scanned;
+
+  /// No description provided for @wanna_use.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to use this QR code?'**
+  String get wanna_use;
+
+  /// No description provided for @scan_again.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan again'**
+  String get scan_again;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @camera_position.
+  ///
+  /// In en, this message translates to:
+  /// **'Position the QR code within the frame to scan'**
+  String get camera_position;
+
+  /// No description provided for @camera_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera Error:'**
+  String get camera_error;
+
+  /// No description provided for @go_back.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Back'**
+  String get go_back;
+
+  /// No description provided for @scan_appbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR'**
+  String get scan_appbar;
+
+  /// No description provided for @error_restarting_qrScanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Error restarting camera:'**
+  String get error_restarting_qrScanner;
 }
 
 class _AppLocalizationsDelegate

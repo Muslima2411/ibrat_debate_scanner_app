@@ -2,11 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ibrat_debate_scanner_app/src/common/routes/app_router.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
 import '../../../common/widget/app_material_context.dart';
 import '../../settings/inherited/local_controller.dart';
 import '../widgets/language_bottom_sheet.dart';
+import '../widgets/log_out_button.dart';
 import '../widgets/theme_bottom_sheet.dart';
 
 @RoutePage()
@@ -30,16 +32,7 @@ class ProfilePage extends ConsumerWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        actions: [
-          TextButton.icon(
-            onPressed: () {
-              // TODO: Add logout logic
-            },
-            iconAlignment: IconAlignment.end,
-            icon: Icon(Icons.logout, color: colors.primary),
-            label: Text(context.localized.logout, style: textTheme.bodyMedium),
-          ),
-        ],
+        actions: [LogOutButton()],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -95,7 +88,7 @@ class ProfilePage extends ConsumerWidget {
                   colors: colors,
                   textTheme: textTheme,
                   onTap: () {
-                    // TODO: Navigate to settings
+                    context.router.push(SettingsRoute());
                   },
                 ),
                 // const SizedBox(height: 20),

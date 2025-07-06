@@ -337,6 +337,86 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `QR Code Scanned`
+  String get scanned_qr_code {
+    return Intl.message(
+      'QR Code Scanned',
+      name: 'scanned_qr_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully scanned QR code:`
+  String get successfully_scanned {
+    return Intl.message(
+      'Successfully scanned QR code:',
+      name: 'successfully_scanned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to use this QR code?`
+  String get wanna_use {
+    return Intl.message(
+      'Do you want to use this QR code?',
+      name: 'wanna_use',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan again`
+  String get scan_again {
+    return Intl.message('Scan again', name: 'scan_again', desc: '', args: []);
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
+  /// `Position the QR code within the frame to scan`
+  String get camera_position {
+    return Intl.message(
+      'Position the QR code within the frame to scan',
+      name: 'camera_position',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera Error:`
+  String get camera_error {
+    return Intl.message(
+      'Camera Error:',
+      name: 'camera_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go Back`
+  String get go_back {
+    return Intl.message('Go Back', name: 'go_back', desc: '', args: []);
+  }
+
+  /// `Scan QR`
+  String get scan_appbar {
+    return Intl.message('Scan QR', name: 'scan_appbar', desc: '', args: []);
+  }
+
+  /// `Error restarting camera:`
+  String get error_restarting_qrScanner {
+    return Intl.message(
+      'Error restarting camera:',
+      name: 'error_restarting_qrScanner',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

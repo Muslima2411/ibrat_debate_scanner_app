@@ -20,7 +20,7 @@ class _InitPageState extends State<InitPage> {
 
   Future<void> _initializeApp() async {
     // Wait for 3 seconds
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Check if widget is still mounted before navigating
     if (!mounted) return;

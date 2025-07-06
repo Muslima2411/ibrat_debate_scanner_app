@@ -22,15 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "camera_error": MessageLookupByLibrary.simpleMessage("Ошибка камеры:"),
+    "camera_position": MessageLookupByLibrary.simpleMessage(
+      "Расположите QR-код в рамке для сканирования",
+    ),
     "cancelled": MessageLookupByLibrary.simpleMessage("Отменено"),
     "changePassword": MessageLookupByLibrary.simpleMessage("Изменить пароль"),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Выбор темы"),
     "completed": MessageLookupByLibrary.simpleMessage("Завершено"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
     "dark": MessageLookupByLibrary.simpleMessage("Темная"),
     "debates": MessageLookupByLibrary.simpleMessage("Дебаты"),
     "email": MessageLookupByLibrary.simpleMessage("Эл. почта"),
     "empty_page": MessageLookupByLibrary.simpleMessage("Эта страница пуста"),
+    "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
+      "Ошибка перезапуска камеры:",
+    ),
+    "go_back": MessageLookupByLibrary.simpleMessage("Назад"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Неверный логин или пароль",
@@ -58,12 +67,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Настройки успешно сохранены!",
     ),
+    "scan_again": MessageLookupByLibrary.simpleMessage("Сканировать снова"),
+    "scan_appbar": MessageLookupByLibrary.simpleMessage("Сканировать QR"),
+    "scanned_qr_code": MessageLookupByLibrary.simpleMessage(
+      "QR-код отсканирован",
+    ),
     "select": MessageLookupByLibrary.simpleMessage("Выбрать"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "share": MessageLookupByLibrary.simpleMessage("Поделиться"),
     "sharing": MessageLookupByLibrary.simpleMessage("Обмен"),
     "statistics": MessageLookupByLibrary.simpleMessage("Статистика"),
     "status": MessageLookupByLibrary.simpleMessage("Статус"),
+    "successfully_scanned": MessageLookupByLibrary.simpleMessage(
+      "Успешно отсканирован QR-код:",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("Тема"),
     "time": MessageLookupByLibrary.simpleMessage("Время"),
     "timer": MessageLookupByLibrary.simpleMessage("Таймер"),
@@ -72,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "username": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("Посмотреть детали"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Просмотр деталей"),
+    "wanna_use": MessageLookupByLibrary.simpleMessage(
+      "Вы хотите использовать этот QR-код?",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
   };
 }

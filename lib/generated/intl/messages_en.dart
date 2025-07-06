@@ -22,15 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "camera_error": MessageLookupByLibrary.simpleMessage("Camera Error:"),
+    "camera_position": MessageLookupByLibrary.simpleMessage(
+      "Position the QR code within the frame to scan",
+    ),
     "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
     "changePassword": MessageLookupByLibrary.simpleMessage("Change Password"),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Choose language"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Choose theme mode"),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "debates": MessageLookupByLibrary.simpleMessage("Debates"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "empty_page": MessageLookupByLibrary.simpleMessage("This page is empty"),
+    "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
+      "Error restarting camera:",
+    ),
+    "go_back": MessageLookupByLibrary.simpleMessage("Go Back"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid username or password",
@@ -58,12 +67,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Settings saved successfully!",
     ),
+    "scan_again": MessageLookupByLibrary.simpleMessage("Scan again"),
+    "scan_appbar": MessageLookupByLibrary.simpleMessage("Scan QR"),
+    "scanned_qr_code": MessageLookupByLibrary.simpleMessage("QR Code Scanned"),
     "select": MessageLookupByLibrary.simpleMessage("Select"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "share": MessageLookupByLibrary.simpleMessage("Share"),
     "sharing": MessageLookupByLibrary.simpleMessage("Sharing"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
+    "successfully_scanned": MessageLookupByLibrary.simpleMessage(
+      "Successfully scanned QR code:",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "time": MessageLookupByLibrary.simpleMessage("Time"),
     "timer": MessageLookupByLibrary.simpleMessage("Timer"),
@@ -72,6 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Viewing Details"),
+    "wanna_use": MessageLookupByLibrary.simpleMessage(
+      "Do you want to use this QR code?",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
   };
 }

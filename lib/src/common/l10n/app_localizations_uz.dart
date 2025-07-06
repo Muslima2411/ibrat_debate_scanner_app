@@ -136,4 +136,36 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get empty_page => 'Bu sahifa bo\'sh';
+
+  @override
+  String get scanned_qr_code => 'QR kod skanerlendi';
+
+  @override
+  String get successfully_scanned => 'QR kod muvaffaqiyatli skanerlendi:';
+
+  @override
+  String get wanna_use => 'Ushbu QR kodni ishlatmoqchimisiz?';
+
+  @override
+  String get scan_again => 'Qayta skaner qilish';
+
+  @override
+  String get confirm => 'Tasdiqlash';
+
+  @override
+  String get camera_position =>
+      'QR kodni skaner qilish uchun ramka ichiga joylashtiring';
+
+  @override
+  String get camera_error => 'Kamera xatosi:';
+
+  @override
+  String get go_back => 'Orqaga qaytish';
+
+  @override
+  String get scan_appbar => 'QR skaner';
+
+  @override
+  String get error_restarting_qrScanner =>
+      'Kamerani qayta ishga tushirishda xato:';
 }

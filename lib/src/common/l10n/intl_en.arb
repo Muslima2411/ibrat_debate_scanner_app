@@ -42,5 +42,15 @@
   "profileInfo": "Profile Information",
   "light": "Light",
     "dark": "Dark",
-  "empty_page": "This page is empty"
+  "empty_page": "This page is empty",
+  "scanned_qr_code": "QR Code Scanned",
+  "successfully_scanned": "Successfully scanned QR code:",
+  "wanna_use": "Do you want to use this QR code?",
+  "scan_again": "Scan again",
+  "confirm": "Confirm",
+  "camera_position": "Position the QR code within the frame to scan",
+  "camera_error": "Camera Error:",
+  "go_back": "Go Back",
+  "scan_appbar": "Scan QR",
+  "error_restarting_qrScanner": "Error restarting camera:"
 }

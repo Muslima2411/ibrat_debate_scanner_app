@@ -42,5 +42,15 @@
     "light": "Светлая",
     "dark": "Темная",
   "statistics": "Статистика",
-    "empty_page": "Эта страница пуста"
+    "empty_page": "Эта страница пуста",
+    "scanned_qr_code": "QR-код отсканирован",
+    "successfully_scanned": "Успешно отсканирован QR-код:",
+    "wanna_use": "Вы хотите использовать этот QR-код?",
+    "scan_again": "Сканировать снова",
+    "confirm": "Подтвердить",
+    "camera_position": "Расположите QR-код в рамке для сканирования",
+    "camera_error": "Ошибка камеры:",
+    "go_back": "Назад",
+    "scan_appbar": "Сканировать QR",
+    "error_restarting_qrScanner": "Ошибка перезапуска камеры:"
 }

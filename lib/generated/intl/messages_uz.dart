@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "camera_error": MessageLookupByLibrary.simpleMessage("Kamera xatosi:"),
+    "camera_position": MessageLookupByLibrary.simpleMessage(
+      "QR kodni skaner qilish uchun ramka ichiga joylashtiring",
+    ),
     "cancelled": MessageLookupByLibrary.simpleMessage("Bekor qilingan"),
     "changePassword": MessageLookupByLibrary.simpleMessage(
       "Parolni o\'zgartirish",
@@ -29,10 +33,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Tilni tanlang"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Mavzuni tanlash"),
     "completed": MessageLookupByLibrary.simpleMessage("Tugallangan"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
     "dark": MessageLookupByLibrary.simpleMessage("Qorong\'u"),
     "debates": MessageLookupByLibrary.simpleMessage("Debatlar"),
     "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
     "empty_page": MessageLookupByLibrary.simpleMessage("Bu sahifa bo\'sh"),
+    "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
+      "Kamerani qayta ishga tushirishda xato:",
+    ),
+    "go_back": MessageLookupByLibrary.simpleMessage("Orqaga qaytish"),
     "home": MessageLookupByLibrary.simpleMessage("Bosh sahifa"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Noto‘g‘ri login yoki parol",
@@ -60,12 +69,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Sozlamalar muvaffaqiyatli saqlandi!",
     ),
+    "scan_again": MessageLookupByLibrary.simpleMessage("Qayta skaner qilish"),
+    "scan_appbar": MessageLookupByLibrary.simpleMessage("QR skaner"),
+    "scanned_qr_code": MessageLookupByLibrary.simpleMessage(
+      "QR kod skanerlendi",
+    ),
     "select": MessageLookupByLibrary.simpleMessage("Tanlash"),
     "settings": MessageLookupByLibrary.simpleMessage("Sozlamalar"),
     "share": MessageLookupByLibrary.simpleMessage("Ulashish"),
     "sharing": MessageLookupByLibrary.simpleMessage("Ulashilmoqda"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistika"),
     "status": MessageLookupByLibrary.simpleMessage("Holat"),
+    "successfully_scanned": MessageLookupByLibrary.simpleMessage(
+      "QR kod muvaffaqiyatli skanerlendi:",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("Mavzu"),
     "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "timer": MessageLookupByLibrary.simpleMessage("Taymer"),
@@ -74,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "username": MessageLookupByLibrary.simpleMessage("Foydalanuvchi nomi"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("Batafsil ko\'rish"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Ko\'rilmoqda"),
+    "wanna_use": MessageLookupByLibrary.simpleMessage(
+      "Ushbu QR kodni ishlatmoqchimisiz?",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("Xush kelibsiz"),
   };
 }

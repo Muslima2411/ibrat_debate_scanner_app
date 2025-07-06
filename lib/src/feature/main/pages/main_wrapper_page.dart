@@ -49,13 +49,13 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 0
                   ? AppColors.primary
-                  : AppColors.onWarning.withOpacity(.5),
+                  : AppColors.onPrimary.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),
           title: context.localized.home,
           activeColorPrimary: AppColors.primary,
-          inactiveColorPrimary: AppColors.onWarning,
+          inactiveColorPrimary: AppColors.onPrimary.withOpacity(.5),
         ),
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
@@ -63,13 +63,13 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 1
                   ? AppColors.primary
-                  : AppColors.onWarning.withOpacity(.5),
+                  : AppColors.onPrimary.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),
-          title: context.localized.timer,
+          title: context.localized.statistics,
           activeColorPrimary: AppColors.primary,
-          inactiveColorPrimary: AppColors.onWarning,
+          inactiveColorPrimary: AppColors.onPrimary.withOpacity(.5),
         ),
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
@@ -77,13 +77,13 @@ class MainWrapperPage extends ConsumerWidget {
             colorFilter: ColorFilter.mode(
               currentIndex == 2
                   ? AppColors.primary
-                  : AppColors.onWarning.withOpacity(.5),
+                  : AppColors.onPrimary.withOpacity(.5),
               BlendMode.srcIn,
             ),
           ),
           title: context.localized.profile,
           activeColorPrimary: AppColors.primary,
-          inactiveColorPrimary: AppColors.onWarning,
+          inactiveColorPrimary: AppColors.onPrimary.withOpacity(.5),
         ),
       ],
     );
