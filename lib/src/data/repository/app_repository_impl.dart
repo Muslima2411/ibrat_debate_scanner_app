@@ -3,6 +3,7 @@ import "dart:developer";
 
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.dart";
 import "../../common/server/api/api.dart";
 import "../../common/server/api/api_constants.dart";
 
@@ -73,6 +74,37 @@ final class AppRepositoryImpl implements AppRepository {
       }
     } catch (e, stackTrace) {
       log('Error getting debate events: $e', stackTrace: stackTrace);
+      return null;
+    }
+  }
+
+  @override
+  Future<UserModel?> getCurrentUser() async {
+    try {
+      debugPrint('🔍 Fetching current user info...');
+
+      final response = await ApiService.get(
+        ApiConst.meApi,
+        <String, dynamic>{}, // empty params
+      );
+
+      if (response == null) {
+        debugPrint('❌ No response received from user API');
+        return null;
+      }
+
+      debugPrint('✅ User API response received');
+      debugPrint('📄 Response data: $response');
+
+      final Map<String, dynamic> jsonData = jsonDecode(response);
+
+      final user = UserModel.fromJson(jsonData);
+      debugPrint('👤 User parsed successfully: $user');
+
+      return user;
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error fetching current user: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
       return null;
     }
   }
