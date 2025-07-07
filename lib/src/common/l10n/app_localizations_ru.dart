@@ -166,4 +166,20 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get error_restarting_qrScanner => 'Ошибка перезапуска камеры:';
+
+  @override
+  String get logout_title => 'Подтвердите выход';
+
+  @override
+  String get logout_message =>
+      'Вы уверены, что хотите выйти из своей учетной записи?';
+
+  @override
+  String get confirm_log_out => 'Да, выйти';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
+  String get no_data => 'Пока нет данных';
 }

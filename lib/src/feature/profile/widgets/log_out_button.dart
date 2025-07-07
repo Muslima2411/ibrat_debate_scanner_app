@@ -11,12 +11,7 @@ class LogOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      onPressed: () async {
-        await AppStorage.$delete(key: StorageKey.accessToken);
-        await AppStorage.$delete(key: StorageKey.refreshToken);
-        debugPrint("🔒 Token saved securely");
-        context.router.popAndPush(LoginRoute());
-      },
+      onPressed: () => _showLogoutConfirmation(context),
       iconAlignment: IconAlignment.end,
       icon: Icon(Icons.logout, color: context.colorScheme.primary),
       label: Text(
@@ -24,5 +19,66 @@ class LogOutButton extends StatelessWidget {
         style: context.textTheme.bodyMedium,
       ),
     );
+  }
+
+  Future<void> _showLogoutConfirmation(BuildContext context) async {
+    final bool? confirmed = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            context.localized.logout_title,
+            style: context.textTheme.titleMedium?.copyWith(
+              color: context.colorScheme.onSurface,
+            ),
+          ),
+          content: Text(
+            context.localized.logout_message,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onSurface.withOpacity(0.8),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                context.localized.cancel,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  color: context.colorScheme.primary,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: context.colorScheme.primary,
+              ),
+              child: Text(
+                context.localized.confirm,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  color: context.colorScheme.onPrimary,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed == true) {
+      await AppStorage.$delete(key: StorageKey.accessToken);
+      await AppStorage.$delete(key: StorageKey.refreshToken);
+      await AppStorage.$delete(key: StorageKey.user);
+      debugPrint("🔒 Tokens cleared securely");
+
+      if (context.mounted) {
+        context.router.replaceAll([const LoginRoute()]);
+      }
+    }
   }
 }

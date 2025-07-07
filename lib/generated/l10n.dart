@@ -417,6 +417,51 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Confirm Logout`
+  String get logout_title {
+    return Intl.message(
+      'Confirm Logout',
+      name: 'logout_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out of your account?`
+  String get logout_message {
+    return Intl.message(
+      'Are you sure you want to log out of your account?',
+      name: 'logout_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Log Out`
+  String get confirm_log_out {
+    return Intl.message(
+      'Yes, Log Out',
+      name: 'confirm_log_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `No data available yet`
+  String get no_data {
+    return Intl.message(
+      'No data available yet',
+      name: 'no_data',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

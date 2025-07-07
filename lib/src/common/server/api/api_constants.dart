@@ -10,7 +10,11 @@ final class ApiConst {
   static const String version = "/api";
 
   static const String auth = "$version/auth";
+  static const String core = "$version/core";
+
   static const String loginApi = "$auth/token/";
+  static const String refreshTokenApi = "$auth/token/refresh/";
+  static const String debatesApi = "$core/debates/";
 }
 
 final class ApiParams {

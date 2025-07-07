@@ -168,4 +168,19 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get error_restarting_qrScanner =>
       'Kamerani qayta ishga tushirishda xato:';
+
+  @override
+  String get logout_title => 'Chiqishni tasdiqlang';
+
+  @override
+  String get logout_message => 'Hisobingizdan chiqishni xohlaysizmi?';
+
+  @override
+  String get confirm_log_out => 'Ha, chiqish';
+
+  @override
+  String get cancel => 'Bekor qilish';
+
+  @override
+  String get no_data => 'Hozircha hech qanday ma\'lumot yo\'q';
 }

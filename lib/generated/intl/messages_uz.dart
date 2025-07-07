@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "camera_position": MessageLookupByLibrary.simpleMessage(
       "QR kodni skaner qilish uchun ramka ichiga joylashtiring",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "cancelled": MessageLookupByLibrary.simpleMessage("Bekor qilingan"),
     "changePassword": MessageLookupByLibrary.simpleMessage(
       "Parolni o\'zgartirish",
@@ -34,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Mavzuni tanlash"),
     "completed": MessageLookupByLibrary.simpleMessage("Tugallangan"),
     "confirm": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
+    "confirm_log_out": MessageLookupByLibrary.simpleMessage("Ha, chiqish"),
     "dark": MessageLookupByLibrary.simpleMessage("Qorong\'u"),
     "debates": MessageLookupByLibrary.simpleMessage("Debatlar"),
     "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
@@ -55,6 +57,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Kirish"),
     "logout": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "logout_message": MessageLookupByLibrary.simpleMessage(
+      "Hisobingizdan chiqishni xohlaysizmi?",
+    ),
+    "logout_title": MessageLookupByLibrary.simpleMessage(
+      "Chiqishni tasdiqlang",
+    ),
+    "no_data": MessageLookupByLibrary.simpleMessage(
+      "Hozircha hech qanday ma\'lumot yo\'q",
+    ),
     "ongoing": MessageLookupByLibrary.simpleMessage("Davom etayotgan"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Skanerni ochish"),
     "password": MessageLookupByLibrary.simpleMessage("Parol"),

@@ -52,5 +52,10 @@
     "camera_error": "Kamera xatosi:",
     "go_back": "Orqaga qaytish",
     "scan_appbar": "QR skaner",
-    "error_restarting_qrScanner": "Kamerani qayta ishga tushirishda xato:"
+    "error_restarting_qrScanner": "Kamerani qayta ishga tushirishda xato:",
+  "logout_title": "Chiqishni tasdiqlang",
+  "logout_message": "Hisobingizdan chiqishni xohlaysizmi?",
+  "confirm_log_out": "Ha, chiqish",
+  "cancel": "Bekor qilish",
+  "no_data": "Hozircha hech qanday ma'lumot yo'q"
 }

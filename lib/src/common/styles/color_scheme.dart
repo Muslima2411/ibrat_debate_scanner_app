@@ -8,7 +8,7 @@ const ColorScheme lightColorScheme = ColorScheme(
   primary: AppColors.primary,
   onPrimary: AppColors.onPrimary,
   primaryContainer: AppColors
-      .primaryVariant, // Consider creating a separate container color if needed
+      .backgroundLight, // Consider creating a separate container color if needed
   onPrimaryContainer: AppColors.textSecondaryLight,
   secondary: AppColors.secondary,
   onSecondary: AppColors.onSecondary,

@@ -166,4 +166,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error_restarting_qrScanner => 'Error restarting camera:';
+
+  @override
+  String get logout_title => 'Confirm Logout';
+
+  @override
+  String get logout_message =>
+      'Are you sure you want to log out of your account?';
+
+  @override
+  String get confirm_log_out => 'Yes, Log Out';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get no_data => 'No data available yet';
 }

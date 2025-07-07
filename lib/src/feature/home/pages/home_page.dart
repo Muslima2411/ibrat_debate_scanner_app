@@ -1,75 +1,78 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 import 'package:ibrat_debate_scanner_app/src/feature/main/widgets/scanner_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../generated/assets.dart';
+import '../../../data/entity/debate_models/debate_event_model.dart';
+import '../view_models/home_vm.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(homeViewModelProvider);
 
-class _HomePageState extends State<HomePage> {
-  final List<DebateEvent> _debates = [
-    DebateEvent(
-      id: '1',
-      title: 'Toshkent',
-      date: '15.06.2025',
-      time: '14:00',
-      location: 'Yoshlar ijod Saroyi',
-      topic: 'Should school uniforms be mandatory?',
-      // status: DebateStatus.upcoming,
-    ),
-    DebateEvent(
-      id: '2',
-      title: 'Toshkent',
-      date: '15.06.2025',
-      time: '16:00',
-      location: 'Yoshlar ijod Saroyi',
-      topic: 'Is social media harmful to teenagers?',
-      // status: DebateStatus.upcoming,
-    ),
-    DebateEvent(
-      id: '3',
-      title: 'Toshkent',
-      date: '15.06.2025',
-      time: '18:00',
-      location: 'Yoshlar ijod Saroyi',
-      topic: 'Should artificial intelligence replace human teachers?',
-      // status: DebateStatus.completed,
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
+        padding: EdgeInsets.fromLTRB(22, 20, 22, 0),
         child: SafeArea(
           child: Column(
-            spacing: 20.h,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(context),
+              _buildHeader(context, vm.username),
               Divider(
-                color: context.colorScheme.onSurface.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
                 thickness: 1,
               ),
-              Expanded(child: _buildDebatesSection(context)),
+              SizedBox(height: 16.h),
+              Text(
+                context.localized.debates,
+                style: context.textTheme.headlineSmall?.copyWith(
+                  color: context.colorScheme.onSurface,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(height: 16.h),
+              Expanded(
+                child: vm.isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : vm.events.isEmpty
+                    ? Center(
+                        child: Text(
+                          context.localized.no_data,
+                          style: context.textTheme.titleMedium?.copyWith(
+                            color: context.colorScheme.onSurface,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                      )
+                    : ListView.separated(
+                        itemCount: vm.events.length,
+                        separatorBuilder: (_, _) => SizedBox(height: 16.h),
+                        itemBuilder: (context, index) {
+                          final debate = vm.events[index];
+                          return _buildDebateCard(context, debate);
+                        },
+                      ),
+              ),
             ],
           ),
         ),
       ),
-      floatingActionButton: ScannerButton(),
+      floatingActionButton: const ScannerButton(),
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, String username) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -78,16 +81,16 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               context.localized.welcome,
-              style: context.textTheme.headlineSmall?.copyWith(
-                color: context.colorScheme.primary,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 4),
             Text(
-              'John Doe',
-              style: context.textTheme.bodyLarge?.copyWith(
-                color: context.colorScheme.onSurface,
+              username,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ],
@@ -97,165 +100,122 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildDebatesSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          context.localized.debates,
-          style: context.textTheme.headlineSmall?.copyWith(
-            color: context.colorScheme.onBackground,
-            fontWeight: FontWeight.w500,
-            fontSize: 22.sp,
-          ),
-        ),
-        const SizedBox(height: 20),
-        Expanded(
-          child: ListView.separated(
-            itemCount: _debates.length,
-            separatorBuilder: (context, index) => SizedBox(height: 16.h),
-            itemBuilder: (context, index) {
-              final debate = _debates[index];
-              return _buildDebateCard(context, debate);
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildDebateCard(BuildContext context, DebateEvent debate) {
-    return Container(
-      // margin: EdgeInsets.only(bottom: 20.h),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
+    final theme = Theme.of(context);
+    final dateStr = debate.date?.toString().split('T').first;
+    final timeStr = debate.time;
+    final createdAt = debate.createdAt?.toString().split('T').first ?? "—";
+    final updatedAt = debate.updatedAt?.toString().split('T').first ?? "—";
+    final telegramLink = debate.district.telegramGroupLink ?? "—";
+
+    return ExpansionTile(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      tilePadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      childrenPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      collapsedBackgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      collapsedShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: context.colorScheme.onSurface.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+      ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            debate.region.name,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w500,
+              fontSize: 20.sp,
+            ),
+          ),
+          Text(
+            debate.district.name,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w500,
+              fontSize: 16.sp,
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
           ),
         ],
       ),
-      child: Theme(
-        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          tilePadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          childrenPadding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-          backgroundColor: context.colorScheme.surface,
-          collapsedBackgroundColor: context.colorScheme.surface,
-          collapsedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          controlAffinity: ListTileControlAffinity.trailing,
-          title: Text(
-            debate.title,
-            style: context.textTheme.titleMedium?.copyWith(
-              color: context.colorScheme.onSurface,
-              fontWeight: FontWeight.w500,
+      subtitle: (dateStr != null || timeStr != null)
+          ? Text(
+              [
+                if (dateStr != null) "📅 $dateStr",
+                if (timeStr != null) "🕒 $timeStr",
+              ].join("   "),
+            )
+          : null,
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+            decoration: BoxDecoration(
+              color: debate.isPassed
+                  ? theme.colorScheme.primary.withOpacity(0.15)
+                  : theme.colorScheme.secondary.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Text(
+              debate.isPassed ? "Passed" : "Pending",
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: debate.isPassed
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.secondary,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
-          subtitle: Row(
-            children: [
-              Icon(
-                Icons.calendar_today_rounded,
-                size: 14,
-                color: context.colorScheme.onSurface.withOpacity(0.6),
-              ),
-              const SizedBox(width: 4),
-              Text(
-                debate.date,
-                style: context.textTheme.bodySmall?.copyWith(
-                  fontSize: 12.sp,
-                  color: context.colorScheme.onSurface,
-                ),
-              ),
-            ],
-          ),
-          trailing: Icon(
-            size: 22,
-            Icons.arrow_forward_ios_rounded,
-            color: context.colorScheme.onSurface.withOpacity(0.5),
-          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
           children: [
-            Container(
-              width: double.infinity,
-              child: Column(
-                spacing: 8.h,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildDetailRow(
-                    context,
-                    Icons.access_time_rounded,
-                    debate.time,
+            const Icon(Icons.calendar_today, size: 16),
+            const SizedBox(width: 8),
+            Text("Created at: $createdAt"),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            const Icon(Icons.update, size: 16),
+            const SizedBox(width: 8),
+            Text("Updated at: $updatedAt"),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.telegram, size: 16),
+            const SizedBox(width: 8),
+            Expanded(
+              child: InkWell(
+                onTap: () async {
+                  final uri = Uri.tryParse(telegramLink);
+                  if (uri != null && await canLaunchUrl(uri)) {
+                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Could not launch Telegram link'),
+                      ),
+                    );
+                  }
+                },
+                child: Text(
+                  telegramLink,
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
                   ),
-                  _buildDetailRow(
-                    context,
-                    Icons.location_on_rounded,
-                    debate.location,
-                  ),
-                  Text(
-                    '"${debate.topic}"',
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.bodyLarge?.copyWith(
-                      color: context.colorScheme.onSurface,
-                    ),
-                  ),
-                ],
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildDetailRow(BuildContext context, IconData icon, String value) {
-    return Row(
-      children: [
-        Icon(icon, size: 16, color: context.colorScheme.onSurface),
-        SizedBox(width: 4.w),
-        Text(
-          value,
-          style: context.textTheme.bodySmall?.copyWith(
-            fontSize: 12.sp,
-            color: context.colorScheme.onSurface,
-          ),
-        ),
       ],
     );
   }
-
-  void _viewDetails(BuildContext context, DebateEvent debate) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Viewing details: ${debate.title}'),
-        backgroundColor: context.colorScheme.primary,
-      ),
-    );
-  }
-}
-
-// Models
-class DebateEvent {
-  final String id;
-  final String title;
-  final String date;
-  final String time;
-  final String location;
-  final String topic;
-
-  DebateEvent({
-    required this.id,
-    required this.title,
-    required this.date,
-    required this.time,
-    required this.location,
-    required this.topic,
-    // required this.status,
-  });
 }

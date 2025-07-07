@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ibrat_debate_scanner_app/src/common/routes/app_router.dart';
 import '../../../common/local/app_storage.dart';
-import '../../../data/entity/user_login_model.dart';
+import '../../../data/entity/login_models/user_login_model.dart';
 import '../../../data/repository/app_repository_impl.dart';
 
 part 'login_vm.freezed.dart';
@@ -47,6 +47,8 @@ class LoginVM extends ChangeNotifier {
           key: StorageKey.refreshToken,
           value: response.refresh,
         );
+        await AppStorage.$write(key: StorageKey.user, value: username);
+
         debugPrint("🔒 Token saved securely");
         context.router.popAndPush(HomeRoute());
       } else {

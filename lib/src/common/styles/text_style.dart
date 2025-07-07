@@ -118,7 +118,7 @@ class AppTextStyle {
     ),
     headlineMedium: _baseStyle(
       FontSize.size26,
-      FontWeight.w600,
+      FontWeight.w500,
       AppColors.textPrimaryDark,
     ),
     headlineSmall: _baseStyle(
@@ -148,7 +148,7 @@ class AppTextStyle {
     ),
     titleMedium: _baseStyle(
       FontSize.size18,
-      FontWeight.w700,
+      FontWeight.w500,
       AppColors.textPrimaryDark,
     ),
     titleSmall: _baseStyle(

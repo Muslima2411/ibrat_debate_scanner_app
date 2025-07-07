@@ -52,5 +52,10 @@
     "camera_error": "Ошибка камеры:",
     "go_back": "Назад",
     "scan_appbar": "Сканировать QR",
-    "error_restarting_qrScanner": "Ошибка перезапуска камеры:"
+    "error_restarting_qrScanner": "Ошибка перезапуска камеры:",
+  "logout_title": "Подтвердите выход",
+  "logout_message": "Вы уверены, что хотите выйти из своей учетной записи?",
+  "confirm_log_out": "Да, выйти",
+  "cancel": "Отмена",
+  "no_data": "Пока нет данных"
 }

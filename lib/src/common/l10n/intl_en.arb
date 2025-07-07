@@ -52,5 +52,10 @@
   "camera_error": "Camera Error:",
   "go_back": "Go Back",
   "scan_appbar": "Scan QR",
-  "error_restarting_qrScanner": "Error restarting camera:"
+  "error_restarting_qrScanner": "Error restarting camera:",
+  "logout_title": "Confirm Logout",
+  "logout_message": "Are you sure you want to log out of your account?",
+  "confirm_log_out": "Yes, Log Out",
+  "cancel": "Cancel",
+    "no_data": "No data available yet"
 }
