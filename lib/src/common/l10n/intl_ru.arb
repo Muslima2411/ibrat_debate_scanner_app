@@ -71,5 +71,7 @@
   "success_title": "Посещение подтверждено",
   "success_message": "Пользователь успешно отмечен.",
   "ok": "ОК",
-    "statistics_not_available_yet": "Статистика пока недоступна..."
+    "statistics_not_available_yet": "Статистика пока недоступна...",
+    "age": "Возраст",
+  "english_level": "Уровень английского языка"
 }

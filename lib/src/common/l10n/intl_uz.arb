@@ -72,5 +72,7 @@
   "success_title": "Kirish muvaffaqiyatli",
   "success_message": "Foydalanuvchi muvaffaqiyatli roʻyxatdan oʻtdi.",
   "ok": "OK",
-    "statistics_not_available_yet": "Statistika hali mavjud emas..."
+    "statistics_not_available_yet": "Statistika hali mavjud emas...",
+    "age": "Yosh",
+  "english_level": "Ingliz tili darajasi"
 }

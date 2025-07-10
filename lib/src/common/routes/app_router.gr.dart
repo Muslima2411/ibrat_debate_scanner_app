@@ -124,18 +124,48 @@ class QrCodeScannerRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SettingsPage]
-class SettingsRoute extends PageRouteInfo<void> {
-  const SettingsRoute({List<PageRouteInfo>? children})
-    : super(SettingsRoute.name, initialChildren: children);
+class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
+  SettingsRoute({Key? key, UserModel? user, List<PageRouteInfo>? children})
+    : super(
+        SettingsRoute.name,
+        args: SettingsRouteArgs(key: key, user: user),
+        initialChildren: children,
+      );
 
   static const String name = 'SettingsRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SettingsPage();
+      final args = data.argsAs<SettingsRouteArgs>(
+        orElse: () => const SettingsRouteArgs(),
+      );
+      return SettingsPage(key: args.key, user: args.user);
     },
   );
+}
+
+class SettingsRouteArgs {
+  const SettingsRouteArgs({this.key, this.user});
+
+  final Key? key;
+
+  final UserModel? user;
+
+  @override
+  String toString() {
+    return 'SettingsRouteArgs{key: $key, user: $user}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SettingsRouteArgs) return false;
+    return key == other.key && user == other.user;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ user.hashCode;
 }
 
 /// generated route for

@@ -537,6 +537,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Statistics are not available yet...'**
   String get statistics_not_available_yet;
+
+  /// No description provided for @age.
+  ///
+  /// In en, this message translates to:
+  /// **'Age'**
+  String get age;
+
+  /// No description provided for @english_level.
+  ///
+  /// In en, this message translates to:
+  /// **'English Level'**
+  String get english_level;
 }
 
 class _AppLocalizationsDelegate

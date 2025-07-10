@@ -228,4 +228,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get statistics_not_available_yet => 'Статистика пока недоступна...';
+
+  @override
+  String get age => 'Возраст';
+
+  @override
+  String get english_level => 'Уровень английского языка';
 }

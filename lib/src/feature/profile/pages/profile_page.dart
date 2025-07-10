@@ -69,7 +69,12 @@ class ProfilePage extends ConsumerWidget {
                 // User Info Section
                 _buildUserInfoSection(context, profileState, colors, textTheme),
                 // Profile Options Section
-                _buildProfileOptionsSection(context, colors, textTheme),
+                _buildProfileOptionsSection(
+                  context,
+                  colors,
+                  textTheme,
+                  profileState,
+                ),
               ],
             ),
           ),
@@ -196,6 +201,7 @@ class ProfilePage extends ConsumerWidget {
     BuildContext context,
     ColorScheme colors,
     TextTheme textTheme,
+    ProfileState profileState,
   ) {
     return Column(
       spacing: 20.h,
@@ -206,7 +212,7 @@ class ProfilePage extends ConsumerWidget {
           colors: colors,
           textTheme: textTheme,
           onTap: () {
-            context.router.push(SettingsRoute());
+            context.router.push(SettingsRoute(user: profileState.user));
           },
         ),
         Divider(color: colors.onSurface.withOpacity(0.1), thickness: 1),

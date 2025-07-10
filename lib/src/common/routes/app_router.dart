@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../setup.dart';
+import '../../data/entity/user_model/user_model.dart';
 import '../../feature/auth/pages/login_page.dart';
 import '../../feature/home/pages/home_page.dart';
 import '../../feature/init/init_page.dart';

@@ -229,4 +229,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get statistics_not_available_yet =>
       'Statistics are not available yet...';
+
+  @override
+  String get age => 'Age';
+
+  @override
+  String get english_level => 'English Level';
 }

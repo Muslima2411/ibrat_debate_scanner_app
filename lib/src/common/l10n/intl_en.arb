@@ -72,6 +72,7 @@
   "success_title": "Check-in Successful",
   "success_message": "The user has been successfully checked in.",
   "ok": "OK",
-  "statistics_not_available_yet": "Statistics are not available yet..."
-
+  "statistics_not_available_yet": "Statistics are not available yet...",
+  "age": "Age",
+  "english_level": "English Level"
 }

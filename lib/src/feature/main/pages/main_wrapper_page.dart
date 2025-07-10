@@ -28,7 +28,7 @@ class MainWrapperPage extends ConsumerWidget {
     return PersistentTabView(
       context,
       controller: controller,
-      navBarHeight: 80.h,
+      navBarHeight: 70.h,
       onItemSelected: (index) {
         ref.read(navIndexProvider.notifier).state = index;
       },

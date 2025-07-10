@@ -4,7 +4,6 @@ import "dart:developer";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.dart";
-import "../../common/local/app_storage.dart";
 import "../../common/server/api/api.dart";
 import "../../common/server/api/api_constants.dart";
 
@@ -111,6 +110,50 @@ final class AppRepositoryImpl implements AppRepository {
     }
   }
 
+  // 🆕 NEW: Update user information
+  @override
+  Future<UserModel?> updateUserInfo(UserModel updatedUser) async {
+    try {
+      debugPrint('🔄 Updating user info...');
+      debugPrint('📝 Updated user data: $updatedUser');
+
+      // Convert UserModel to JSON map for API call
+      final Map<String, dynamic> updateData = {
+        if (updatedUser.name != null) 'name': updatedUser.name,
+        if (updatedUser.phone != null) 'phone': updatedUser.phone,
+        if (updatedUser.age != null) 'age': updatedUser.age,
+        if (updatedUser.englishLevel != null)
+          'english_level': updatedUser.englishLevel,
+      };
+
+      debugPrint('📤 Sending PATCH request with data: $updateData');
+
+      final response = await ApiService.patch(
+        ApiConst
+            .meApi, // assuming we patch to the same endpoint as getCurrentUser
+        updateData,
+      );
+
+      if (response != null && response.isNotEmpty) {
+        debugPrint('✅ User update response received');
+        debugPrint('📄 Response data: $response');
+
+        final Map<String, dynamic> jsonData = jsonDecode(response);
+        final updatedUserModel = UserModel.fromJson(jsonData);
+
+        debugPrint('👤 User updated successfully: $updatedUserModel');
+        return updatedUserModel;
+      } else {
+        debugPrint('❌ Failed to update user: empty response');
+        return null;
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error updating user info: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+      return null;
+    }
+  }
+
   // Get ticket by ID
   @override
   Future<TicketModel?> getTicketById(String ticketId) async {
@@ -168,19 +211,6 @@ final class AppRepositoryImpl implements AppRepository {
   Future<TicketModel?> markTicketAsChecked(String ticketId) async {
     try {
       log('✅ Marking ticket as checked: $ticketId');
-
-      // Read user from AppStorage
-      // final userID = await AppStorage.$read(key: StorageKey.user);
-      // if (userID == null || userID.isEmpty) {
-      //   throw Exception('User data not found in storage');
-      // }
-
-      // Parse user JSON into a Map
-      // final userMap = jsonDecode(userJson);
-      // final userId = userMap['id'];
-      // if (userId == null) {
-      //   throw Exception('User ID not found in user data');
-      // }
 
       final response = await ApiService.patch(
         "${ApiConst.ticketsApi}/$ticketId/",

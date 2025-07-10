@@ -230,4 +230,10 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get statistics_not_available_yet => 'Statistika hali mavjud emas...';
+
+  @override
+  String get age => 'Yosh';
+
+  @override
+  String get english_level => 'Ingliz tili darajasi';
 }

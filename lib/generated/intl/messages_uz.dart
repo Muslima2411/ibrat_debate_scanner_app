@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "age": MessageLookupByLibrary.simpleMessage("Yosh"),
     "age_group": MessageLookupByLibrary.simpleMessage("Yosh toifasi"),
     "camera_error": MessageLookupByLibrary.simpleMessage("Kamera xatosi:"),
     "camera_position": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "debates": MessageLookupByLibrary.simpleMessage("Debatlar"),
     "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
     "empty_page": MessageLookupByLibrary.simpleMessage("Bu sahifa bo\'sh"),
+    "english_level": MessageLookupByLibrary.simpleMessage(
+      "Ingliz tili darajasi",
+    ),
     "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
       "Kamerani qayta ishga tushirishda xato:",
     ),

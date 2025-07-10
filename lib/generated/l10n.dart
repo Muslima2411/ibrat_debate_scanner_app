@@ -577,6 +577,21 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Age`
+  String get age {
+    return Intl.message('Age', name: 'age', desc: '', args: []);
+  }
+
+  /// `English Level`
+  String get english_level {
+    return Intl.message(
+      'English Level',
+      name: 'english_level',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate
