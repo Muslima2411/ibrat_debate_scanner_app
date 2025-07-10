@@ -3,6 +3,7 @@ import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.d
 
 import "../entity/debate_models/debate_event_response_model.dart";
 import "../entity/login_models/user_login_model.dart";
+import "../entity/ticket_model/ticket_model.dart";
 
 abstract class AppRepository {
   Future<LoginResponseModel?> loginUser({required UserLoginModel user});
@@ -12,4 +13,7 @@ abstract class AppRepository {
     String? searchQuery,
   });
   Future<UserModel?> getCurrentUser();
+  Future<TicketModel?> getTicketById(String ticketId);
+  Future<UserModel?> getUserById(String userId);
+  Future<TicketModel?> markTicketAsChecked(String ticketId);
 }

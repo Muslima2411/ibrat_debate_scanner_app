@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "age_group": MessageLookupByLibrary.simpleMessage("Возрастная группа"),
     "camera_error": MessageLookupByLibrary.simpleMessage("Ошибка камеры:"),
     "camera_position": MessageLookupByLibrary.simpleMessage(
       "Расположите QR-код в рамке для сканирования",
@@ -33,8 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Выбор темы"),
     "completed": MessageLookupByLibrary.simpleMessage("Завершено"),
     "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
+    "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
+      "Подтвердить регистрацию этого пользователя?",
+    ),
     "confirm_log_out": MessageLookupByLibrary.simpleMessage("Да, выйти"),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Текущий пароль"),
     "dark": MessageLookupByLibrary.simpleMessage("Темная"),
+    "debate_id": MessageLookupByLibrary.simpleMessage("ID дебатов"),
     "debates": MessageLookupByLibrary.simpleMessage("Дебаты"),
     "email": MessageLookupByLibrary.simpleMessage("Эл. почта"),
     "empty_page": MessageLookupByLibrary.simpleMessage("Эта страница пуста"),
@@ -59,17 +65,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "Вы уверены, что хотите выйти из своей учетной записи?",
     ),
     "logout_title": MessageLookupByLibrary.simpleMessage("Подтвердите выход"),
+    "name": MessageLookupByLibrary.simpleMessage("Имя"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
     "no_data": MessageLookupByLibrary.simpleMessage("Пока нет данных"),
+    "ok": MessageLookupByLibrary.simpleMessage("ОК"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Идут"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Открыть сканер"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
+    "processing_ticket": MessageLookupByLibrary.simpleMessage(
+      "Обработка билета...",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Информация профиля"),
     "qrScannerSubtitle": MessageLookupByLibrary.simpleMessage(
       "Нажмите кнопку для сканирования QR-кода",
     ),
     "qrScannerTitle": MessageLookupByLibrary.simpleMessage("Сканер QR-кода"),
+    "returning_previous_page": MessageLookupByLibrary.simpleMessage(
+      "Возврат на предыдущую страницу...",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Настройки успешно сохранены!",
@@ -84,15 +99,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "share": MessageLookupByLibrary.simpleMessage("Поделиться"),
     "sharing": MessageLookupByLibrary.simpleMessage("Обмен"),
     "statistics": MessageLookupByLibrary.simpleMessage("Статистика"),
+    "statistics_not_available_yet": MessageLookupByLibrary.simpleMessage(
+      "Статистика пока недоступна...",
+    ),
     "status": MessageLookupByLibrary.simpleMessage("Статус"),
+    "success_message": MessageLookupByLibrary.simpleMessage(
+      "Пользователь успешно отмечен.",
+    ),
+    "success_title": MessageLookupByLibrary.simpleMessage(
+      "Посещение подтверждено",
+    ),
     "successfully_scanned": MessageLookupByLibrary.simpleMessage(
       "Успешно отсканирован QR-код:",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("Тема"),
+    "ticket_id": MessageLookupByLibrary.simpleMessage("ID билета"),
+    "ticket_info": MessageLookupByLibrary.simpleMessage("Информация о билете"),
     "time": MessageLookupByLibrary.simpleMessage("Время"),
     "timer": MessageLookupByLibrary.simpleMessage("Таймер"),
     "topic": MessageLookupByLibrary.simpleMessage("Тема"),
     "upcoming": MessageLookupByLibrary.simpleMessage("Предстоящие"),
+    "user_info": MessageLookupByLibrary.simpleMessage(
+      "Информация о пользователе",
+    ),
     "username": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("Посмотреть детали"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Просмотр деталей"),

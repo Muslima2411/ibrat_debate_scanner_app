@@ -57,5 +57,19 @@
   "logout_message": "Вы уверены, что хотите выйти из своей учетной записи?",
   "confirm_log_out": "Да, выйти",
   "cancel": "Отмена",
-  "no_data": "Пока нет данных"
+  "no_data": "Пока нет данных",
+  "currentPassword": "Текущий пароль",
+  "name": "Имя","user_info": "Информация о пользователе",
+  "ticket_info": "Информация о билете",
+  "newPassword": "Новый пароль",
+  "age_group": "Возрастная группа",
+  "ticket_id": "ID билета",
+  "debate_id": "ID дебатов",
+  "confirm_checkin_prompt": "Подтвердить регистрацию этого пользователя?",
+  "processing_ticket": "Обработка билета...",
+  "returning_previous_page": "Возврат на предыдущую страницу...",
+  "success_title": "Посещение подтверждено",
+  "success_message": "Пользователь успешно отмечен.",
+  "ok": "ОК",
+    "statistics_not_available_yet": "Статистика пока недоступна..."
 }

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "age_group": MessageLookupByLibrary.simpleMessage("Age Group"),
     "camera_error": MessageLookupByLibrary.simpleMessage("Camera Error:"),
     "camera_position": MessageLookupByLibrary.simpleMessage(
       "Position the QR code within the frame to scan",
@@ -33,8 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Choose theme mode"),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
+      "Do you want to confirm check-in for this user?",
+    ),
     "confirm_log_out": MessageLookupByLibrary.simpleMessage("Yes, Log Out"),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Current Password"),
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "debate_id": MessageLookupByLibrary.simpleMessage("Debate ID"),
     "debates": MessageLookupByLibrary.simpleMessage("Debates"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "empty_page": MessageLookupByLibrary.simpleMessage("This page is empty"),
@@ -59,17 +65,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to log out of your account?",
     ),
     "logout_title": MessageLookupByLibrary.simpleMessage("Confirm Logout"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "no_data": MessageLookupByLibrary.simpleMessage("No data available yet"),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Ongoing"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Open Scanner"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+    "processing_ticket": MessageLookupByLibrary.simpleMessage(
+      "Processing ticket...",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Information"),
     "qrScannerSubtitle": MessageLookupByLibrary.simpleMessage(
       "Tap the button to scan a QR code",
     ),
     "qrScannerTitle": MessageLookupByLibrary.simpleMessage("QR Scanner"),
+    "returning_previous_page": MessageLookupByLibrary.simpleMessage(
+      "Returning to previous page...",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Settings saved successfully!",
@@ -82,15 +97,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "share": MessageLookupByLibrary.simpleMessage("Share"),
     "sharing": MessageLookupByLibrary.simpleMessage("Sharing"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
+    "statistics_not_available_yet": MessageLookupByLibrary.simpleMessage(
+      "Statistics are not available yet...",
+    ),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
+    "success_message": MessageLookupByLibrary.simpleMessage(
+      "The user has been successfully checked in.",
+    ),
+    "success_title": MessageLookupByLibrary.simpleMessage(
+      "Check-in Successful",
+    ),
     "successfully_scanned": MessageLookupByLibrary.simpleMessage(
       "Successfully scanned QR code:",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "ticket_id": MessageLookupByLibrary.simpleMessage("Ticket ID"),
+    "ticket_info": MessageLookupByLibrary.simpleMessage("Ticket Info"),
     "time": MessageLookupByLibrary.simpleMessage("Time"),
     "timer": MessageLookupByLibrary.simpleMessage("Timer"),
     "topic": MessageLookupByLibrary.simpleMessage("Topic"),
     "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+    "user_info": MessageLookupByLibrary.simpleMessage("User Info"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Viewing Details"),

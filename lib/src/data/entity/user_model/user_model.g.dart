@@ -7,11 +7,11 @@ part of 'user_model.dart';
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-  id: (json['id'] as num?)?.toInt(),
+  id: json['id'] as String?,
   name: json['name'] as String?,
   username: json['username'] as String,
   phone: json['phone'] as String?,
-  age: (json['age'] as num?)?.toInt(),
+  age: json['age'] as String?,
   region: json['region'] as String?,
   district: json['district'] as String?,
   englishLevel: json['english_level'] as String?,

@@ -462,6 +462,121 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Current Password`
+  String get currentPassword {
+    return Intl.message(
+      'Current Password',
+      name: 'currentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newPassword {
+    return Intl.message(
+      'New Password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Info`
+  String get user_info {
+    return Intl.message('User Info', name: 'user_info', desc: '', args: []);
+  }
+
+  /// `Ticket Info`
+  String get ticket_info {
+    return Intl.message('Ticket Info', name: 'ticket_info', desc: '', args: []);
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message('Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Age Group`
+  String get age_group {
+    return Intl.message('Age Group', name: 'age_group', desc: '', args: []);
+  }
+
+  /// `Ticket ID`
+  String get ticket_id {
+    return Intl.message('Ticket ID', name: 'ticket_id', desc: '', args: []);
+  }
+
+  /// `Debate ID`
+  String get debate_id {
+    return Intl.message('Debate ID', name: 'debate_id', desc: '', args: []);
+  }
+
+  /// `Do you want to confirm check-in for this user?`
+  String get confirm_checkin_prompt {
+    return Intl.message(
+      'Do you want to confirm check-in for this user?',
+      name: 'confirm_checkin_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing ticket...`
+  String get processing_ticket {
+    return Intl.message(
+      'Processing ticket...',
+      name: 'processing_ticket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Returning to previous page...`
+  String get returning_previous_page {
+    return Intl.message(
+      'Returning to previous page...',
+      name: 'returning_previous_page',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in Successful`
+  String get success_title {
+    return Intl.message(
+      'Check-in Successful',
+      name: 'success_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The user has been successfully checked in.`
+  String get success_message {
+    return Intl.message(
+      'The user has been successfully checked in.',
+      name: 'success_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message('OK', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Statistics are not available yet...`
+  String get statistics_not_available_yet {
+    return Intl.message(
+      'Statistics are not available yet...',
+      name: 'statistics_not_available_yet',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

@@ -14,8 +14,12 @@ final class ApiConst {
 
   static const String loginApi = "$auth/token/";
   static const String refreshTokenApi = "$auth/token/refresh/";
-  static const String debatesApi = "$core/debates/";
-  static const String meApi = "$auth/users/me/";
+
+  static const String debatesApi = "$core/debates";
+  static const String ticketsApi = "$core/tickets";
+
+  static const String users = "$auth/users";
+  static const String meApi = "$users/me/";
 }
 
 final class ApiParams {

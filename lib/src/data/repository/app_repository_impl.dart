@@ -4,12 +4,14 @@ import "dart:developer";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.dart";
+import "../../common/local/app_storage.dart";
 import "../../common/server/api/api.dart";
 import "../../common/server/api/api_constants.dart";
 
 import "../entity/debate_models/debate_event_response_model.dart";
 import "../entity/login_models/login_response_model.dart";
 import "../entity/login_models/user_login_model.dart";
+import "../entity/ticket_model/ticket_model.dart";
 import "app_repository.dart";
 
 @immutable
@@ -106,6 +108,97 @@ final class AppRepositoryImpl implements AppRepository {
       debugPrint('❌ Error fetching current user: $e');
       debugPrint('📍 Stack trace: $stackTrace');
       return null;
+    }
+  }
+
+  // Get ticket by ID
+  @override
+  Future<TicketModel?> getTicketById(String ticketId) async {
+    try {
+      log('🎫 Getting ticket by ID: $ticketId');
+
+      final response = await ApiService.get(
+        "${ApiConst.ticketsApi}/$ticketId/",
+        ApiParams.emptyParams(),
+      );
+
+      if (response != null && response.isNotEmpty) {
+        final Map<String, dynamic> data = jsonDecode(response);
+        log('✅ Ticket data received: $data');
+
+        return TicketModel.fromJson(data);
+      } else {
+        log('❌ Failed to get ticket: $response');
+        throw Exception('Failed to get ticket: $response');
+      }
+    } catch (e) {
+      log('❌ Error getting ticket: $e');
+      throw Exception('Error getting ticket: $e');
+    }
+  }
+
+  // Get user details by user ID
+  @override
+  Future<UserModel?> getUserById(String userId) async {
+    try {
+      log('👤 Getting user by ID: $userId');
+
+      final response = await ApiService.get(
+        "${ApiConst.users}/$userId/",
+        ApiParams.emptyParams(),
+      );
+
+      if (response != null && response.isNotEmpty) {
+        final Map<String, dynamic> data = jsonDecode(response);
+        log('✅ User data received: $data');
+
+        return UserModel.fromJson(data);
+      } else {
+        log('❌ Failed to get user: $response ');
+        throw Exception('Failed to get user: $response');
+      }
+    } catch (e) {
+      log('❌ Error getting user: $e');
+      throw Exception('Error getting user: $e');
+    }
+  }
+
+  // Mark ticket as checked
+  @override
+  Future<TicketModel?> markTicketAsChecked(String ticketId) async {
+    try {
+      log('✅ Marking ticket as checked: $ticketId');
+
+      // Read user from AppStorage
+      // final userID = await AppStorage.$read(key: StorageKey.user);
+      // if (userID == null || userID.isEmpty) {
+      //   throw Exception('User data not found in storage');
+      // }
+
+      // Parse user JSON into a Map
+      // final userMap = jsonDecode(userJson);
+      // final userId = userMap['id'];
+      // if (userId == null) {
+      //   throw Exception('User ID not found in user data');
+      // }
+
+      final response = await ApiService.patch(
+        "${ApiConst.ticketsApi}/$ticketId/",
+        {'is_checked': true},
+      );
+
+      if (response != null && response.isNotEmpty) {
+        final Map<String, dynamic> data = jsonDecode(response);
+        log('✅ Ticket marked as checked: $data');
+
+        return TicketModel.fromJson(data);
+      } else {
+        log('❌ Failed to mark ticket as checked: $response');
+        throw Exception('Failed to mark ticket as checked: $response');
+      }
+    } catch (e) {
+      log('❌ Error marking ticket as checked: $e');
+      throw Exception('Error marking ticket as checked: $e');
     }
   }
 }

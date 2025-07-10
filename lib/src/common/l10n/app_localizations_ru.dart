@@ -182,4 +182,50 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get no_data => 'Пока нет данных';
+
+  @override
+  String get currentPassword => 'Текущий пароль';
+
+  @override
+  String get newPassword => 'Новый пароль';
+
+  @override
+  String get user_info => 'Информация о пользователе';
+
+  @override
+  String get ticket_info => 'Информация о билете';
+
+  @override
+  String get name => 'Имя';
+
+  @override
+  String get age_group => 'Возрастная группа';
+
+  @override
+  String get ticket_id => 'ID билета';
+
+  @override
+  String get debate_id => 'ID дебатов';
+
+  @override
+  String get confirm_checkin_prompt =>
+      'Подтвердить регистрацию этого пользователя?';
+
+  @override
+  String get processing_ticket => 'Обработка билета...';
+
+  @override
+  String get returning_previous_page => 'Возврат на предыдущую страницу...';
+
+  @override
+  String get success_title => 'Посещение подтверждено';
+
+  @override
+  String get success_message => 'Пользователь успешно отмечен.';
+
+  @override
+  String get ok => 'ОК';
+
+  @override
+  String get statistics_not_available_yet => 'Статистика пока недоступна...';
 }

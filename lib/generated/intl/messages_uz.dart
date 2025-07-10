@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "age_group": MessageLookupByLibrary.simpleMessage("Yosh toifasi"),
     "camera_error": MessageLookupByLibrary.simpleMessage("Kamera xatosi:"),
     "camera_position": MessageLookupByLibrary.simpleMessage(
       "QR kodni skaner qilish uchun ramka ichiga joylashtiring",
@@ -35,8 +36,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Mavzuni tanlash"),
     "completed": MessageLookupByLibrary.simpleMessage("Tugallangan"),
     "confirm": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
+    "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
+      "Ushbu foydalanuvchini roʻyxatdan oʻtkazishni tasdiqlaysizmi?",
+    ),
     "confirm_log_out": MessageLookupByLibrary.simpleMessage("Ha, chiqish"),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Joriy parol"),
     "dark": MessageLookupByLibrary.simpleMessage("Qorong\'u"),
+    "debate_id": MessageLookupByLibrary.simpleMessage("Munozara ID"),
     "debates": MessageLookupByLibrary.simpleMessage("Debatlar"),
     "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
     "empty_page": MessageLookupByLibrary.simpleMessage("Bu sahifa bo\'sh"),
@@ -63,19 +69,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout_title": MessageLookupByLibrary.simpleMessage(
       "Chiqishni tasdiqlang",
     ),
+    "name": MessageLookupByLibrary.simpleMessage("Ism"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("Yangi parol"),
     "no_data": MessageLookupByLibrary.simpleMessage(
       "Hozircha hech qanday ma\'lumot yo\'q",
     ),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Davom etayotgan"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Skanerni ochish"),
     "password": MessageLookupByLibrary.simpleMessage("Parol"),
     "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
+    "processing_ticket": MessageLookupByLibrary.simpleMessage(
+      "Chipta qayta ishlanmoqda...",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Profil"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profil maʼlumotlari"),
     "qrScannerSubtitle": MessageLookupByLibrary.simpleMessage(
       "QR kodni skanerlash uchun tugmani bosing",
     ),
     "qrScannerTitle": MessageLookupByLibrary.simpleMessage("QR kod skaneri"),
+    "returning_previous_page": MessageLookupByLibrary.simpleMessage(
+      "Oldingi sahifaga qaytish...",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Saqlash"),
     "savedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Sozlamalar muvaffaqiyatli saqlandi!",
@@ -90,15 +105,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "share": MessageLookupByLibrary.simpleMessage("Ulashish"),
     "sharing": MessageLookupByLibrary.simpleMessage("Ulashilmoqda"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistika"),
+    "statistics_not_available_yet": MessageLookupByLibrary.simpleMessage(
+      "Statistika hali mavjud emas...",
+    ),
     "status": MessageLookupByLibrary.simpleMessage("Holat"),
+    "success_message": MessageLookupByLibrary.simpleMessage(
+      "Foydalanuvchi muvaffaqiyatli roʻyxatdan oʻtdi.",
+    ),
+    "success_title": MessageLookupByLibrary.simpleMessage(
+      "Kirish muvaffaqiyatli",
+    ),
     "successfully_scanned": MessageLookupByLibrary.simpleMessage(
       "QR kod muvaffaqiyatli skanerlendi:",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("Mavzu"),
+    "ticket_id": MessageLookupByLibrary.simpleMessage("Chipta ID"),
+    "ticket_info": MessageLookupByLibrary.simpleMessage("Chipta haqida"),
     "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "timer": MessageLookupByLibrary.simpleMessage("Taymer"),
     "topic": MessageLookupByLibrary.simpleMessage("Mavzu"),
     "upcoming": MessageLookupByLibrary.simpleMessage("Kutilayotgan"),
+    "user_info": MessageLookupByLibrary.simpleMessage("Foydalanuvchi haqida"),
     "username": MessageLookupByLibrary.simpleMessage("Foydalanuvchi nomi"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("Batafsil ko\'rish"),
     "viewingDetails": MessageLookupByLibrary.simpleMessage("Ko\'rilmoqda"),

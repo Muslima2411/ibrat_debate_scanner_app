@@ -4,11 +4,11 @@ part 'user_model.g.dart';
 
 @JsonSerializable()
 class UserModel {
-  final int? id;
+  final String? id;
   final String? name;
   final String username;
   final String? phone;
-  final int? age;
+  final String? age;
   final String? region;
   final String? district;
   @JsonKey(name: 'english_level')
@@ -34,11 +34,11 @@ class UserModel {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   UserModel copyWith({
-    int? id,
+    String? id,
     String? name,
     String? username,
     String? phone,
-    int? age,
+    String? age,
     String? region,
     String? district,
     String? englishLevel,

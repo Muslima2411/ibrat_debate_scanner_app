@@ -141,6 +141,29 @@ class ApiService {
     }
   }
 
+  static Future<String?> patch(
+    String api,
+    Map<String, dynamic> data, [
+    Map<String, dynamic> params = const <String, dynamic>{},
+  ]) async {
+    try {
+      final Response<dynamic> response = await (await initDio()).patch<dynamic>(
+        api,
+        data: data,
+        queryParameters: params,
+      );
+      return jsonEncode(response.data);
+    } on TimeoutException catch (_) {
+      l.e("The connection has timed out, Please try again!");
+      rethrow;
+    } on DioError catch (e) {
+      l.e(e.response.toString());
+      rethrow;
+    } on Object catch (_) {
+      rethrow;
+    }
+  }
+
   static Future<String?> delete(String api, Map<String, dynamic> params) async {
     try {
       final Response<dynamic> _ = await (await initDio()).delete<dynamic>(

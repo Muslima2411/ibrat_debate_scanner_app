@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
-      style: textTheme.bodyMedium?.copyWith(color: colors.onPrimary),
+      style: textTheme.bodyMedium?.copyWith(color: colors.onSurface),
       decoration: InputDecoration(
         floatingLabelStyle: TextStyle(color: colors.primary),
         labelStyle: TextStyle(color: colors.tertiary),

@@ -104,8 +104,8 @@ class HomePage extends ConsumerWidget {
     final theme = Theme.of(context);
     final dateStr = debate.date?.toString().split('T').first;
     final timeStr = debate.time;
-    final createdAt = debate.createdAt?.toString().split('T').first ?? "—";
-    final updatedAt = debate.updatedAt?.toString().split('T').first ?? "—";
+    final createdAt = debate.createdAt.toString().split('T').first ?? "—";
+    final updatedAt = debate.updatedAt.toString().split('T').first ?? "—";
     final telegramLink = debate.district.telegramGroupLink ?? "—";
 
     return ExpansionTile(

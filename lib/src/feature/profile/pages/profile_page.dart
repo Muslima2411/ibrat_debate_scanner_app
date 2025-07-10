@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/routes/app_router.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
+import '../../../common/local/app_storage.dart';
 import '../../../common/widget/app_material_context.dart';
 import '../view_models/profile_vm.dart';
 import '../widgets/language_bottom_sheet.dart';
@@ -36,7 +37,7 @@ class ProfilePage extends ConsumerWidget {
         title: Text(
           context.localized.profile,
           style: textTheme.bodyLarge?.copyWith(
-            fontSize: 20.sp,
+            fontSize: 24.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -143,8 +144,9 @@ class ProfilePage extends ConsumerWidget {
     }
 
     final user = profileState.user;
-    final displayName = user?.name ?? 'User';
-    final displayEmail = user?.username ?? 'username@example.com';
+    final displayName = user?.username ?? '';
+    final displayEmail = user?.name ?? '';
+
     final initials = _getInitials(displayName);
 
     return Row(
@@ -175,7 +177,7 @@ class ProfilePage extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                displayEmail,
+                displayEmail.toString(),
                 style: textTheme.bodySmall?.copyWith(
                   color: colors.onSurface.withOpacity(0.7),
                   fontSize: 14.sp,
@@ -286,7 +288,7 @@ class _ProfileCard extends StatelessWidget {
     return MaterialButton(
       height: 62.h,
       onPressed: onTap,
-      color: colors.onTertiaryContainer,
+      color: colors.primaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 0,
       child: ListTile(

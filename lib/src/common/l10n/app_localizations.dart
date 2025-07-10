@@ -447,6 +447,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No data available yet'**
   String get no_data;
+
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @user_info.
+  ///
+  /// In en, this message translates to:
+  /// **'User Info'**
+  String get user_info;
+
+  /// No description provided for @ticket_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Info'**
+  String get ticket_info;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @age_group.
+  ///
+  /// In en, this message translates to:
+  /// **'Age Group'**
+  String get age_group;
+
+  /// No description provided for @ticket_id.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket ID'**
+  String get ticket_id;
+
+  /// No description provided for @debate_id.
+  ///
+  /// In en, this message translates to:
+  /// **'Debate ID'**
+  String get debate_id;
+
+  /// No description provided for @confirm_checkin_prompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to confirm check-in for this user?'**
+  String get confirm_checkin_prompt;
+
+  /// No description provided for @processing_ticket.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing ticket...'**
+  String get processing_ticket;
+
+  /// No description provided for @returning_previous_page.
+  ///
+  /// In en, this message translates to:
+  /// **'Returning to previous page...'**
+  String get returning_previous_page;
+
+  /// No description provided for @success_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in Successful'**
+  String get success_title;
+
+  /// No description provided for @success_message.
+  ///
+  /// In en, this message translates to:
+  /// **'The user has been successfully checked in.'**
+  String get success_message;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @statistics_not_available_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics are not available yet...'**
+  String get statistics_not_available_yet;
 }
 
 class _AppLocalizationsDelegate

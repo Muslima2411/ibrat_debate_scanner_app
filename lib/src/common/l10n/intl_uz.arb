@@ -57,5 +57,20 @@
   "logout_message": "Hisobingizdan chiqishni xohlaysizmi?",
   "confirm_log_out": "Ha, chiqish",
   "cancel": "Bekor qilish",
-  "no_data": "Hozircha hech qanday ma'lumot yo'q"
+  "no_data": "Hozircha hech qanday ma'lumot yo'q",
+  "currentPassword": "Joriy parol",
+  "newPassword": "Yangi parol",
+  "user_info": "Foydalanuvchi haqida",
+  "ticket_info": "Chipta haqida",
+  "name": "Ism",
+  "age_group": "Yosh toifasi",
+  "ticket_id": "Chipta ID",
+  "debate_id": "Munozara ID",
+  "confirm_checkin_prompt": "Ushbu foydalanuvchini roʻyxatdan oʻtkazishni tasdiqlaysizmi?",
+  "processing_ticket": "Chipta qayta ishlanmoqda...",
+  "returning_previous_page": "Oldingi sahifaga qaytish...",
+  "success_title": "Kirish muvaffaqiyatli",
+  "success_message": "Foydalanuvchi muvaffaqiyatli roʻyxatdan oʻtdi.",
+  "ok": "OK",
+    "statistics_not_available_yet": "Statistika hali mavjud emas..."
 }

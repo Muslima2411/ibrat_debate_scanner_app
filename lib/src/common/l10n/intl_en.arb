@@ -57,5 +57,21 @@
   "logout_message": "Are you sure you want to log out of your account?",
   "confirm_log_out": "Yes, Log Out",
   "cancel": "Cancel",
-    "no_data": "No data available yet"
+    "no_data": "No data available yet",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "user_info": "User Info",
+  "ticket_info": "Ticket Info",
+  "name": "Name",
+  "age_group": "Age Group",
+  "ticket_id": "Ticket ID",
+  "debate_id": "Debate ID",
+  "confirm_checkin_prompt": "Do you want to confirm check-in for this user?",
+  "processing_ticket": "Processing ticket...",
+  "returning_previous_page": "Returning to previous page...",
+  "success_title": "Check-in Successful",
+  "success_message": "The user has been successfully checked in.",
+  "ok": "OK",
+  "statistics_not_available_yet": "Statistics are not available yet..."
+
 }

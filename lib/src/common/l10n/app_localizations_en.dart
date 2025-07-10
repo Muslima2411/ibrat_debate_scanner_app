@@ -182,4 +182,51 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_data => 'No data available yet';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get user_info => 'User Info';
+
+  @override
+  String get ticket_info => 'Ticket Info';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get age_group => 'Age Group';
+
+  @override
+  String get ticket_id => 'Ticket ID';
+
+  @override
+  String get debate_id => 'Debate ID';
+
+  @override
+  String get confirm_checkin_prompt =>
+      'Do you want to confirm check-in for this user?';
+
+  @override
+  String get processing_ticket => 'Processing ticket...';
+
+  @override
+  String get returning_previous_page => 'Returning to previous page...';
+
+  @override
+  String get success_title => 'Check-in Successful';
+
+  @override
+  String get success_message => 'The user has been successfully checked in.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get statistics_not_available_yet =>
+      'Statistics are not available yet...';
 }

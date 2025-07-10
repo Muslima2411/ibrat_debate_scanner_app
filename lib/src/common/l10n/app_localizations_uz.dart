@@ -183,4 +183,51 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get no_data => 'Hozircha hech qanday ma\'lumot yo\'q';
+
+  @override
+  String get currentPassword => 'Joriy parol';
+
+  @override
+  String get newPassword => 'Yangi parol';
+
+  @override
+  String get user_info => 'Foydalanuvchi haqida';
+
+  @override
+  String get ticket_info => 'Chipta haqida';
+
+  @override
+  String get name => 'Ism';
+
+  @override
+  String get age_group => 'Yosh toifasi';
+
+  @override
+  String get ticket_id => 'Chipta ID';
+
+  @override
+  String get debate_id => 'Munozara ID';
+
+  @override
+  String get confirm_checkin_prompt =>
+      'Ushbu foydalanuvchini roʻyxatdan oʻtkazishni tasdiqlaysizmi?';
+
+  @override
+  String get processing_ticket => 'Chipta qayta ishlanmoqda...';
+
+  @override
+  String get returning_previous_page => 'Oldingi sahifaga qaytish...';
+
+  @override
+  String get success_title => 'Kirish muvaffaqiyatli';
+
+  @override
+  String get success_message =>
+      'Foydalanuvchi muvaffaqiyatli roʻyxatdan oʻtdi.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get statistics_not_available_yet => 'Statistika hali mavjud emas...';
 }
