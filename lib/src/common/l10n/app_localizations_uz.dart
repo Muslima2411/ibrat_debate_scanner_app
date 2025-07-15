@@ -236,4 +236,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get english_level => 'Ingliz tili darajasi';
+
+  @override
+  String get enter_name => 'Ismingizni kiriting';
 }

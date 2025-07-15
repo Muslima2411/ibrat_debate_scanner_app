@@ -27,6 +27,11 @@ class _QrCodeScannerPageState extends ConsumerState<QrCodeScannerPage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    Future.microtask(() {
+      if (mounted) {
+        ref.read(qrCodeScannerViewModelProvider).reset();
+      }
+    });
   }
 
   @override
@@ -290,48 +295,49 @@ class _QrCodeScannerPageState extends ConsumerState<QrCodeScannerPage>
                             await showDialog(
                               context: context,
                               barrierDismissible: false,
-                              builder: (successDialogContext) => AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                title: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.check_circle,
-                                      color: Colors.green,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        successTitle, // ✅ Use pre-saved string
-                                        style: theme.textTheme.titleMedium
-                                            ?.copyWith(
-                                              color: colorScheme.onSurface,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                content: Text(
-                                  successMessage, // ✅ Use pre-saved string
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
+                              builder: (successDialogContext) {
+                                Future.delayed(
+                                  const Duration(milliseconds: 500),
+                                  () {
+                                    if (successDialogContext.mounted) {
                                       Navigator.of(successDialogContext).pop();
-                                    },
-                                    child: Text(
-                                      okLabel,
-                                    ), // ✅ Use pre-saved string
+                                    }
+                                  },
+                                );
+
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
                                   ),
-                                ],
-                              ),
+                                  title: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.check_circle,
+                                        color: Colors.green,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          successTitle,
+                                          style: theme.textTheme.titleMedium
+                                              ?.copyWith(
+                                                color: colorScheme.onSurface,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  content: Text(
+                                    successMessage,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                );
+                              },
                             );
                           }
 
-                          // Navigate to main screen
                           if (mounted) {
+                            viewModel?.reset();
                             router.replaceAll([const MainWrapperRoute()]);
                           }
                         },

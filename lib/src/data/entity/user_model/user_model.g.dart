@@ -12,8 +12,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   username: json['username'] as String,
   phone: json['phone'] as String?,
   age: json['age'] as String?,
-  region: json['region'] as String?,
-  district: json['district'] as String?,
+  region: (json['region'] as num?)?.toInt(),
+  district: (json['district'] as num?)?.toInt(),
   englishLevel: json['english_level'] as String?,
   languageCode: json['language_code'] as String?,
 );

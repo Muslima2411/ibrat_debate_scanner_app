@@ -234,4 +234,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get english_level => 'Уровень английского языка';
+
+  @override
+  String get enter_name => 'Введите ваше имя';
 }

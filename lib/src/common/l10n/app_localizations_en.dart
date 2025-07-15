@@ -235,4 +235,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get english_level => 'English Level';
+
+  @override
+  String get enter_name => 'Enter your name';
 }

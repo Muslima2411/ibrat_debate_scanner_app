@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "english_level": MessageLookupByLibrary.simpleMessage(
       "Уровень английского языка",
     ),
+    "enter_name": MessageLookupByLibrary.simpleMessage("Введите ваше имя"),
     "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
       "Ошибка перезапуска камеры:",
     ),

@@ -9,8 +9,8 @@ class UserModel {
   final String username;
   final String? phone;
   final String? age;
-  final String? region;
-  final String? district;
+  final int? region;
+  final int? district;
   @JsonKey(name: 'english_level')
   final String? englishLevel;
   @JsonKey(name: 'language_code')
@@ -39,8 +39,8 @@ class UserModel {
     String? username,
     String? phone,
     String? age,
-    String? region,
-    String? district,
+    int? region,
+    int? district,
     String? englishLevel,
     String? languageCode,
   }) {

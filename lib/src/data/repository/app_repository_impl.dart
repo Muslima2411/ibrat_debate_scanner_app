@@ -1,8 +1,10 @@
 import "dart:convert";
 import "dart:developer";
 
+import "package:dio/dio.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:ibrat_debate_scanner_app/src/data/entity/user_model/set_pass_response.dart";
 import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.dart";
 import "../../common/server/api/api.dart";
 import "../../common/server/api/api_constants.dart";
@@ -229,6 +231,97 @@ final class AppRepositoryImpl implements AppRepository {
     } catch (e) {
       log('❌ Error marking ticket as checked: $e');
       throw Exception('Error marking ticket as checked: $e');
+    }
+  }
+
+  @override
+  Future<SetPassApiResponse<bool>> changePassword(
+    String currentPassword,
+    String newPassword,
+  ) async {
+    try {
+      debugPrint('🔐 Changing password...');
+
+      final Map<String, dynamic> requestData = {
+        'current_password': currentPassword,
+        'password': newPassword,
+      };
+
+      debugPrint('📤 Sending password change request');
+
+      final String? response = await ApiService.post(
+        ApiConst.setPasswordApi, // Add this to your ApiConst class
+        requestData,
+      );
+
+      if (response != null && response.isNotEmpty) {
+        debugPrint('✅ Password change response received');
+        debugPrint('📄 Response data: $response');
+
+        final Map<String, dynamic> jsonData = jsonDecode(response);
+        final details = jsonData['details'] ?? '';
+        final isSuccess = details.toLowerCase().contains('success');
+
+        debugPrint('🔍 Password change result: $details');
+        debugPrint('✅ Is success: $isSuccess');
+
+        return SetPassApiResponse<bool>(
+          isSuccess: isSuccess,
+          data: isSuccess,
+          details: details,
+          statusCode: 200,
+        );
+      } else {
+        debugPrint('❌ Failed to change password: empty response');
+        return SetPassApiResponse<bool>(
+          isSuccess: false,
+          data: false,
+          details: 'Failed to change password: empty response',
+          statusCode: null,
+        );
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error changing password: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+
+      String details = 'Unexpected error occurred. Please try again later.';
+
+      if (e is DioException) {
+        final response = e.response;
+        if (response != null) {
+          try {
+            final data = response.data;
+            if (data is String) {
+              // Try to parse if it's a JSON string
+              final json = jsonDecode(data);
+              if (json is Map<String, dynamic>) {
+                if (json['password'] is List) {
+                  details = (json['password'] as List).join(', ');
+                } else if (json['details'] != null) {
+                  details = json['details'].toString();
+                }
+              }
+            } else if (data is Map<String, dynamic>) {
+              if (data['password'] is List) {
+                details = (data['password'] as List).join(', ');
+              } else if (data['details'] != null) {
+                details = data['details'].toString();
+              }
+            }
+          } catch (_) {
+            details = 'Internal Server Error. Please try again later.';
+          }
+        } else {
+          details = 'Server did not return a response.';
+        }
+      }
+
+      return SetPassApiResponse<bool>(
+        isSuccess: false,
+        data: false,
+        details: details,
+        statusCode: null,
+      );
     }
   }
 }

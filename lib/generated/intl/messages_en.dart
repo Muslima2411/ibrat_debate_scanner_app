@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "empty_page": MessageLookupByLibrary.simpleMessage("This page is empty"),
     "english_level": MessageLookupByLibrary.simpleMessage("English Level"),
+    "enter_name": MessageLookupByLibrary.simpleMessage("Enter your name"),
     "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
       "Error restarting camera:",
     ),

@@ -10,6 +10,7 @@ import '../../../data/entity/user_model/user_model.dart';
 import '../view_models/settings_view_model.dart';
 import '../widgets/animated_drop_down.dart';
 import '../widgets/change_password_dialog.dart';
+import '../widgets/settings_text_field.dart';
 
 @RoutePage()
 class SettingsPage extends ConsumerStatefulWidget {
@@ -115,14 +116,14 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
             SettingsTextField(
               controller: viewModel.nameController,
               label: context.localized.name,
-              icon: Icons.person,
-              hintText: "Enter your name",
+              // icon: Icons.person,
+              hintText: context.localized.enter_name,
             ),
             const SizedBox(height: 12),
             SettingsTextField(
               controller: viewModel.phoneController,
               label: context.localized.phone,
-              icon: Icons.phone,
+              // icon: Icons.phone,
               keyboardType: TextInputType.phone,
               inputFormatters: [viewModel.phoneFormatter],
               hintText: "+998 (90) 123-45-67",
@@ -160,18 +161,15 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
   Widget _buildUsernameCard(BuildContext context, UserModel user) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       decoration: BoxDecoration(
         color: context.colorScheme.surfaceContainerHighest.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: context.colorScheme.outline.withOpacity(0.5)),
+        border: Border.all(color: context.colorScheme.outline),
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.alternate_email,
-            color: context.colorScheme.onSurfaceVariant,
-          ),
+          Icon(Icons.alternate_email, color: context.colorScheme.primary),
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,10 +178,11 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 context.localized.username,
                 style: context.textTheme.bodySmall?.copyWith(
                   color: context.colorScheme.onSurfaceVariant,
+                  fontSize: 12.sp,
                 ),
               ),
               Text(
-                '@${user.username}',
+                user.username,
                 style: context.textTheme.bodyLarge?.copyWith(
                   color: context.colorScheme.onSurface,
                   fontWeight: FontWeight.w500,
@@ -297,48 +296,5 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         );
       }
     }
-  }
-}
-
-class SettingsTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final String label;
-  final IconData icon;
-  final TextInputType keyboardType;
-  final bool obscureText;
-  final Widget? suffixIcon;
-  final List<TextInputFormatter>? inputFormatters;
-  final String? hintText;
-
-  const SettingsTextField({
-    super.key,
-    required this.controller,
-    required this.label,
-    required this.icon,
-    this.keyboardType = TextInputType.text,
-    this.obscureText = false,
-    this.suffixIcon,
-    this.inputFormatters,
-    this.hintText,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      inputFormatters: inputFormatters,
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: context.colorScheme.primary),
-        suffixIcon: suffixIcon,
-        hintStyle: context.textTheme.bodyMedium?.copyWith(
-          fontSize: 18.sp,
-          color: context.colorScheme.onSurface.withOpacity(0.6),
-        ),
-        hintText: hintText,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-    );
   }
 }

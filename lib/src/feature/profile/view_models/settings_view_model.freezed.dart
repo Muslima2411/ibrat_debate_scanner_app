@@ -217,7 +217,7 @@ return $default(_that.user,_that.isLoading,_that.isSaving,_that.error,_that.sele
 
 
 class _SettingsState with DiagnosticableTreeMixin implements SettingsState {
-  const _SettingsState({this.user, this.isLoading = false, this.isSaving = false, this.error, this.selectedEnglishLevel = 'A1-A2', this.selectedAgeRange = '<16'});
+  const _SettingsState({this.user, this.isLoading = false, this.isSaving = false, this.error, this.selectedEnglishLevel = 'B1-B2', this.selectedAgeRange = '<16'});
   
 
 @override final  UserModel? user;

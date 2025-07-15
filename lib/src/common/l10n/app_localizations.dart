@@ -549,6 +549,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'English Level'**
   String get english_level;
+
+  /// No description provided for @enter_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enter_name;
 }
 
 class _AppLocalizationsDelegate

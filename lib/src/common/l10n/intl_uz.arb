@@ -74,5 +74,6 @@
   "ok": "OK",
     "statistics_not_available_yet": "Statistika hali mavjud emas...",
     "age": "Yosh",
-  "english_level": "Ingliz tili darajasi"
+  "english_level": "Ingliz tili darajasi",
+    "enter_name": "Ismingizni kiriting"
 }

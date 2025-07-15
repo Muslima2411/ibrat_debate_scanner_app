@@ -16,13 +16,13 @@ abstract class SettingsState with _$SettingsState {
     @Default(false) bool isLoading,
     @Default(false) bool isSaving,
     String? error,
-    @Default('A1-A2') String selectedEnglishLevel,
+    @Default('B1-B2') String selectedEnglishLevel,
     @Default('<16') String selectedAgeRange,
   }) = _SettingsState;
 }
 
 class SettingsViewModel extends ChangeNotifier {
-  static const List<String> englishLevels = ['A1-A2', 'B1-B2', 'C1-C2'];
+  static const List<String> englishLevels = ['B1-B2', 'C1-C2'];
   static const List<String> ageRanges = ['<16', '16-18', '19-24', '>24'];
 
   final AppRepositoryImpl _repository;

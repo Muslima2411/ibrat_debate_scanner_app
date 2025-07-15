@@ -42,27 +42,38 @@ class HomePage extends ConsumerWidget {
               ),
               SizedBox(height: 16.h),
               Expanded(
-                child: vm.isLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : vm.events.isEmpty
-                    ? Center(
-                        child: Text(
-                          context.localized.no_data,
-                          style: context.textTheme.titleMedium?.copyWith(
-                            color: context.colorScheme.onSurface,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20.sp,
-                          ),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await vm.fetchEvents();
+                  },
+                  child: vm.isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : vm.events.isEmpty
+                      ? ListView(
+                          // Required for pull-to-refresh to work
+                          children: [
+                            SizedBox(height: 100),
+                            Center(
+                              child: Text(
+                                context.localized.no_data,
+                                style: context.textTheme.titleMedium?.copyWith(
+                                  color: context.colorScheme.onSurface,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : ListView.separated(
+                          itemCount: vm.events.length,
+                          separatorBuilder: (_, __) => SizedBox(height: 16.h),
+                          itemBuilder: (context, index) {
+                            final debate = vm.events[index];
+                            return _buildDebateCard(context, debate);
+                          },
                         ),
-                      )
-                    : ListView.separated(
-                        itemCount: vm.events.length,
-                        separatorBuilder: (_, _) => SizedBox(height: 16.h),
-                        itemBuilder: (context, index) {
-                          final debate = vm.events[index];
-                          return _buildDebateCard(context, debate);
-                        },
-                      ),
+                ),
               ),
             ],
           ),

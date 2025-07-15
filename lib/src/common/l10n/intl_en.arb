@@ -74,5 +74,6 @@
   "ok": "OK",
   "statistics_not_available_yet": "Statistics are not available yet...",
   "age": "Age",
-  "english_level": "English Level"
+  "english_level": "English Level",
+  "enter_name": "Enter your name"
 }

@@ -202,6 +202,10 @@ class QrCodeScannerViewModel extends ChangeNotifier {
   void resetNavigationFlag() {
     _updateState(_state.copyWith(shouldNavigateBack: false));
   }
+
+  void reset() {
+    _updateState(const QrCodeScannerState(isScanning: true));
+  }
 }
 
 // Update the providers

@@ -592,6 +592,16 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Enter your name`
+  String get enter_name {
+    return Intl.message(
+      'Enter your name',
+      name: 'enter_name',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

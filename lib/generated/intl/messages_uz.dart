@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "english_level": MessageLookupByLibrary.simpleMessage(
       "Ingliz tili darajasi",
     ),
+    "enter_name": MessageLookupByLibrary.simpleMessage("Ismingizni kiriting"),
     "error_restarting_qrScanner": MessageLookupByLibrary.simpleMessage(
       "Kamerani qayta ishga tushirishda xato:",
     ),

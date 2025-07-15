@@ -1,3 +1,5 @@
+import 'package:ibrat_debate_scanner_app/setup.dart';
+
 final class ApiConst {
   const ApiConst._();
 
@@ -20,6 +22,7 @@ final class ApiConst {
 
   static const String users = "$auth/users";
   static const String meApi = "$users/me/";
+  static const String setPasswordApi = "$users/set_password/";
 }
 
 final class ApiParams {
