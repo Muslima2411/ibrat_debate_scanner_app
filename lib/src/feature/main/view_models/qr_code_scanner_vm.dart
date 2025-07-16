@@ -84,8 +84,9 @@ class QrCodeScannerViewModel extends ChangeNotifier {
       }
 
       // Step 2: Get user details
-      final user = await _repository.getUserById(ticket.user);
-      debugPrint('✅ User retrieved: ${user?.id}');
+      // final user = await _repository.getUserById(ticket.user);
+      final user = ticket.user;
+      debugPrint('✅ User retrieved: ${user.id}');
 
       _updateState(
         _state.copyWith(isLoading: false, ticket: ticket, user: user),

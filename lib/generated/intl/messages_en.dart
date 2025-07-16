@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePassword": MessageLookupByLibrary.simpleMessage("Change Password"),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Choose language"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Choose theme mode"),
+    "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Error restarting camera:",
     ),
     "go_back": MessageLookupByLibrary.simpleMessage("Go Back"),
+    "history": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid username or password",
@@ -71,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "no_data": MessageLookupByLibrary.simpleMessage("No data available yet"),
+    "no_history": MessageLookupByLibrary.simpleMessage("No history available"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Ongoing"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Open Scanner"),

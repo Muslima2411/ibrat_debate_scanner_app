@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePassword": MessageLookupByLibrary.simpleMessage("Изменить пароль"),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Выбор темы"),
+    "clear": MessageLookupByLibrary.simpleMessage("Очистить"),
     "completed": MessageLookupByLibrary.simpleMessage("Завершено"),
     "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
     "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
@@ -53,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Ошибка перезапуска камеры:",
     ),
     "go_back": MessageLookupByLibrary.simpleMessage("Назад"),
+    "history": MessageLookupByLibrary.simpleMessage("История"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Неверный логин или пароль",
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("Имя"),
     "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
     "no_data": MessageLookupByLibrary.simpleMessage("Пока нет данных"),
+    "no_history": MessageLookupByLibrary.simpleMessage("История отсутствует"),
     "ok": MessageLookupByLibrary.simpleMessage("ОК"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Идут"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Открыть сканер"),

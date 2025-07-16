@@ -6,20 +6,6 @@ part of 'debate_event_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Region _$RegionFromJson(Map<String, dynamic> json) => _Region(
-  id: (json['id'] as num).toInt(),
-  createdAt: json['created_at'] as String,
-  updatedAt: json['updated_at'] as String,
-  name: json['name'] as String,
-);
-
-Map<String, dynamic> _$RegionToJson(_Region instance) => <String, dynamic>{
-  'id': instance.id,
-  'created_at': instance.createdAt,
-  'updated_at': instance.updatedAt,
-  'name': instance.name,
-};
-
 _District _$DistrictFromJson(Map<String, dynamic> json) => _District(
   id: (json['id'] as num).toInt(),
   createdAt: json['created_at'] as String,
@@ -36,6 +22,24 @@ Map<String, dynamic> _$DistrictToJson(_District instance) => <String, dynamic>{
   'name': instance.name,
   'telegram_group_link': instance.telegramGroupLink,
   'region': instance.region,
+};
+
+_Region _$RegionFromJson(Map<String, dynamic> json) => _Region(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  createdAt: json['created_at'] as String,
+  updatedAt: json['updated_at'] as String,
+  districts: (json['districts'] as List<dynamic>)
+      .map((e) => District.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
+
+Map<String, dynamic> _$RegionToJson(_Region instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'created_at': instance.createdAt,
+  'updated_at': instance.updatedAt,
+  'districts': instance.districts,
 };
 
 _DebateEvent _$DebateEventFromJson(Map<String, dynamic> json) => _DebateEvent(

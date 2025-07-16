@@ -75,5 +75,8 @@
     "statistics_not_available_yet": "Statistika hali mavjud emas...",
     "age": "Yosh",
   "english_level": "Ingliz tili darajasi",
-    "enter_name": "Ismingizni kiriting"
+    "enter_name": "Ismingizni kiriting",
+    "history": "Tarix",
+    "no_history": "Tarix mavjud emas",
+    "clear": "Tozalash"
 }

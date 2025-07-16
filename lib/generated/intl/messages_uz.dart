@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Tilni tanlang"),
     "chooseTheme": MessageLookupByLibrary.simpleMessage("Mavzuni tanlash"),
+    "clear": MessageLookupByLibrary.simpleMessage("Tozalash"),
     "completed": MessageLookupByLibrary.simpleMessage("Tugallangan"),
     "confirm": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
     "confirm_checkin_prompt": MessageLookupByLibrary.simpleMessage(
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Kamerani qayta ishga tushirishda xato:",
     ),
     "go_back": MessageLookupByLibrary.simpleMessage("Orqaga qaytish"),
+    "history": MessageLookupByLibrary.simpleMessage("Tarix"),
     "home": MessageLookupByLibrary.simpleMessage("Bosh sahifa"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Noto‘g‘ri login yoki parol",
@@ -79,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_data": MessageLookupByLibrary.simpleMessage(
       "Hozircha hech qanday ma\'lumot yo\'q",
     ),
+    "no_history": MessageLookupByLibrary.simpleMessage("Tarix mavjud emas"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "ongoing": MessageLookupByLibrary.simpleMessage("Davom etayotgan"),
     "openScanner": MessageLookupByLibrary.simpleMessage("Skanerni ochish"),

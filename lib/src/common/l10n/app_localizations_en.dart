@@ -238,4 +238,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enter_name => 'Enter your name';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get no_history => 'No history available';
+
+  @override
+  String get clear => 'Clear';
 }

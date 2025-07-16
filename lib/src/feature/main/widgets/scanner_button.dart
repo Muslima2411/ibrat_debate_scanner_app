@@ -12,10 +12,11 @@ class ScannerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
+    return MaterialButton(
       shape: CircleBorder(),
-      backgroundColor: context.colorScheme.primary,
-      foregroundColor: context.colorScheme.onPrimary,
+      minWidth: double.infinity,
+      color: context.colorScheme.primary,
+      // foregroundColor: context.colorScheme.onPrimary,
       onPressed: () => _openQRScanner(context),
       child: Padding(
         padding: const EdgeInsets.all(14),

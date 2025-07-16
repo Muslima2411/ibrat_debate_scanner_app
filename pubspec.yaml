@@ -45,6 +45,8 @@ dependencies:
   uuid_v4: ^1.0.2
   uuid: ^4.5.1
   mask_text_input_formatter: ^2.9.0
+  dropdown_button2: ^2.3.9
+  data_table_2: ^2.6.0
 
 dev_dependencies:
   flutter_test:

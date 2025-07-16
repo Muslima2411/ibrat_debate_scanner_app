@@ -239,4 +239,13 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get enter_name => 'Ismingizni kiriting';
+
+  @override
+  String get history => 'Tarix';
+
+  @override
+  String get no_history => 'Tarix mavjud emas';
+
+  @override
+  String get clear => 'Tozalash';
 }

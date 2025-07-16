@@ -602,6 +602,26 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `History`
+  String get history {
+    return Intl.message('History', name: 'history', desc: '', args: []);
+  }
+
+  /// `No history available`
+  String get no_history {
+    return Intl.message(
+      'No history available',
+      name: 'no_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message('Clear', name: 'clear', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate

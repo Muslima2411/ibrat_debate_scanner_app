@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../setup.dart';
 import '../../data/entity/user_model/user_model.dart';
 import '../../feature/auth/pages/login_page.dart';
+import '../../feature/history/pages/history_page.dart';
 import '../../feature/home/pages/home_page.dart';
 import '../../feature/init/init_page.dart';
 import '../../feature/main/pages/main_wrapper_page.dart';
@@ -38,6 +39,7 @@ class AppRouter extends RootStackRouter {
       children: [
         // Default tab when accessing root
         AutoRoute(path: 'home', page: HomeRoute.page, initial: true),
+        AutoRoute(path: 'history', page: HistoryRoute.page),
         AutoRoute(path: 'stats', page: StatisticsRoute.page),
         AutoRoute(path: 'profile', page: ProfileRoute.page),
       ],

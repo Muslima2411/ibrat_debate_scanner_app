@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
           ),
         ),
       ),
-      floatingActionButton: const ScannerButton(),
+      // floatingActionButton: const ScannerButton(),
     );
   }
 

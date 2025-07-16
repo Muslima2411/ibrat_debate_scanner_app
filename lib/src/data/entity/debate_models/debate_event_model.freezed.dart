@@ -13,278 +13,6 @@ part of 'debate_event_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$Region {
-
- int get id;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; String get name;
-/// Create a copy of Region
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$RegionCopyWith<Region> get copyWith => _$RegionCopyWithImpl<Region>(this as Region, _$identity);
-
-  /// Serializes this Region to a JSON map.
-  Map<String, dynamic> toJson();
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Region&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.name, name) || other.name == name));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,createdAt,updatedAt,name);
-
-@override
-String toString() {
-  return 'Region(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $RegionCopyWith<$Res>  {
-  factory $RegionCopyWith(Region value, $Res Function(Region) _then) = _$RegionCopyWithImpl;
-@useResult
-$Res call({
- int id,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String name
-});
-
-
-
-
-}
-/// @nodoc
-class _$RegionCopyWithImpl<$Res>
-    implements $RegionCopyWith<$Res> {
-  _$RegionCopyWithImpl(this._self, this._then);
-
-  final Region _self;
-  final $Res Function(Region) _then;
-
-/// Create a copy of Region
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? createdAt = null,Object? updatedAt = null,Object? name = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [Region].
-extension RegionPatterns on Region {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Region value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Region() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Region value)  $default,){
-final _that = this;
-switch (_that) {
-case _Region():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Region value)?  $default,){
-final _that = this;
-switch (_that) {
-case _Region() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String name)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Region() when $default != null:
-return $default(_that.id,_that.createdAt,_that.updatedAt,_that.name);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String name)  $default,) {final _that = this;
-switch (_that) {
-case _Region():
-return $default(_that.id,_that.createdAt,_that.updatedAt,_that.name);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String name)?  $default,) {final _that = this;
-switch (_that) {
-case _Region() when $default != null:
-return $default(_that.id,_that.createdAt,_that.updatedAt,_that.name);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-@JsonSerializable()
-
-class _Region implements Region {
-  const _Region({required this.id, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, required this.name});
-  factory _Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
-
-@override final  int id;
-@override@JsonKey(name: 'created_at') final  String createdAt;
-@override@JsonKey(name: 'updated_at') final  String updatedAt;
-@override final  String name;
-
-/// Create a copy of Region
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$RegionCopyWith<_Region> get copyWith => __$RegionCopyWithImpl<_Region>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$RegionToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Region&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.name, name) || other.name == name));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,createdAt,updatedAt,name);
-
-@override
-String toString() {
-  return 'Region(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$RegionCopyWith<$Res> implements $RegionCopyWith<$Res> {
-  factory _$RegionCopyWith(_Region value, $Res Function(_Region) _then) = __$RegionCopyWithImpl;
-@override @useResult
-$Res call({
- int id,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String name
-});
-
-
-
-
-}
-/// @nodoc
-class __$RegionCopyWithImpl<$Res>
-    implements _$RegionCopyWith<$Res> {
-  __$RegionCopyWithImpl(this._self, this._then);
-
-  final _Region _self;
-  final $Res Function(_Region) _then;
-
-/// Create a copy of Region
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? createdAt = null,Object? updatedAt = null,Object? name = null,}) {
-  return _then(_Region(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-
-/// @nodoc
 mixin _$District {
 
  int get id;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; String get name;@JsonKey(name: 'telegram_group_link') String get telegramGroupLink; int get region;
@@ -563,6 +291,287 @@ as int,
 
 
 /// @nodoc
+mixin _$Region {
+
+ int get id; String get name;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; List<District> get districts;
+/// Create a copy of Region
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RegionCopyWith<Region> get copyWith => _$RegionCopyWithImpl<Region>(this as Region, _$identity);
+
+  /// Serializes this Region to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other.districts, districts));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt,const DeepCollectionEquality().hash(districts));
+
+@override
+String toString() {
+  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, districts: $districts)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RegionCopyWith<$Res>  {
+  factory $RegionCopyWith(Region value, $Res Function(Region) _then) = _$RegionCopyWithImpl;
+@useResult
+$Res call({
+ int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, List<District> districts
+});
+
+
+
+
+}
+/// @nodoc
+class _$RegionCopyWithImpl<$Res>
+    implements $RegionCopyWith<$Res> {
+  _$RegionCopyWithImpl(this._self, this._then);
+
+  final Region _self;
+  final $Res Function(Region) _then;
+
+/// Create a copy of Region
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,Object? districts = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as String,districts: null == districts ? _self.districts : districts // ignore: cast_nullable_to_non_nullable
+as List<District>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [Region].
+extension RegionPatterns on Region {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Region value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Region() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Region value)  $default,){
+final _that = this;
+switch (_that) {
+case _Region():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Region value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Region() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Region() when $default != null:
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)  $default,) {final _that = this;
+switch (_that) {
+case _Region():
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)?  $default,) {final _that = this;
+switch (_that) {
+case _Region() when $default != null:
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _Region implements Region {
+  const _Region({required this.id, required this.name, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, required final  List<District> districts}): _districts = districts;
+  factory _Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
+
+@override final  int id;
+@override final  String name;
+@override@JsonKey(name: 'created_at') final  String createdAt;
+@override@JsonKey(name: 'updated_at') final  String updatedAt;
+ final  List<District> _districts;
+@override List<District> get districts {
+  if (_districts is EqualUnmodifiableListView) return _districts;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_districts);
+}
+
+
+/// Create a copy of Region
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RegionCopyWith<_Region> get copyWith => __$RegionCopyWithImpl<_Region>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RegionToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other._districts, _districts));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt,const DeepCollectionEquality().hash(_districts));
+
+@override
+String toString() {
+  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, districts: $districts)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RegionCopyWith<$Res> implements $RegionCopyWith<$Res> {
+  factory _$RegionCopyWith(_Region value, $Res Function(_Region) _then) = __$RegionCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, List<District> districts
+});
+
+
+
+
+}
+/// @nodoc
+class __$RegionCopyWithImpl<$Res>
+    implements _$RegionCopyWith<$Res> {
+  __$RegionCopyWithImpl(this._self, this._then);
+
+  final _Region _self;
+  final $Res Function(_Region) _then;
+
+/// Create a copy of Region
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,Object? districts = null,}) {
+  return _then(_Region(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as String,districts: null == districts ? _self._districts : districts // ignore: cast_nullable_to_non_nullable
+as List<District>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$DebateEvent {
 
  int get id; Region get region; District get district;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; String? get date; String? get time;@JsonKey(name: 'is_passed') bool get isPassed;
@@ -784,7 +793,7 @@ return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updat
 @JsonSerializable()
 
 class _DebateEvent implements DebateEvent {
-  const _DebateEvent({required this.id, required this.region, required this.district, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, required this.date, required this.time, @JsonKey(name: 'is_passed') required this.isPassed});
+  const _DebateEvent({required this.id, required this.region, required this.district, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, this.date, this.time, @JsonKey(name: 'is_passed') required this.isPassed});
   factory _DebateEvent.fromJson(Map<String, dynamic> json) => _$DebateEventFromJson(json);
 
 @override final  int id;

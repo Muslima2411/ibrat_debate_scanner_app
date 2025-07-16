@@ -4,18 +4,6 @@ part 'debate_event_model.freezed.dart';
 part 'debate_event_model.g.dart';
 
 @freezed
-abstract class Region with _$Region {
-  const factory Region({
-    required int id,
-    @JsonKey(name: 'created_at') required String createdAt,
-    @JsonKey(name: 'updated_at') required String updatedAt,
-    required String name,
-  }) = _Region;
-
-  factory Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
-}
-
-@freezed
 abstract class District with _$District {
   const factory District({
     required int id,
@@ -31,6 +19,19 @@ abstract class District with _$District {
 }
 
 @freezed
+abstract class Region with _$Region {
+  const factory Region({
+    required int id,
+    required String name,
+    @JsonKey(name: 'created_at') required String createdAt,
+    @JsonKey(name: 'updated_at') required String updatedAt,
+    required List<District> districts,
+  }) = _Region;
+
+  factory Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
+}
+
+@freezed
 abstract class DebateEvent with _$DebateEvent {
   const factory DebateEvent({
     required int id,
@@ -38,8 +39,8 @@ abstract class DebateEvent with _$DebateEvent {
     required District district,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
-    required String? date,
-    required String? time,
+    String? date,
+    String? time,
     @JsonKey(name: 'is_passed') required bool isPassed,
   }) = _DebateEvent;
 

@@ -75,5 +75,8 @@
   "statistics_not_available_yet": "Statistics are not available yet...",
   "age": "Age",
   "english_level": "English Level",
-  "enter_name": "Enter your name"
+  "enter_name": "Enter your name",
+  "history": "History",
+  "no_history": "No history available",
+  "clear": "Clear"
 }

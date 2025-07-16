@@ -237,4 +237,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get enter_name => 'Введите ваше имя';
+
+  @override
+  String get history => 'История';
+
+  @override
+  String get no_history => 'История отсутствует';
+
+  @override
+  String get clear => 'Очистить';
 }
