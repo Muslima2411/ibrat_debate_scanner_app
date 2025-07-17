@@ -3,6 +3,7 @@ import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.d
 
 import "../entity/debate_models/debate_event_response_model.dart";
 import "../entity/login_models/user_login_model.dart";
+import "../entity/stats/statistics_models.dart";
 import "../entity/ticket_model/ticket_model.dart";
 import "../entity/user_model/set_pass_response.dart";
 
@@ -22,4 +23,12 @@ abstract class AppRepository {
     String currentPassword,
     String newPassword,
   );
+
+  Future<RegionsResponse?> getRegions();
+  Future<StatisticsResponse?> getStatistics({
+    required int regionId,
+    int? districtId,
+  });
+
+  Future<List<TicketModel>> getTickets({bool isChecked = true});
 }

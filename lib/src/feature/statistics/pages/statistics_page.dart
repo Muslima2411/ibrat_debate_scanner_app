@@ -2,73 +2,44 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
+import '../../../data/entity/debate_models/debate_event_model.dart';
+import '../../../data/entity/stats/statistics_models.dart';
+import '../view_models/statistics_view_model.dart';
+
 @RoutePage()
-class StatisticsPage extends StatefulWidget {
+class StatisticsPage extends ConsumerStatefulWidget {
   const StatisticsPage({super.key});
 
   @override
-  State<StatisticsPage> createState() => _StatisticsPageState();
+  ConsumerState<StatisticsPage> createState() => _StatisticsPageState();
 }
 
-class _StatisticsPageState extends State<StatisticsPage> {
-  int? selectedRegionId;
-  int? selectedDistrictId;
-
-  final List<Map<String, dynamic>> sampleRegions = [
-    {
-      'id': 1,
-      'name': 'Tashkent',
-      'districts': [
-        {'id': 1, 'name': 'Yangiyo\'l'},
-        {'id': 2, 'name': 'Qibray'},
-        {'id': 3, 'name': 'Chilonzor'},
-        {'id': 4, 'name': 'Yunusobod'},
-      ],
-    },
-    {
-      'id': 2,
-      'name': 'Samarkand',
-      'districts': [
-        {'id': 3, 'name': 'Samarkand Center'},
-      ],
-    },
-  ];
-
-  final List<Map<String, dynamic>> sampleStats = [
-    {'regionId': 1, 'districtId': 1, 'debate': 'Yangiyo\'l', 'comers': 42},
-    {'regionId': 1, 'districtId': 2, 'debate': 'Qibray', 'comers': 58},
-    {
-      'regionId': 1,
-      'districtId': 3,
-      'debate': 'Yoshlar Ijod Saroyi',
-      'comers': 31,
-    },
-  ];
-
-  List<Map<String, dynamic>> get filteredStats {
-    return sampleStats.where((stat) {
-      final regionMatches =
-          selectedRegionId == null || stat['regionId'] == selectedRegionId;
-      final districtMatches =
-          selectedDistrictId == null ||
-          stat['districtId'] == selectedDistrictId;
-      return regionMatches && districtMatches;
-    }).toList();
-  }
-
-  List<Map<String, dynamic>> get availableDistricts {
-    final region = sampleRegions.firstWhere(
-      (r) => r['id'] == selectedRegionId,
-      orElse: () => {},
-    );
-    return region['districts'] ?? [];
+class _StatisticsPageState extends ConsumerState<StatisticsPage> {
+  @override
+  void initState() {
+    super.initState();
+    // Load regions when page is initialized
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(statisticsViewModelProvider).loadRegions();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = ref.watch(statisticsViewModelProvider);
+    final regions = viewModel.regions;
+    final availableDistricts = viewModel.availableDistricts;
+    final selectedRegion = viewModel.selectedRegion;
+    final selectedDistrict = viewModel.selectedDistrict;
+    final statistics = viewModel.statistics;
+    final isLoadingRegions = viewModel.isLoadingRegions;
+    final isLoadingStats = viewModel.isLoadingStats;
+    final error = viewModel.error;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -87,12 +58,52 @@ class _StatisticsPageState extends State<StatisticsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Error Message
+            if (error != null)
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(12.w),
+                margin: EdgeInsets.only(bottom: 16.h),
+                decoration: BoxDecoration(
+                  color: context.colorScheme.errorContainer,
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.error_outline,
+                      color: context.colorScheme.onErrorContainer,
+                      size: 20.sp,
+                    ),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: Text(
+                        error,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colorScheme.onErrorContainer,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () =>
+                          ref.read(statisticsViewModelProvider).clearError(),
+                      icon: Icon(
+                        Icons.close,
+                        color: context.colorScheme.onErrorContainer,
+                        size: 18.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
             // Dropdowns
             Row(
               children: [
+                // Region Dropdown
                 Expanded(
-                  child: DropdownButtonFormField2<int>(
-                    value: selectedRegionId,
+                  child: DropdownButtonFormField2<Region>(
+                    value: selectedRegion,
                     isExpanded: true,
                     decoration: InputDecoration(
                       labelText: 'Region',
@@ -119,38 +130,47 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       ),
                     ),
                     iconStyleData: IconStyleData(
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: 24.sp,
-                      ),
+                      icon: isLoadingRegions
+                          ? SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              size: 24.sp,
+                            ),
                     ),
                     style: context.textTheme.bodyMedium?.copyWith(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: context.colorScheme.onSurface,
                     ),
-                    items: sampleRegions.map((region) {
-                      return DropdownMenuItem<int>(
-                        value: region['id'],
+                    items: regions.map((region) {
+                      return DropdownMenuItem<Region>(
+                        value: region,
                         child: Text(
-                          region['name'],
+                          region.name,
                           overflow: TextOverflow.ellipsis,
                         ),
                       );
                     }).toList(),
-                    onChanged: (val) {
-                      setState(() {
-                        selectedRegionId = val;
-                        selectedDistrictId = null;
-                      });
-                    },
+                    onChanged: isLoadingRegions
+                        ? null
+                        : (region) {
+                            ref
+                                .read(statisticsViewModelProvider)
+                                .selectRegion(region);
+                          },
                   ),
                 ),
 
                 SizedBox(width: 12.w),
+
+                // District Dropdown
                 Expanded(
-                  child: DropdownButtonFormField2<int>(
-                    value: selectedDistrictId,
+                  child: DropdownButtonFormField2<District>(
+                    value: selectedDistrict,
                     isExpanded: true,
                     decoration: InputDecoration(
                       labelText: 'District',
@@ -188,71 +208,185 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       color: context.colorScheme.onSurface,
                     ),
                     items: availableDistricts.map((district) {
-                      return DropdownMenuItem<int>(
-                        value: district['id'],
+                      return DropdownMenuItem<District>(
+                        value: district,
                         child: Text(
-                          district['name'],
+                          district.name,
                           overflow: TextOverflow.ellipsis,
                         ),
                       );
                     }).toList(),
-                    onChanged: selectedRegionId == null
+                    onChanged: selectedRegion == null
                         ? null
-                        : (val) {
-                            setState(() {
-                              selectedDistrictId = val;
-                            });
+                        : (district) {
+                            ref
+                                .read(statisticsViewModelProvider)
+                                .selectDistrict(district);
                           },
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20.h),
 
-            // Table or Empty Message
+            SizedBox(height: 30.h),
+
+            // Statistics Content
             Expanded(
-              child: filteredStats.isEmpty
-                  ? Center(
-                      child: Text(
-                        context.localized.statistics_not_available_yet,
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w500,
-                          color: context.colorScheme.onSurfaceVariant,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    )
-                  : DataTable2(
-                      columnSpacing: 16.w,
-                      horizontalMargin: 12.w,
-                      headingTextStyle: context.textTheme.labelLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: context.colorScheme.primary,
-                      ),
-                      dataTextStyle: context.textTheme.bodyMedium?.copyWith(
-                        color: context.colorScheme.onSurface,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      columns: const [
-                        DataColumn2(label: Text('Debate'), size: ColumnSize.L),
-                        DataColumn2(label: Text('Comers'), size: ColumnSize.S),
-                      ],
-                      rows: filteredStats
-                          .map(
-                            (row) => DataRow(
-                              cells: [
-                                DataCell(Text(row['debate'])),
-                                DataCell(Text('${row['comers']}')),
-                              ],
-                            ),
-                          )
-                          .toList(),
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildStatisticsContent(
+                  context,
+                  statistics,
+                  selectedRegion,
+                  selectedDistrict,
+                  isLoadingStats,
+                ),
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildStatisticsContent(
+    BuildContext context,
+    StatisticsResponse? statistics,
+    Region? selectedRegion,
+    District? selectedDistrict,
+    bool isLoadingStats,
+  ) {
+    if (isLoadingStats) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(height: 16.h),
+            Text(
+              'Loading statistics...',
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (selectedRegion == null && selectedDistrict == null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.analytics_outlined,
+              size: 64.sp,
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              'Please select region and district to view statistics',
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (selectedRegion == null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.analytics_outlined,
+              size: 64.sp,
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              'Please select a region to view statistics',
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (statistics == null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.info_outline,
+              size: 64.sp,
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              context.localized.statistics_not_available_yet,
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
+    return DataTable2(
+      columnSpacing: 16.w,
+      horizontalMargin: 12.w,
+      headingTextStyle: context.textTheme.labelLarge?.copyWith(
+        fontWeight: FontWeight.w600,
+        color: context.colorScheme.primary,
+      ),
+      dataTextStyle: context.textTheme.bodyMedium?.copyWith(
+        color: context.colorScheme.onSurface,
+        fontWeight: FontWeight.w400,
+      ),
+      columns: const [
+        DataColumn2(label: Text('Metric'), size: ColumnSize.L),
+        DataColumn2(label: Text('Count'), size: ColumnSize.S),
+      ],
+      rows: [
+        DataRow(
+          cells: [
+            DataCell(Text('Total Registered')),
+            DataCell(Text('${statistics.allCount}')),
+          ],
+        ),
+        DataRow(
+          cells: [
+            DataCell(Text('Attended')),
+            DataCell(Text('${statistics.hasComeCount}')),
+          ],
+        ),
+        DataRow(
+          cells: [
+            DataCell(Text('Attendance Rate')),
+            DataCell(
+              Text(
+                statistics.allCount > 0
+                    ? '${((statistics.hasComeCount / statistics.allCount) * 100).toStringAsFixed(1)}%'
+                    : '0%',
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

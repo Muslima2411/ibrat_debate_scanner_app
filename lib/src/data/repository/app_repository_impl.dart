@@ -12,6 +12,7 @@ import "../../common/server/api/api_constants.dart";
 import "../entity/debate_models/debate_event_response_model.dart";
 import "../entity/login_models/login_response_model.dart";
 import "../entity/login_models/user_login_model.dart";
+import "../entity/stats/statistics_models.dart";
 import "../entity/ticket_model/ticket_model.dart";
 import "app_repository.dart";
 
@@ -322,6 +323,109 @@ final class AppRepositoryImpl implements AppRepository {
         details: details,
         statusCode: null,
       );
+    }
+  }
+
+  @override
+  Future<RegionsResponse?> getRegions() async {
+    try {
+      debugPrint('🌍 Fetching regions...');
+
+      final response = await ApiService.get(
+        ApiConst.regionsApi,
+        ApiParams.emptyParams(),
+      );
+
+      if (response != null && response.isNotEmpty) {
+        debugPrint('✅ Regions response received');
+        debugPrint('📄 Response data: $response');
+
+        final Map<String, dynamic> jsonData = jsonDecode(response);
+        final regionsResponse = RegionsResponse.fromJson(jsonData);
+
+        debugPrint(
+          '🏛️ Regions parsed successfully: ${regionsResponse.results.length} regions',
+        );
+        return regionsResponse;
+      } else {
+        debugPrint('❌ Failed to get regions: empty response');
+        return null;
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error fetching regions: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+      return null;
+    }
+  }
+
+  @override
+  Future<StatisticsResponse?> getStatistics({
+    required int regionId,
+    int? districtId,
+  }) async {
+    try {
+      String url = '${ApiConst.statsApi}?region=$regionId';
+      if (districtId != null) {
+        url += '&district=$districtId';
+      }
+
+      debugPrint('📊 Fetching statistics from: $url');
+
+      final response = await ApiService.get(url, ApiParams.emptyParams());
+
+      if (response != null && response.isNotEmpty) {
+        final jsonData = jsonDecode(response);
+        final statisticsResponse = StatisticsResponse.fromJson(jsonData);
+
+        return statisticsResponse;
+      } else {
+        debugPrint('❌ Empty statistics response');
+        return null;
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error fetching statistics: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+      return null;
+    }
+  }
+
+  @override
+  Future<List<TicketModel>> getTickets({bool isChecked = true}) async {
+    try {
+      debugPrint('🎟️ Fetching tickets (is_checked: $isChecked)...');
+
+      final queryParams = {'is_checked': isChecked.toString()};
+
+      final String url =
+          ApiConst.ticketsApi +
+          '?' +
+          queryParams.entries
+              .map((e) => '${e.key}=${Uri.encodeComponent(e.value)}')
+              .join('&');
+
+      final response = await ApiService.get(url, ApiParams.emptyParams());
+
+      if (response != null && response.isNotEmpty) {
+        debugPrint('✅ Tickets response received');
+        debugPrint('📄 Response data: $response');
+
+        final json = jsonDecode(response);
+        final List<dynamic> results = json['results'] ?? [];
+
+        final List<TicketModel> tickets = results
+            .map((e) => TicketModel.fromJson(e as Map<String, dynamic>))
+            .toList();
+
+        debugPrint('📦 Parsed ${tickets.length} tickets');
+        return tickets;
+      } else {
+        debugPrint('❌ Empty ticket response');
+        return [];
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error fetching tickets: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+      return [];
     }
   }
 }
