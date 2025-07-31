@@ -18,7 +18,8 @@ class ScannerButton extends StatelessWidget {
       // minWidth: double.infinity,
       // color: context.colorScheme.primary,
       foregroundColor: context.colorScheme.onPrimary,
-      onPressed: () => _openQRScanner(context),
+      // onPressed: () => _openQRScanner(context),
+      onPressed: () => context.router.push(const QrCodeScannerRoute()),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: SvgPicture.asset(

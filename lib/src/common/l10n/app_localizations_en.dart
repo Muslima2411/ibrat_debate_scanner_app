@@ -247,4 +247,138 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clear => 'Clear';
+
+  @override
+  String get cancel_ticket_q => 'Cancel Ticket?';
+
+  @override
+  String get cancel_ticket => 'Cancel Ticket';
+
+  @override
+  String get are_u_sure_cancel =>
+      'Are you sure you want to cancel this ticket?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get region => 'Region';
+
+  @override
+  String get district => 'District';
+
+  @override
+  String get checked_at => 'Checked At';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get ticket_information => 'Ticket Information';
+
+  @override
+  String get clearAll => 'Clear All';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get all_districts => 'All Districts';
+
+  @override
+  String get select_region_first => 'Select a region first';
+
+  @override
+  String get all_regions => 'All Regions';
+
+  @override
+  String get select_region => 'Select Region';
+
+  @override
+  String get pending_only => 'Pending Only';
+
+  @override
+  String get checked_only => 'Checked Only';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get filter_tickets => 'Filter Tickets';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get loading_tickets => 'Loading tickets...';
+
+  @override
+  String get no_tickets_found => 'No tickets found';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get checked => 'Checked';
+
+  @override
+  String get created_at => 'Created At';
+
+  @override
+  String get loading_statistics => 'Loading statistics...';
+
+  @override
+  String get pls_select_region => 'Please select a region';
+
+  @override
+  String get metric => 'Metric';
+
+  @override
+  String get count => 'Count';
+
+  @override
+  String get total_registered => 'Total Registered';
+
+  @override
+  String get attendance_rate => 'Attendance Rate';
+
+  @override
+  String get pls_select_region_stats =>
+      'Please select a region to view statistics';
+
+  @override
+  String found_tickets_with_filters(Object count, Object filters) {
+    return 'Found \$$count tickets • \$$filters';
+  }
+
+  @override
+  String get unknown_user => 'Unknown User';
+
+  @override
+  String get contact_info => 'Contact Information';
+
+  @override
+  String get telegram => 'Telegram';
+
+  @override
+  String get event_info => 'Event Information';
+
+  @override
+  String get attended => 'Attended';
+
+  @override
+  String get cancel_ticket_title => 'Cancel Ticket?';
+
+  @override
+  String get cancel_ticket_confirmation =>
+      'Are you sure you want to cancel this ticket? This action cannot be undone.';
+
+  @override
+  String get keep_ticket => 'Keep Ticket';
 }

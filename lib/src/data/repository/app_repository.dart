@@ -18,6 +18,7 @@ abstract class AppRepository {
   Future<TicketModel?> getTicketById(String ticketId);
   Future<UserModel?> getUserById(String userId);
   Future<TicketModel?> markTicketAsChecked(String ticketId);
+  Future<TicketModel?> cancelTicket(String ticketId);
   Future<UserModel?> updateUserInfo(UserModel updatedUser);
   Future<SetPassApiResponse<bool>> changePassword(
     String currentPassword,
@@ -25,10 +26,7 @@ abstract class AppRepository {
   );
 
   Future<RegionsResponse?> getRegions();
-  Future<StatisticsResponse?> getStatistics({
-    required int regionId,
-    int? districtId,
-  });
+  Future<StatisticsResponse?> getStatistics({int? regionId, int? districtId});
 
   Future<List<TicketModel>> getTickets({bool isChecked = true});
 }

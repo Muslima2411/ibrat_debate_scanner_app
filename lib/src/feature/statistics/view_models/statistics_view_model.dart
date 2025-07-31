@@ -36,7 +36,7 @@ class StatisticsViewModel extends ChangeNotifier {
   }
 
   Future<void> loadRegions() async {
-    if (_state.regions.isNotEmpty) return; // Don't reload if already loaded
+    if (_state.regions.isNotEmpty) return;
 
     _updateState(_state.copyWith(isLoadingRegions: true, error: null));
 
@@ -96,6 +96,36 @@ class StatisticsViewModel extends ChangeNotifier {
     // Automatically load statistics when both region and district are selected
     if (_state.selectedRegion != null && district != null) {
       loadStatistics();
+    }
+  }
+
+  Future<void> loadInitialStatistics() async {
+    try {
+      final response = await _repository.getStatistics();
+
+      if (response != null) {
+        _updateState(
+          _state.copyWith(
+            statistics: response,
+            isLoadingStats: false,
+            error: null,
+          ),
+        );
+      } else {
+        _updateState(
+          _state.copyWith(
+            isLoadingStats: false,
+            error: 'Failed to load statistics',
+          ),
+        );
+      }
+    } catch (e) {
+      _updateState(
+        _state.copyWith(
+          isLoadingStats: false,
+          error: 'Error loading statistics: $e',
+        ),
+      );
     }
   }
 

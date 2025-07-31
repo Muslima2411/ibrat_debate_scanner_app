@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
-import 'package:ibrat_debate_scanner_app/src/feature/main/widgets/scanner_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../generated/assets.dart';
@@ -106,7 +105,7 @@ class HomePage extends ConsumerWidget {
             ),
           ],
         ),
-        Image.asset(Assets.imagesIbratFLogo),
+        Image.asset(Assets.imagesIbratDebate, height: 80.h, width: 100.w),
       ],
     );
   }

@@ -573,6 +573,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clear'**
   String get clear;
+
+  /// No description provided for @cancel_ticket_q.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Ticket?'**
+  String get cancel_ticket_q;
+
+  /// No description provided for @cancel_ticket.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Ticket'**
+  String get cancel_ticket;
+
+  /// No description provided for @are_u_sure_cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to cancel this ticket?'**
+  String get are_u_sure_cancel;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @region.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get region;
+
+  /// No description provided for @district.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get district;
+
+  /// No description provided for @checked_at.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked At'**
+  String get checked_at;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @ticket_information.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Information'**
+  String get ticket_information;
+
+  /// No description provided for @clearAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear All'**
+  String get clearAll;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @all_districts.
+  ///
+  /// In en, this message translates to:
+  /// **'All Districts'**
+  String get all_districts;
+
+  /// No description provided for @select_region_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a region first'**
+  String get select_region_first;
+
+  /// No description provided for @all_regions.
+  ///
+  /// In en, this message translates to:
+  /// **'All Regions'**
+  String get all_regions;
+
+  /// No description provided for @select_region.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Region'**
+  String get select_region;
+
+  /// No description provided for @pending_only.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Only'**
+  String get pending_only;
+
+  /// No description provided for @checked_only.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked Only'**
+  String get checked_only;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @filter_tickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Tickets'**
+  String get filter_tickets;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @loading_tickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading tickets...'**
+  String get loading_tickets;
+
+  /// No description provided for @no_tickets_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No tickets found'**
+  String get no_tickets_found;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pending;
+
+  /// No description provided for @checked.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked'**
+  String get checked;
+
+  /// No description provided for @created_at.
+  ///
+  /// In en, this message translates to:
+  /// **'Created At'**
+  String get created_at;
+
+  /// No description provided for @loading_statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading statistics...'**
+  String get loading_statistics;
+
+  /// No description provided for @pls_select_region.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a region'**
+  String get pls_select_region;
+
+  /// No description provided for @metric.
+  ///
+  /// In en, this message translates to:
+  /// **'Metric'**
+  String get metric;
+
+  /// No description provided for @count.
+  ///
+  /// In en, this message translates to:
+  /// **'Count'**
+  String get count;
+
+  /// No description provided for @total_registered.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Registered'**
+  String get total_registered;
+
+  /// No description provided for @attendance_rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance Rate'**
+  String get attendance_rate;
+
+  /// No description provided for @pls_select_region_stats.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a region to view statistics'**
+  String get pls_select_region_stats;
+
+  /// No description provided for @found_tickets_with_filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Found \${count} tickets • \${filters}'**
+  String found_tickets_with_filters(Object count, Object filters);
+
+  /// No description provided for @unknown_user.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown User'**
+  String get unknown_user;
+
+  /// No description provided for @contact_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contact_info;
+
+  /// No description provided for @telegram.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram'**
+  String get telegram;
+
+  /// No description provided for @event_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Information'**
+  String get event_info;
+
+  /// No description provided for @attended.
+  ///
+  /// In en, this message translates to:
+  /// **'Attended'**
+  String get attended;
+
+  /// No description provided for @cancel_ticket_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Ticket?'**
+  String get cancel_ticket_title;
+
+  /// No description provided for @cancel_ticket_confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to cancel this ticket? This action cannot be undone.'**
+  String get cancel_ticket_confirmation;
+
+  /// No description provided for @keep_ticket.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Ticket'**
+  String get keep_ticket;
 }
 
 class _AppLocalizationsDelegate

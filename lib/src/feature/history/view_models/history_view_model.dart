@@ -11,12 +11,14 @@ part 'history_view_model.freezed.dart';
 @freezed
 abstract class HistoryState with _$HistoryState {
   const factory HistoryState({
-    @Default([]) List<TicketModel> tickets,
+    @Default([]) List<TicketModel> allTickets, // Store all tickets here
     @Default([]) List<Region> regions,
     @Default(false) bool isLoadingRegions,
     @Default(false) bool isLoadingTickets,
     Region? selectedRegion,
     District? selectedDistrict,
+    bool?
+    showCheckedOnly, // null = all, true = checked only, false = pending only
     String? error,
   }) = _HistoryState;
 }
@@ -27,20 +29,61 @@ class HistoryViewModel extends ChangeNotifier {
   HistoryState _state = const HistoryState();
   HistoryState get state => _state;
 
+  // Getters for direct state access
   List<Region> get regions => _state.regions;
-  List<TicketModel> get tickets => _state.tickets;
+  List<TicketModel> get allTickets => _state.allTickets;
   bool get isLoadingRegions => _state.isLoadingRegions;
   bool get isLoadingTickets => _state.isLoadingTickets;
   Region? get selectedRegion => _state.selectedRegion;
   District? get selectedDistrict => _state.selectedDistrict;
+  bool? get showCheckedOnly => _state.showCheckedOnly;
   String? get error => _state.error;
+
+  // Computed property for filtered tickets
+  List<TicketModel> get filteredTickets {
+    List<TicketModel> tickets = _state.allTickets;
+
+    // Filter by status
+    if (_state.showCheckedOnly == true) {
+      tickets = tickets.where((ticket) => ticket.isChecked).toList();
+    } else if (_state.showCheckedOnly == false) {
+      tickets = tickets.where((ticket) => !ticket.isChecked).toList();
+    }
+    // If showCheckedOnly is null, show all tickets
+
+    // Filter by region
+    if (_state.selectedRegion != null) {
+      tickets = tickets
+          .where(
+            (ticket) => ticket.debate.region.id == _state.selectedRegion!.id,
+          )
+          .toList();
+    }
+
+    // Filter by district
+    if (_state.selectedDistrict != null) {
+      tickets = tickets
+          .where(
+            (ticket) =>
+                ticket.debate.district.id == _state.selectedDistrict!.id,
+          )
+          .toList();
+    }
+
+    return tickets;
+  }
 
   List<District> get availableDistricts {
     return _state.selectedRegion?.districts ?? [];
   }
 
   HistoryViewModel() {
-    loadRegions(); // Load regions on initialization
+    _initializeData();
+  }
+
+  Future<void> _initializeData() async {
+    await loadRegions();
+    await loadTickets();
   }
 
   void _updateState(HistoryState newState) {
@@ -49,7 +92,7 @@ class HistoryViewModel extends ChangeNotifier {
   }
 
   Future<void> loadRegions() async {
-    if (_state.regions.isNotEmpty) return; // Don't reload if already loaded
+    if (_state.regions.isNotEmpty) return;
 
     _updateState(_state.copyWith(isLoadingRegions: true, error: null));
 
@@ -61,14 +104,8 @@ class HistoryViewModel extends ChangeNotifier {
             regions: response.results,
             isLoadingRegions: false,
             error: null,
-            selectedRegion: response.results.isNotEmpty
-                ? response.results.first
-                : null,
           ),
         );
-        if (response.results.isNotEmpty) {
-          loadTickets(); // Load tickets after selecting a default region
-        }
       } else {
         _updateState(
           _state.copyWith(
@@ -88,17 +125,16 @@ class HistoryViewModel extends ChangeNotifier {
   }
 
   Future<void> loadTickets() async {
-    if (_state.selectedRegion == null) {
-      _updateState(_state.copyWith(error: 'Please select a region'));
-      return;
-    }
-
     _updateState(_state.copyWith(isLoadingTickets: true, error: null));
 
     try {
       final tickets = await _repository.getTickets();
       _updateState(
-        _state.copyWith(tickets: tickets, isLoadingTickets: false, error: null),
+        _state.copyWith(
+          allTickets: tickets,
+          isLoadingTickets: false,
+          error: null,
+        ),
       );
     } catch (e) {
       _updateState(
@@ -110,54 +146,64 @@ class HistoryViewModel extends ChangeNotifier {
     }
   }
 
+  void applyFilters({
+    Region? region,
+    District? district,
+    bool? showCheckedOnly,
+  }) {
+    _updateState(
+      _state.copyWith(
+        selectedRegion: region,
+        selectedDistrict: district,
+        showCheckedOnly: showCheckedOnly,
+        error: null,
+      ),
+    );
+  }
+
   void selectRegion(Region? region) {
     _updateState(
       _state.copyWith(
         selectedRegion: region,
-        selectedDistrict: null,
-        tickets: [], // Clear tickets when region changes
+        selectedDistrict: null, // Reset district when region changes
         error: null,
       ),
     );
-
-    if (region != null) {
-      loadTickets();
-    }
   }
 
   void selectDistrict(District? district) {
     _updateState(_state.copyWith(selectedDistrict: district, error: null));
   }
 
-  void clearFilters() {
+  void setShowCheckedOnly(bool? showCheckedOnly) {
+    _updateState(
+      _state.copyWith(showCheckedOnly: showCheckedOnly, error: null),
+    );
+  }
+
+  void clearAllFilters() {
     _updateState(
       _state.copyWith(
-        selectedRegion: _state.regions.isNotEmpty ? _state.regions.first : null,
+        selectedRegion: null,
         selectedDistrict: null,
-        tickets: [], // Clear tickets when filters are cleared
+        showCheckedOnly: null,
         error: null,
       ),
     );
-    if (_state.selectedRegion != null) {
-      loadTickets();
-    }
-  }
-
-  List<TicketModel> get filteredTickets {
-    if (_state.selectedRegion == null) return _state.tickets;
-
-    return _state.tickets.where((ticket) {
-      final matchesRegion =
-          ticket.debate.region.id == _state.selectedRegion!.id;
-      final matchesDistrict =
-          _state.selectedDistrict == null ||
-          ticket.debate.district.id == _state.selectedDistrict!.id;
-      return matchesRegion && matchesDistrict;
-    }).toList();
   }
 
   void clearError() {
     _updateState(_state.copyWith(error: null));
+  }
+
+  Future<void> cancelTicket(String ticketId) async {
+    try {
+      await _repository.cancelTicket(ticketId);
+      // Reload tickets after cancellation
+      await loadTickets();
+    } catch (e) {
+      _updateState(_state.copyWith(error: 'Failed to cancel ticket: $e'));
+    }
   }
 }
 

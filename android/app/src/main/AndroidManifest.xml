@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <application
-        android:label="ibrat_debate_scanner_app"
+        android:label="Ibrat Debate Scanner"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

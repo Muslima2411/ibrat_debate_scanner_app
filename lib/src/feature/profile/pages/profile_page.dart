@@ -212,7 +212,7 @@ class ProfilePage extends ConsumerWidget {
           colors: colors,
           textTheme: textTheme,
           onTap: () {
-            context.router.push(SettingsRoute(user: profileState.user));
+            // context.router.push(SettingsRoute(user: profileState.user));
           },
         ),
         Divider(color: colors.onSurface.withOpacity(0.1), thickness: 1),

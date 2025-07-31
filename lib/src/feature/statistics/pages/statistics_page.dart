@@ -24,7 +24,9 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
     super.initState();
     // Load regions when page is initialized
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(statisticsViewModelProvider).loadRegions();
+      final viewModel = ref.read(statisticsViewModelProvider);
+      viewModel.loadRegions(); // Load regions as before
+      viewModel.loadInitialStatistics(); // Load initial statistics
     });
   }
 
@@ -106,7 +108,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
                     value: selectedRegion,
                     isExpanded: true,
                     decoration: InputDecoration(
-                      labelText: 'Region',
+                      labelText: context.localized.region,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.r),
                       ),
@@ -173,7 +175,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
                     value: selectedDistrict,
                     isExpanded: true,
                     decoration: InputDecoration(
-                      labelText: 'District',
+                      labelText: context.localized.district,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.r),
                       ),
@@ -249,6 +251,8 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
     );
   }
 
+  // Widget _build =
+
   Widget _buildStatisticsContent(
     BuildContext context,
     StatisticsResponse? statistics,
@@ -264,7 +268,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
             CircularProgressIndicator(),
             SizedBox(height: 16.h),
             Text(
-              'Loading statistics...',
+              context.localized.loading_statistics,
               style: context.textTheme.bodyMedium?.copyWith(
                 color: context.colorScheme.onSurfaceVariant,
               ),
@@ -274,7 +278,9 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
       );
     }
 
-    if (selectedRegion == null && selectedDistrict == null) {
+    if (statistics == null &&
+        selectedRegion == null &&
+        selectedDistrict == null) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -286,7 +292,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
             ),
             SizedBox(height: 16.h),
             Text(
-              'Please select region and district to view statistics',
+              context.localized.pls_select_region,
               style: context.textTheme.bodyLarge?.copyWith(
                 color: context.colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.w500,
@@ -299,6 +305,106 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
     }
 
     if (selectedRegion == null) {
+      if (statistics != null) {
+        // Display initial statistics when no region is selected
+        return DataTable2(
+          columnSpacing: 16.w,
+          horizontalMargin: 12.w,
+          headingTextStyle: context.textTheme.labelLarge?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: context.colorScheme.primary,
+          ),
+          dataTextStyle: context.textTheme.bodyMedium?.copyWith(
+            color: context.colorScheme.onSurface,
+            fontWeight: FontWeight.w400,
+          ),
+          columns: [
+            DataColumn2(
+              label: Text(
+                context.localized.metric,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w500,
+                  color: context.colorScheme.primary,
+                ),
+              ),
+              size: ColumnSize.L,
+            ),
+            DataColumn2(
+              label: Text(
+                context.localized.count,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w500,
+                  color: context.colorScheme.primary,
+                ),
+              ),
+              size: ColumnSize.S,
+            ),
+          ],
+          rows: [
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    context.localized.total_registered,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    '${statistics.allCount}',
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    context.localized.attended,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    '${statistics.hasComeCount}',
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            DataRow(
+              cells: [
+                DataCell(
+                  Text(
+                    context.localized.attendance_rate,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ),
+                DataCell(
+                  Text(
+                    statistics.allCount > 0
+                        ? '${((statistics.hasComeCount / statistics.allCount) * 100).toStringAsFixed(1)}%'
+                        : '0%',
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      }
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -310,7 +416,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
             ),
             SizedBox(height: 16.h),
             Text(
-              'Please select a region to view statistics',
+              context.localized.pls_select_region_stats,
               style: context.textTheme.bodyLarge?.copyWith(
                 color: context.colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.w500,
@@ -357,26 +463,69 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
         color: context.colorScheme.onSurface,
         fontWeight: FontWeight.w400,
       ),
-      columns: const [
-        DataColumn2(label: Text('Metric'), size: ColumnSize.L),
-        DataColumn2(label: Text('Count'), size: ColumnSize.S),
+      columns: [
+        DataColumn2(
+          label: Text(
+            context.localized.metric,
+            style: context.textTheme.bodyMedium?.copyWith(
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          size: ColumnSize.L,
+        ),
+        DataColumn2(
+          label: Text(
+            context.localized.count,
+            style: context.textTheme.bodyMedium?.copyWith(
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          size: ColumnSize.S,
+        ),
       ],
       rows: [
         DataRow(
           cells: [
-            DataCell(Text('Total Registered')),
-            DataCell(Text('${statistics.allCount}')),
+            DataCell(
+              Text(
+                context.localized.total_registered,
+                style: context.textTheme.bodyMedium?.copyWith(fontSize: 18.sp),
+              ),
+            ),
+            DataCell(
+              Text(
+                '${statistics.allCount}',
+                style: context.textTheme.bodyMedium?.copyWith(fontSize: 18.sp),
+              ),
+            ),
           ],
         ),
         DataRow(
           cells: [
-            DataCell(Text('Attended')),
-            DataCell(Text('${statistics.hasComeCount}')),
+            DataCell(
+              Text(
+                context.localized.attended,
+                style: context.textTheme.bodyMedium?.copyWith(fontSize: 18.sp),
+              ),
+            ),
+            DataCell(
+              Text(
+                '${statistics.hasComeCount}',
+                style: context.textTheme.bodyMedium?.copyWith(fontSize: 18.sp),
+              ),
+            ),
           ],
         ),
         DataRow(
           cells: [
-            DataCell(Text('Attendance Rate')),
+            DataCell(
+              Text(
+                context.localized.attendance_rate,
+                style: context.textTheme.bodyMedium?.copyWith(fontSize: 18.sp),
+              ),
+            ),
             DataCell(
               Text(
                 statistics.allCount > 0

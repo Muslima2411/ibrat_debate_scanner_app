@@ -11,12 +11,16 @@ class Assets {
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String fontsPoppinsSemiBold =
       'assets/fonts/Poppins-SemiBold.ttf';
+  static const String iconsAppForegroundIcon =
+      'assets/icons/app_foreground_icon.png';
+  static const String iconsAppIcon = 'assets/icons/app_icon.png';
   static const String iconsHistoryIcon = 'assets/icons/history_icon.svg';
   static const String iconsHomeIcon = 'assets/icons/home_icon.svg';
   static const String iconsProfileIcon = 'assets/icons/profile_icon.svg';
   static const String iconsQrCodeIcon = 'assets/icons/qr_code_icon.svg';
   static const String iconsStatsIcon = 'assets/icons/stats_icon.svg';
   static const String imagesEnFlag = 'assets/images/en_flag.png';
+  static const String imagesIbratDebate = 'assets/images/ibrat_debate.png';
   static const String imagesIbratFLogo = 'assets/images/ibrat_f_logo.png';
   static const String imagesRuFlag = 'assets/images/ru_flag.png';
   static const String imagesUzFlag = 'assets/images/uz_flag.png';

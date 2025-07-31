@@ -622,6 +622,336 @@ class GeneratedLocalization {
   String get clear {
     return Intl.message('Clear', name: 'clear', desc: '', args: []);
   }
+
+  /// `Cancel Ticket?`
+  String get cancel_ticket_q {
+    return Intl.message(
+      'Cancel Ticket?',
+      name: 'cancel_ticket_q',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Ticket`
+  String get cancel_ticket {
+    return Intl.message(
+      'Cancel Ticket',
+      name: 'cancel_ticket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to cancel this ticket?`
+  String get are_u_sure_cancel {
+    return Intl.message(
+      'Are you sure you want to cancel this ticket?',
+      name: 'are_u_sure_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message('No', name: 'no', desc: '', args: []);
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message('Close', name: 'close', desc: '', args: []);
+  }
+
+  /// `Region`
+  String get region {
+    return Intl.message('Region', name: 'region', desc: '', args: []);
+  }
+
+  /// `District`
+  String get district {
+    return Intl.message('District', name: 'district', desc: '', args: []);
+  }
+
+  /// `Checked At`
+  String get checked_at {
+    return Intl.message('Checked At', name: 'checked_at', desc: '', args: []);
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message('Date', name: 'date', desc: '', args: []);
+  }
+
+  /// `Ticket Information`
+  String get ticket_information {
+    return Intl.message(
+      'Ticket Information',
+      name: 'ticket_information',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear All`
+  String get clearAll {
+    return Intl.message('Clear All', name: 'clearAll', desc: '', args: []);
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+  }
+
+  /// `All Districts`
+  String get all_districts {
+    return Intl.message(
+      'All Districts',
+      name: 'all_districts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a region first`
+  String get select_region_first {
+    return Intl.message(
+      'Select a region first',
+      name: 'select_region_first',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Regions`
+  String get all_regions {
+    return Intl.message('All Regions', name: 'all_regions', desc: '', args: []);
+  }
+
+  /// `Select Region`
+  String get select_region {
+    return Intl.message(
+      'Select Region',
+      name: 'select_region',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending Only`
+  String get pending_only {
+    return Intl.message(
+      'Pending Only',
+      name: 'pending_only',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checked Only`
+  String get checked_only {
+    return Intl.message(
+      'Checked Only',
+      name: 'checked_only',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `Filter Tickets`
+  String get filter_tickets {
+    return Intl.message(
+      'Filter Tickets',
+      name: 'filter_tickets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message('Filter', name: 'filter', desc: '', args: []);
+  }
+
+  /// `Loading tickets...`
+  String get loading_tickets {
+    return Intl.message(
+      'Loading tickets...',
+      name: 'loading_tickets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tickets found`
+  String get no_tickets_found {
+    return Intl.message(
+      'No tickets found',
+      name: 'no_tickets_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message('Pending', name: 'pending', desc: '', args: []);
+  }
+
+  /// `Checked`
+  String get checked {
+    return Intl.message('Checked', name: 'checked', desc: '', args: []);
+  }
+
+  /// `Created At`
+  String get created_at {
+    return Intl.message('Created At', name: 'created_at', desc: '', args: []);
+  }
+
+  /// `Loading statistics...`
+  String get loading_statistics {
+    return Intl.message(
+      'Loading statistics...',
+      name: 'loading_statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a region`
+  String get pls_select_region {
+    return Intl.message(
+      'Please select a region',
+      name: 'pls_select_region',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Metric`
+  String get metric {
+    return Intl.message('Metric', name: 'metric', desc: '', args: []);
+  }
+
+  /// `Count`
+  String get count {
+    return Intl.message('Count', name: 'count', desc: '', args: []);
+  }
+
+  /// `Total Registered`
+  String get total_registered {
+    return Intl.message(
+      'Total Registered',
+      name: 'total_registered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attendance Rate`
+  String get attendance_rate {
+    return Intl.message(
+      'Attendance Rate',
+      name: 'attendance_rate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a region to view statistics`
+  String get pls_select_region_stats {
+    return Intl.message(
+      'Please select a region to view statistics',
+      name: 'pls_select_region_stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Found ${count} tickets • ${filters}`
+  String found_tickets_with_filters(Object count, Object filters) {
+    return Intl.message(
+      'Found \$$count tickets • \$$filters',
+      name: 'found_tickets_with_filters',
+      desc: '',
+      args: [count, filters],
+    );
+  }
+
+  /// `Unknown User`
+  String get unknown_user {
+    return Intl.message(
+      'Unknown User',
+      name: 'unknown_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Information`
+  String get contact_info {
+    return Intl.message(
+      'Contact Information',
+      name: 'contact_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Telegram`
+  String get telegram {
+    return Intl.message('Telegram', name: 'telegram', desc: '', args: []);
+  }
+
+  /// `Event Information`
+  String get event_info {
+    return Intl.message(
+      'Event Information',
+      name: 'event_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attended`
+  String get attended {
+    return Intl.message('Attended', name: 'attended', desc: '', args: []);
+  }
+
+  /// `Cancel Ticket?`
+  String get cancel_ticket_title {
+    return Intl.message(
+      'Cancel Ticket?',
+      name: 'cancel_ticket_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to cancel this ticket? This action cannot be undone.`
+  String get cancel_ticket_confirmation {
+    return Intl.message(
+      'Are you sure you want to cancel this ticket? This action cannot be undone.',
+      name: 'cancel_ticket_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep Ticket`
+  String get keep_ticket {
+    return Intl.message('Keep Ticket', name: 'keep_ticket', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate

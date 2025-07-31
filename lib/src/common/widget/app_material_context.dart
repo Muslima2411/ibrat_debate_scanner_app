@@ -28,7 +28,7 @@ class MaterialContext extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return MaterialApp.router(
-            onGenerateTitle: (BuildContext context) => "Ibrat Debate Team",
+            onGenerateTitle: (BuildContext context) => "Ibrat Debate Scanner",
             routerConfig: AppRouter.router,
             restorationScopeId: "material_app",
             debugShowCheckedModeBanner: false,
@@ -36,7 +36,7 @@ class MaterialContext extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale:
                 InheritedLocalNotifier.maybeOf(context)?.appLocal ??
-                const Locale("uz", "UZ"),
+                const Locale("en", "EN"),
             theme:
                 InheritedThemeNotifier.maybeOf(context)?.theme ??
                 themeController.theme,

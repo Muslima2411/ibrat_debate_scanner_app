@@ -157,7 +157,6 @@ final class AppRepositoryImpl implements AppRepository {
     }
   }
 
-  // Get ticket by ID
   @override
   Future<TicketModel?> getTicketById(String ticketId) async {
     try {
@@ -209,7 +208,6 @@ final class AppRepositoryImpl implements AppRepository {
     }
   }
 
-  // Mark ticket as checked
   @override
   Future<TicketModel?> markTicketAsChecked(String ticketId) async {
     try {
@@ -218,6 +216,31 @@ final class AppRepositoryImpl implements AppRepository {
       final response = await ApiService.patch(
         "${ApiConst.ticketsApi}/$ticketId/",
         {'is_checked': true},
+      );
+
+      if (response != null && response.isNotEmpty) {
+        final Map<String, dynamic> data = jsonDecode(response);
+        log('✅ Ticket marked as checked: $data');
+
+        return TicketModel.fromJson(data);
+      } else {
+        log('❌ Failed to mark ticket as checked: $response');
+        throw Exception('Failed to mark ticket as checked: $response');
+      }
+    } catch (e) {
+      log('❌ Error marking ticket as checked: $e');
+      throw Exception('Error marking ticket as checked: $e');
+    }
+  }
+
+  @override
+  Future<TicketModel?> cancelTicket(String ticketId) async {
+    try {
+      log('✅ Marking ticket as checked: $ticketId');
+
+      final response = await ApiService.patch(
+        "${ApiConst.ticketsApi}/$ticketId/",
+        {'is_checked': false},
       );
 
       if (response != null && response.isNotEmpty) {
@@ -360,11 +383,15 @@ final class AppRepositoryImpl implements AppRepository {
 
   @override
   Future<StatisticsResponse?> getStatistics({
-    required int regionId,
+    int? regionId,
     int? districtId,
   }) async {
     try {
-      String url = '${ApiConst.statsApi}?region=$regionId';
+      String url = ApiConst.statsApi;
+
+      if (regionId != null) {
+        url += '?&region=$regionId';
+      }
       if (districtId != null) {
         url += '&district=$districtId';
       }
@@ -390,18 +417,16 @@ final class AppRepositoryImpl implements AppRepository {
   }
 
   @override
-  Future<List<TicketModel>> getTickets({bool isChecked = true}) async {
+  Future<List<TicketModel>> getTickets({bool? isChecked}) async {
     try {
-      debugPrint('🎟️ Fetching tickets (is_checked: $isChecked)...');
+      debugPrint(' Fetching tickets (is_checked: $isChecked)...');
 
-      final queryParams = {'is_checked': isChecked.toString()};
+      final queryParams = isChecked != null
+          ? {'is_checked': isChecked.toString()}
+          : {};
 
       final String url =
-          ApiConst.ticketsApi +
-          '?' +
-          queryParams.entries
-              .map((e) => '${e.key}=${Uri.encodeComponent(e.value)}')
-              .join('&');
+          '${ApiConst.ticketsApi}?${queryParams.entries.map((e) => '${e.key}=${Uri.encodeComponent(e.value)}').join('&')}';
 
       final response = await ApiService.get(url, ApiParams.emptyParams());
 

@@ -248,4 +248,137 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get clear => 'Tozalash';
+
+  @override
+  String get cancel_ticket_q => 'Chipta bekor qilinsinmi?';
+
+  @override
+  String get cancel_ticket => 'Chipta bekor qilish';
+
+  @override
+  String get are_u_sure_cancel => 'Ushbu chipta bekor qilinishini xohlaysizmi?';
+
+  @override
+  String get yes => 'Ha';
+
+  @override
+  String get no => 'Yo\'q';
+
+  @override
+  String get close => 'Yopish';
+
+  @override
+  String get region => 'Viloyat';
+
+  @override
+  String get district => 'Tuman';
+
+  @override
+  String get checked_at => 'Tekshirildi';
+
+  @override
+  String get date => 'Sana';
+
+  @override
+  String get ticket_information => 'Chipta ma\'lumotlari';
+
+  @override
+  String get clearAll => 'Barchasini tozalash';
+
+  @override
+  String get apply => 'Qo\'llash';
+
+  @override
+  String get all_districts => 'Barcha tumanlar';
+
+  @override
+  String get select_region_first => 'Avval viloyatni tanlang';
+
+  @override
+  String get all_regions => 'Barcha viloyatlar';
+
+  @override
+  String get select_region => 'Viloyatni tanlang';
+
+  @override
+  String get pending_only => 'Faqat kutayotganlar';
+
+  @override
+  String get checked_only => 'Faqat tekshirilganlar';
+
+  @override
+  String get all => 'Hammasi';
+
+  @override
+  String get filter_tickets => 'Chiptalarni filtrlash';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get loading_tickets => 'Chiptalar yuklanmoqda...';
+
+  @override
+  String get no_tickets_found => 'Hech qanday chipta topilmadi';
+
+  @override
+  String get pending => 'Kutilmoqda';
+
+  @override
+  String get checked => 'Tekshirilgan';
+
+  @override
+  String get created_at => 'Yaratilgan vaqti';
+
+  @override
+  String get loading_statistics => 'Statistika yuklanmoqda...';
+
+  @override
+  String get pls_select_region => 'Iltimos, viloyatni tanlang';
+
+  @override
+  String get metric => 'Ko‘rsatkich';
+
+  @override
+  String get count => 'Hisob';
+
+  @override
+  String get total_registered => 'Jami ro\'yxatdan o\'tganlar';
+
+  @override
+  String get attendance_rate => 'Qatnashish darajasi';
+
+  @override
+  String get pls_select_region_stats =>
+      'Statistikani ko‘rish uchun iltimos, viloyatni tanlang';
+
+  @override
+  String found_tickets_with_filters(Object count, Object filters) {
+    return '\$$count ta chipta topildi • \$$filters';
+  }
+
+  @override
+  String get unknown_user => 'Noma\'lum foydalanuvchi';
+
+  @override
+  String get contact_info => 'Aloqa ma\'lumotlari';
+
+  @override
+  String get telegram => 'Telegram';
+
+  @override
+  String get event_info => 'Tadbir haqida ma\'lumot';
+
+  @override
+  String get attended => 'Qatnashdi';
+
+  @override
+  String get cancel_ticket_title => 'Chiptani bekor qilasizmi?';
+
+  @override
+  String get cancel_ticket_confirmation =>
+      'Ushbu chiptani bekor qilmoqchimisiz? Bu amal qaytarib bo\'lmaydi.';
+
+  @override
+  String get keep_ticket => 'Chiptani saqlash';
 }

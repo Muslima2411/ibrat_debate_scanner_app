@@ -246,4 +246,137 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get clear => 'Очистить';
+
+  @override
+  String get cancel_ticket_q => 'Отменить билет?';
+
+  @override
+  String get cancel_ticket => 'Отменить билет';
+
+  @override
+  String get are_u_sure_cancel => 'Вы уверены, что хотите отменить этот билет?';
+
+  @override
+  String get yes => 'Да';
+
+  @override
+  String get no => 'Нет';
+
+  @override
+  String get close => 'Закрыть';
+
+  @override
+  String get region => 'Регион';
+
+  @override
+  String get district => 'Район';
+
+  @override
+  String get checked_at => 'Отмечено в';
+
+  @override
+  String get date => 'Дата';
+
+  @override
+  String get ticket_information => 'Информация о билете';
+
+  @override
+  String get clearAll => 'Очистить все';
+
+  @override
+  String get apply => 'Применить';
+
+  @override
+  String get all_districts => 'Все районы';
+
+  @override
+  String get select_region_first => 'Сначала выберите регион';
+
+  @override
+  String get all_regions => 'Все регионы';
+
+  @override
+  String get select_region => 'Выберите регион';
+
+  @override
+  String get pending_only => 'Только в ожидании';
+
+  @override
+  String get checked_only => 'Только проверенные';
+
+  @override
+  String get all => 'Все';
+
+  @override
+  String get filter_tickets => 'Фильтровать билеты';
+
+  @override
+  String get filter => 'Фильтр';
+
+  @override
+  String get loading_tickets => 'Загрузка билетов...';
+
+  @override
+  String get no_tickets_found => 'Билеты не найдены';
+
+  @override
+  String get pending => 'В ожидании';
+
+  @override
+  String get checked => 'Проверено';
+
+  @override
+  String get created_at => 'Создано';
+
+  @override
+  String get loading_statistics => 'Загрузка статистики...';
+
+  @override
+  String get pls_select_region => 'Пожалуйста, выберите регион';
+
+  @override
+  String get metric => 'Метрика';
+
+  @override
+  String get count => 'Количество';
+
+  @override
+  String get total_registered => 'Всего зарегистрировано';
+
+  @override
+  String get attendance_rate => 'Процент посещаемости';
+
+  @override
+  String get pls_select_region_stats =>
+      'Пожалуйста, выберите регион для просмотра статистики';
+
+  @override
+  String found_tickets_with_filters(Object count, Object filters) {
+    return 'Найдено \$$count билетов • \$$filters';
+  }
+
+  @override
+  String get unknown_user => 'Неизвестный пользователь';
+
+  @override
+  String get contact_info => 'Контактная информация';
+
+  @override
+  String get telegram => 'Телеграм';
+
+  @override
+  String get event_info => 'Информация о мероприятии';
+
+  @override
+  String get attended => 'Посетил';
+
+  @override
+  String get cancel_ticket_title => 'Отменить билет?';
+
+  @override
+  String get cancel_ticket_confirmation =>
+      'Вы уверены, что хотите отменить этот билет? Это действие необратимо.';
+
+  @override
+  String get keep_ticket => 'Оставить билет';
 }
