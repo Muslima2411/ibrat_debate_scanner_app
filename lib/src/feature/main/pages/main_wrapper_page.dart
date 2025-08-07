@@ -15,7 +15,6 @@ import '../../statistics/pages/statistics_page.dart';
 import '../view_models/navigation_controller.dart';
 import '../widgets/scanner_button.dart';
 
-// Smart wrapper that chooses layout based on screen constraints
 class SmartBottomNavigation extends ConsumerWidget {
   final NavigationController navigationController;
   final List<String> iconAssets;
@@ -168,19 +167,19 @@ class SmartBottomNavigation extends ConsumerWidget {
     final iconAsset = iconAssets[index];
     final label = labels[index];
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => navigationController.navigateToTab(index),
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          padding: config.padding,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (iconAsset.isNotEmpty)
-                Flexible(
+    return GestureDetector(
+      onTap: () => navigationController.navigateToTab(index),
+      child: Container(
+        padding: config.padding,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (iconAsset.isNotEmpty)
+              Flexible(
+                child: AnimatedScale(
+                  scale: isSelected ? 1.1 : 1.0,
+                  duration: const Duration(milliseconds: 200),
                   child: SvgPicture.asset(
                     iconAsset,
                     height: config.iconSize,
@@ -188,27 +187,32 @@ class SmartBottomNavigation extends ConsumerWidget {
                     colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
                   ),
                 ),
-              if (config.showLabels && label.isNotEmpty && config.spacing > 0)
-                SizedBox(height: config.spacing),
-              if (config.showLabels && label.isNotEmpty)
-                Flexible(
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
+              ),
+            if (config.showLabels && label.isNotEmpty && config.spacing > 0)
+              SizedBox(height: config.spacing),
+            if (config.showLabels && label.isNotEmpty)
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: AnimatedDefaultTextStyle(
+                    duration: const Duration(milliseconds: 200),
+                    style: TextStyle(
+                      fontSize: config.fontSize,
+                      fontWeight: isSelected
+                          ? FontWeight.w600
+                          : FontWeight.w500,
+                      color: color,
+                    ),
                     child: Text(
                       label,
-                      style: TextStyle(
-                        fontSize: config.fontSize,
-                        fontWeight: FontWeight.w500,
-                        color: color,
-                      ),
                       textAlign: TextAlign.center,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );

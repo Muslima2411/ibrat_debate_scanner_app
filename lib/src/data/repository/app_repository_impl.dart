@@ -84,31 +84,26 @@ final class AppRepositoryImpl implements AppRepository {
 
   @override
   Future<UserModel?> getCurrentUser() async {
-    try {
-      debugPrint('🔍 Fetching current user info...');
+    debugPrint('🔍 Запрос информации о текущем пользователе...');
 
-      final response = await ApiService.get(
-        ApiConst.meApi,
-        <String, dynamic>{}, // empty params
-      );
+    try {
+      final response = await ApiService.get(ApiConst.meApi, {});
 
       if (response == null) {
-        debugPrint('❌ No response received from user API');
+        debugPrint('⚠️ Ответ от API не получен');
         return null;
       }
 
-      debugPrint('✅ User API response received');
-      debugPrint('📄 Response data: $response');
+      debugPrint('✅ Ответ от API получен: $response');
 
-      final Map<String, dynamic> jsonData = jsonDecode(response);
-
+      final jsonData = jsonDecode(response) as Map<String, dynamic>;
       final user = UserModel.fromJson(jsonData);
-      debugPrint('👤 User parsed successfully: $user');
 
+      debugPrint('👤 Пользователь успешно получен: $user');
       return user;
     } catch (e, stackTrace) {
-      debugPrint('❌ Error fetching current user: $e');
-      debugPrint('📍 Stack trace: $stackTrace');
+      debugPrint('❌ Ошибка при получении пользователя: $e');
+      debugPrint('📍 StackTrace: $stackTrace');
       return null;
     }
   }

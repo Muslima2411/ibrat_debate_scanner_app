@@ -9,29 +9,7 @@ Widget buildHeader(BuildContext context, String username) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Expanded(
-        flex: 3,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Welcome text
-            AutoSizeText(
-              context.localized.welcome,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.w600,
-              ),
-              maxLines: 1,
-              minFontSize: 14,
-              maxFontSize: 24,
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: 4.h),
-            // Username with flexible sizing
-            _buildUsernameText(context, username),
-          ],
-        ),
-      ),
+      Expanded(flex: 3, child: _buildUsernameText(context, username)),
 
       // Spacer
       SizedBox(width: 8.w),
@@ -50,28 +28,85 @@ Widget buildHeader(BuildContext context, String username) {
   );
 }
 
-/// Build username text with smart sizing and overflow handling
+/// Build username text with 2x2 layout (2 words top, 2 words bottom)
 Widget _buildUsernameText(BuildContext context, String username) {
   // Process username to remove id_admin prefix
   final displayUsername = _processUsernameForDisplay(username);
 
+  // Split the processed username into words
+  final words = displayUsername.split(' ');
+
+  // Arrange words into 2 lines
+  final (topLine, bottomLine) = _arrangeWordsIntoLines(words);
+
   return LayoutBuilder(
     builder: (context, constraints) {
-      return AutoSizeText(
-        displayUsername.isNotEmpty ? displayUsername : 'User',
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: Theme.of(context).colorScheme.onSurface,
-        ),
-        maxLines: 2, // Allow 2 lines for long usernames
-        minFontSize: 12, // Minimum readable size
-        maxFontSize: 18, // Maximum size
-        overflow: TextOverflow.ellipsis,
-        textAlign: TextAlign.start,
-        // Custom text scaler for better control
-        textScaleFactor: MediaQuery.of(context).textScaleFactor.clamp(0.8, 1.2),
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (topLine.isNotEmpty)
+            AutoSizeText(
+              topLine,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w500,
+              ),
+              maxLines: 1,
+              minFontSize: 10,
+              maxFontSize: 14,
+              overflow: TextOverflow.ellipsis,
+            ),
+
+          // Bottom line (remaining words)
+          if (bottomLine.isNotEmpty) ...[
+            SizedBox(height: 2.h),
+            AutoSizeText(
+              bottomLine,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w400,
+              ),
+              maxLines: 1,
+              minFontSize: 10,
+              maxFontSize: 14,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ],
       );
     },
   );
+}
+
+/// Arrange words into two lines - trying to balance the content
+(String, String) _arrangeWordsIntoLines(List<String> words) {
+  if (words.isEmpty) return ('User', '');
+
+  if (words.length == 1) {
+    return (words[0], '');
+  }
+
+  if (words.length == 2) {
+    return (words[0], words[1]);
+  }
+
+  if (words.length == 3) {
+    // Put 2 words on top, 1 on bottom
+    return ('${words[0]} ${words[1]}', words[2]);
+  }
+
+  if (words.length == 4) {
+    // Perfect split - 2 words each line
+    return ('${words[0]} ${words[1]}', '${words[2]} ${words[3]}');
+  }
+
+  // For more than 4 words, split roughly in half
+  final midpoint = (words.length / 2).ceil();
+  final topWords = words.take(midpoint).join(' ');
+  final bottomWords = words.skip(midpoint).join(' ');
+
+  return (topWords, bottomWords);
 }
 
 /// Process username by removing first two parts and formatting for display

@@ -33,7 +33,7 @@ Widget buildDebateCard(BuildContext context, DebateEvent debate) {
           ),
         ),
         Text(
-          debate.district!.name,
+          debate.district?.name ?? "—",
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w500,
             fontSize: 16.sp,

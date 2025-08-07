@@ -69,9 +69,9 @@ class FlexibleUserInfoSection extends StatelessWidget {
       return const UserInfoLayoutConfig(
         avatarRadius: 28,
         spacing: 12,
-        minHeight: 70,
-        maxHeight: 90,
-        titleFontSize: 16,
+        minHeight: 80, // Increased for 2 lines
+        maxHeight: 100,
+        titleFontSize: 14,
         subtitleFontSize: 12,
         avatarFontSize: 18,
         useCompactLayout: true,
@@ -81,9 +81,9 @@ class FlexibleUserInfoSection extends StatelessWidget {
       return const UserInfoLayoutConfig(
         avatarRadius: 32,
         spacing: 14,
-        minHeight: 80,
-        maxHeight: 100,
-        titleFontSize: 18,
+        minHeight: 90, // Increased for 2 lines
+        maxHeight: 110,
+        titleFontSize: 16,
         subtitleFontSize: 13,
         avatarFontSize: 20,
         useCompactLayout: false,
@@ -93,9 +93,9 @@ class FlexibleUserInfoSection extends StatelessWidget {
       return UserInfoLayoutConfig(
         avatarRadius: math.min(40.r, 45),
         spacing: 16,
-        minHeight: 90,
-        maxHeight: 120,
-        titleFontSize: math.min(20.sp, 24),
+        minHeight: 100, // Increased for 2 lines
+        maxHeight: 130,
+        titleFontSize: math.min(18.sp, 22),
         subtitleFontSize: math.min(14.sp, 16),
         avatarFontSize: math.min(22.sp, 26),
         useCompactLayout: false,
@@ -127,17 +127,29 @@ class FlexibleUserInfoSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // First line shimmer
                 Container(
-                  width: double.infinity,
-                  height: config.titleFontSize + 4,
+                  width: double.infinity * 0.8,
+                  height: config.titleFontSize + 2,
+                  decoration: BoxDecoration(
+                    color: colors.onSurface.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                SizedBox(height: 6),
+                // Second line shimmer
+                Container(
+                  width: double.infinity * 0.6,
+                  height: config.titleFontSize + 2,
                   decoration: BoxDecoration(
                     color: colors.onSurface.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
                 SizedBox(height: 8),
+                // Email/phone shimmer
                 Container(
-                  width: double.infinity * 0.7,
+                  width: double.infinity * 0.5,
                   height: config.subtitleFontSize + 2,
                   decoration: BoxDecoration(
                     color: colors.onSurface.withOpacity(0.1),
@@ -327,22 +339,50 @@ class FlexibleUserInfoSection extends StatelessWidget {
     String initials,
     UserInfoLayoutConfig config,
   ) {
+    final (topLine, bottomLine) = _arrangeWordsIntoLines(displayName);
+
     return Row(
       children: [
         _buildAvatar(colors, textTheme, initials, config),
         SizedBox(width: config.spacing),
         Expanded(
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            alignment: Alignment.centerLeft,
-            child: Text(
-              _formatDisplayName(displayName),
-              style: TextStyle(
-                fontSize: config.titleFontSize,
-                fontWeight: FontWeight.w500,
-                color: colors.onSurface,
-              ),
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Top line
+              if (topLine.isNotEmpty)
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    topLine,
+                    style: TextStyle(
+                      fontSize: config.titleFontSize,
+                      fontWeight: FontWeight.w500,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                ),
+
+              // Bottom line
+              if (bottomLine.isNotEmpty) ...[
+                SizedBox(height: 2),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    bottomLine,
+                    style: TextStyle(
+                      fontSize: config.titleFontSize - 1,
+                      fontWeight: FontWeight.w400,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                ),
+              ],
+            ],
           ),
         ),
       ],
@@ -357,6 +397,8 @@ class FlexibleUserInfoSection extends StatelessWidget {
     String initials,
     UserInfoLayoutConfig config,
   ) {
+    final (topLine, bottomLine) = _arrangeWordsIntoLines(displayName);
+
     return Row(
       children: [
         _buildAvatar(colors, textTheme, initials, config),
@@ -366,20 +408,41 @@ class FlexibleUserInfoSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  _formatDisplayName(displayName),
-                  style: TextStyle(
-                    fontSize: config.titleFontSize,
-                    fontWeight: FontWeight.w500,
-                    color: colors.onSurface,
+              // Top line of name
+              if (topLine.isNotEmpty)
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    topLine,
+                    style: TextStyle(
+                      fontSize: config.titleFontSize,
+                      fontWeight: FontWeight.w500,
+                      color: colors.onSurface,
+                    ),
                   ),
                 ),
-              ),
+
+              // Bottom line of name
+              if (bottomLine.isNotEmpty) ...[
+                SizedBox(height: 2),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    bottomLine,
+                    style: TextStyle(
+                      fontSize: config.titleFontSize - 1,
+                      fontWeight: FontWeight.w400,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                ),
+              ],
+
+              // Email/Phone info
               if (displayEmail.isNotEmpty) ...[
-                SizedBox(height: 4),
+                SizedBox(height: 6),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerLeft,
@@ -406,6 +469,39 @@ class FlexibleUserInfoSection extends StatelessWidget {
           ),
       ],
     );
+  }
+
+  /// Arrange words into two lines - trying to balance the content
+  (String, String) _arrangeWordsIntoLines(String displayName) {
+    final formattedName = _formatDisplayName(displayName);
+    final words = formattedName.split(' ');
+
+    if (words.isEmpty) return ('User', '');
+
+    if (words.length == 1) {
+      return (words[0], '');
+    }
+
+    if (words.length == 2) {
+      return (words[0], words[1]);
+    }
+
+    if (words.length == 3) {
+      // Put 2 words on top, 1 on bottom
+      return ('${words[0]} ${words[1]}', words[2]);
+    }
+
+    if (words.length == 4) {
+      // Perfect split - 2 words each line
+      return ('${words[0]} ${words[1]}', '${words[2]} ${words[3]}');
+    }
+
+    // For more than 4 words, split roughly in half
+    final midpoint = (words.length / 2).ceil();
+    final topWords = words.take(midpoint).join(' ');
+    final bottomWords = words.skip(midpoint).join(' ');
+
+    return (topWords, bottomWords);
   }
 
   Widget _buildAvatar(
