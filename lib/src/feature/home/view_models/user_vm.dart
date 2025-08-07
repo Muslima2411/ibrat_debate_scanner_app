@@ -94,42 +94,54 @@ class UserVM extends ChangeNotifier {
     }
   }
 
-  /// Fetch user from server and save to storage
+  /// Fetch user data from server and store it locally
   Future<void> _fetchAndStoreUser() async {
     if (_isDisposed) return;
 
     try {
-      // Try to get current user first
+      // Clear old (possibly broken) cached user
+      await AppStorage.$delete(key: StorageKey.user);
+
+      // Step 1: Try fetching current user
       UserModel? user = await _repo.getCurrentUser();
 
-      if (_isDisposed) return; // Check after async operation
+      debugPrint("📦 Raw user from API: ${user?.toJson()}");
 
-      // Fallback: get user by stored userId
-      if (user == null) {
+      if (_isDisposed) return;
+
+      // Step 2: Fallback – try by ID if null
+      if (user == null || user.id == null) {
         final userId = await AppStorage.$read(key: StorageKey.userId);
         if (_isDisposed) return;
 
         if (userId != null && userId.isNotEmpty) {
           user = await _repo.getUserById(userId);
+          debugPrint("📦 Raw user from getUserById(): ${user?.toJson()}");
           if (_isDisposed) return;
         }
       }
 
-      if (user != null) {
-        // Save user to storage
+      // Step 3: Store if valid user
+      if (user != null && user.id != null) {
         await _saveUserToStorage(user);
         if (_isDisposed) return;
 
         debugPrint("✅ User fetched and saved: ${user.username}");
         _updateState(user: user, isLoading: false, isInitialized: true);
       } else {
-        if (_isDisposed) return;
-        throw Exception("No user data available from server");
+        debugPrint("⚠️ API returned null user data");
+        _updateState(
+          error: "User data not available",
+          isLoading: false,
+          isInitialized: true,
+        );
       }
-    } catch (e) {
+    } catch (e, stack) {
       if (_isDisposed) return;
 
       debugPrint("❌ Error fetching user from server: $e");
+      debugPrint("📛 StackTrace:\n$stack");
+
       _updateState(
         error: "Failed to fetch user data from server",
         isLoading: false,

@@ -242,7 +242,7 @@ class HistoryPage extends ConsumerWidget {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 82.h),
       itemCount: vm.filteredTickets.length,
       itemBuilder: (context, index) {
         final ticket = vm.filteredTickets[index];

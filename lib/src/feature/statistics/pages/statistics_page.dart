@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
+import '../../../common/styles/app_colors.dart';
 import '../../../data/entity/debate_models/debate_event_model.dart';
 import '../../../data/entity/stats/statistics_models.dart';
 import '../view_models/statistics_view_model.dart';
@@ -325,7 +326,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
                 style: context.textTheme.bodyMedium?.copyWith(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.w500,
-                  color: context.colorScheme.primary,
+                  color: AppColors.primary,
                 ),
               ),
               size: ColumnSize.L,
@@ -336,7 +337,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
                 style: context.textTheme.bodyMedium?.copyWith(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.w500,
-                  color: context.colorScheme.primary,
+                  color: AppColors.primary,
                 ),
               ),
               size: ColumnSize.S,
@@ -454,7 +455,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
 
     return DataTable2(
       columnSpacing: 16.w,
-      horizontalMargin: 12.w,
+      horizontalMargin: 0.w,
       headingTextStyle: context.textTheme.labelLarge?.copyWith(
         fontWeight: FontWeight.w600,
         color: context.colorScheme.primary,
@@ -470,6 +471,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
             style: context.textTheme.bodyMedium?.copyWith(
               fontSize: 22.sp,
               fontWeight: FontWeight.w500,
+              color: AppColors.primary,
             ),
           ),
           size: ColumnSize.L,
@@ -480,6 +482,7 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
             style: context.textTheme.bodyMedium?.copyWith(
               fontSize: 22.sp,
               fontWeight: FontWeight.w500,
+              color: AppColors.primary,
             ),
           ),
           size: ColumnSize.S,
