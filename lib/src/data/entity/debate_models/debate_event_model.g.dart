@@ -29,9 +29,6 @@ _Region _$RegionFromJson(Map<String, dynamic> json) => _Region(
   name: json['name'] as String,
   createdAt: json['created_at'] as String,
   updatedAt: json['updated_at'] as String,
-  districts: (json['districts'] as List<dynamic>)
-      .map((e) => District.fromJson(e as Map<String, dynamic>))
-      .toList(),
 );
 
 Map<String, dynamic> _$RegionToJson(_Region instance) => <String, dynamic>{
@@ -39,7 +36,6 @@ Map<String, dynamic> _$RegionToJson(_Region instance) => <String, dynamic>{
   'name': instance.name,
   'created_at': instance.createdAt,
   'updated_at': instance.updatedAt,
-  'districts': instance.districts,
 };
 
 _DebateEvent _$DebateEventFromJson(Map<String, dynamic> json) => _DebateEvent(

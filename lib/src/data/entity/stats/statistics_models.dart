@@ -19,6 +19,19 @@ abstract class RegionsResponse with _$RegionsResponse {
 }
 
 @freezed
+abstract class DistrictsResponse with _$DistrictsResponse {
+  const factory DistrictsResponse({
+    required int count,
+    required List<District> results,
+    String? next,
+    String? previous,
+  }) = _DistrictsResponse;
+
+  factory DistrictsResponse.fromJson(Map<String, dynamic> json) =>
+      _$DistrictsResponseFromJson(json);
+}
+
+@freezed
 abstract class StatisticsResponse with _$StatisticsResponse {
   const factory StatisticsResponse({
     @JsonKey(name: 'all_count') required int allCount,
@@ -33,6 +46,7 @@ abstract class StatisticsResponse with _$StatisticsResponse {
 abstract class StatisticsState with _$StatisticsState {
   const factory StatisticsState({
     @Default([]) List<Region> regions,
+    @Default([]) List<District> districts,
     @Default(false) bool isLoadingRegions,
     @Default(false) bool isLoadingStats,
     Region? selectedRegion,

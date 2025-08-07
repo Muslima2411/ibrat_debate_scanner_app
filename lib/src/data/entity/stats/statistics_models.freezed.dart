@@ -291,6 +291,284 @@ as String?,
 
 
 /// @nodoc
+mixin _$DistrictsResponse {
+
+ int get count; List<District> get results; String? get next; String? get previous;
+/// Create a copy of DistrictsResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DistrictsResponseCopyWith<DistrictsResponse> get copyWith => _$DistrictsResponseCopyWithImpl<DistrictsResponse>(this as DistrictsResponse, _$identity);
+
+  /// Serializes this DistrictsResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DistrictsResponse&&(identical(other.count, count) || other.count == count)&&const DeepCollectionEquality().equals(other.results, results)&&(identical(other.next, next) || other.next == next)&&(identical(other.previous, previous) || other.previous == previous));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,const DeepCollectionEquality().hash(results),next,previous);
+
+@override
+String toString() {
+  return 'DistrictsResponse(count: $count, results: $results, next: $next, previous: $previous)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $DistrictsResponseCopyWith<$Res>  {
+  factory $DistrictsResponseCopyWith(DistrictsResponse value, $Res Function(DistrictsResponse) _then) = _$DistrictsResponseCopyWithImpl;
+@useResult
+$Res call({
+ int count, List<District> results, String? next, String? previous
+});
+
+
+
+
+}
+/// @nodoc
+class _$DistrictsResponseCopyWithImpl<$Res>
+    implements $DistrictsResponseCopyWith<$Res> {
+  _$DistrictsResponseCopyWithImpl(this._self, this._then);
+
+  final DistrictsResponse _self;
+  final $Res Function(DistrictsResponse) _then;
+
+/// Create a copy of DistrictsResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? count = null,Object? results = null,Object? next = freezed,Object? previous = freezed,}) {
+  return _then(_self.copyWith(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,results: null == results ? _self.results : results // ignore: cast_nullable_to_non_nullable
+as List<District>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
+as String?,previous: freezed == previous ? _self.previous : previous // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [DistrictsResponse].
+extension DistrictsResponsePatterns on DistrictsResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DistrictsResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DistrictsResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DistrictsResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _DistrictsResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DistrictsResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DistrictsResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int count,  List<District> results,  String? next,  String? previous)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DistrictsResponse() when $default != null:
+return $default(_that.count,_that.results,_that.next,_that.previous);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int count,  List<District> results,  String? next,  String? previous)  $default,) {final _that = this;
+switch (_that) {
+case _DistrictsResponse():
+return $default(_that.count,_that.results,_that.next,_that.previous);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int count,  List<District> results,  String? next,  String? previous)?  $default,) {final _that = this;
+switch (_that) {
+case _DistrictsResponse() when $default != null:
+return $default(_that.count,_that.results,_that.next,_that.previous);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _DistrictsResponse implements DistrictsResponse {
+  const _DistrictsResponse({required this.count, required final  List<District> results, this.next, this.previous}): _results = results;
+  factory _DistrictsResponse.fromJson(Map<String, dynamic> json) => _$DistrictsResponseFromJson(json);
+
+@override final  int count;
+ final  List<District> _results;
+@override List<District> get results {
+  if (_results is EqualUnmodifiableListView) return _results;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_results);
+}
+
+@override final  String? next;
+@override final  String? previous;
+
+/// Create a copy of DistrictsResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DistrictsResponseCopyWith<_DistrictsResponse> get copyWith => __$DistrictsResponseCopyWithImpl<_DistrictsResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$DistrictsResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DistrictsResponse&&(identical(other.count, count) || other.count == count)&&const DeepCollectionEquality().equals(other._results, _results)&&(identical(other.next, next) || other.next == next)&&(identical(other.previous, previous) || other.previous == previous));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,const DeepCollectionEquality().hash(_results),next,previous);
+
+@override
+String toString() {
+  return 'DistrictsResponse(count: $count, results: $results, next: $next, previous: $previous)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DistrictsResponseCopyWith<$Res> implements $DistrictsResponseCopyWith<$Res> {
+  factory _$DistrictsResponseCopyWith(_DistrictsResponse value, $Res Function(_DistrictsResponse) _then) = __$DistrictsResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ int count, List<District> results, String? next, String? previous
+});
+
+
+
+
+}
+/// @nodoc
+class __$DistrictsResponseCopyWithImpl<$Res>
+    implements _$DistrictsResponseCopyWith<$Res> {
+  __$DistrictsResponseCopyWithImpl(this._self, this._then);
+
+  final _DistrictsResponse _self;
+  final $Res Function(_DistrictsResponse) _then;
+
+/// Create a copy of DistrictsResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? count = null,Object? results = null,Object? next = freezed,Object? previous = freezed,}) {
+  return _then(_DistrictsResponse(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,results: null == results ? _self._results : results // ignore: cast_nullable_to_non_nullable
+as List<District>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
+as String?,previous: freezed == previous ? _self.previous : previous // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$StatisticsResponse {
 
 @JsonKey(name: 'all_count') int get allCount;@JsonKey(name: 'has_come_count') int get hasComeCount;
@@ -558,7 +836,7 @@ as int,
 /// @nodoc
 mixin _$StatisticsState {
 
- List<Region> get regions; bool get isLoadingRegions; bool get isLoadingStats; Region? get selectedRegion; District? get selectedDistrict; StatisticsResponse? get statistics; String? get error;
+ List<Region> get regions; List<District> get districts; bool get isLoadingRegions; bool get isLoadingStats; Region? get selectedRegion; District? get selectedDistrict; StatisticsResponse? get statistics; String? get error;
 /// Create a copy of StatisticsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -569,16 +847,16 @@ $StatisticsStateCopyWith<StatisticsState> get copyWith => _$StatisticsStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatisticsState&&const DeepCollectionEquality().equals(other.regions, regions)&&(identical(other.isLoadingRegions, isLoadingRegions) || other.isLoadingRegions == isLoadingRegions)&&(identical(other.isLoadingStats, isLoadingStats) || other.isLoadingStats == isLoadingStats)&&(identical(other.selectedRegion, selectedRegion) || other.selectedRegion == selectedRegion)&&(identical(other.selectedDistrict, selectedDistrict) || other.selectedDistrict == selectedDistrict)&&(identical(other.statistics, statistics) || other.statistics == statistics)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatisticsState&&const DeepCollectionEquality().equals(other.regions, regions)&&const DeepCollectionEquality().equals(other.districts, districts)&&(identical(other.isLoadingRegions, isLoadingRegions) || other.isLoadingRegions == isLoadingRegions)&&(identical(other.isLoadingStats, isLoadingStats) || other.isLoadingStats == isLoadingStats)&&(identical(other.selectedRegion, selectedRegion) || other.selectedRegion == selectedRegion)&&(identical(other.selectedDistrict, selectedDistrict) || other.selectedDistrict == selectedDistrict)&&(identical(other.statistics, statistics) || other.statistics == statistics)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(regions),isLoadingRegions,isLoadingStats,selectedRegion,selectedDistrict,statistics,error);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(regions),const DeepCollectionEquality().hash(districts),isLoadingRegions,isLoadingStats,selectedRegion,selectedDistrict,statistics,error);
 
 @override
 String toString() {
-  return 'StatisticsState(regions: $regions, isLoadingRegions: $isLoadingRegions, isLoadingStats: $isLoadingStats, selectedRegion: $selectedRegion, selectedDistrict: $selectedDistrict, statistics: $statistics, error: $error)';
+  return 'StatisticsState(regions: $regions, districts: $districts, isLoadingRegions: $isLoadingRegions, isLoadingStats: $isLoadingStats, selectedRegion: $selectedRegion, selectedDistrict: $selectedDistrict, statistics: $statistics, error: $error)';
 }
 
 
@@ -589,7 +867,7 @@ abstract mixin class $StatisticsStateCopyWith<$Res>  {
   factory $StatisticsStateCopyWith(StatisticsState value, $Res Function(StatisticsState) _then) = _$StatisticsStateCopyWithImpl;
 @useResult
 $Res call({
- List<Region> regions, bool isLoadingRegions, bool isLoadingStats, Region? selectedRegion, District? selectedDistrict, StatisticsResponse? statistics, String? error
+ List<Region> regions, List<District> districts, bool isLoadingRegions, bool isLoadingStats, Region? selectedRegion, District? selectedDistrict, StatisticsResponse? statistics, String? error
 });
 
 
@@ -606,10 +884,11 @@ class _$StatisticsStateCopyWithImpl<$Res>
 
 /// Create a copy of StatisticsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? regions = null,Object? isLoadingRegions = null,Object? isLoadingStats = null,Object? selectedRegion = freezed,Object? selectedDistrict = freezed,Object? statistics = freezed,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? regions = null,Object? districts = null,Object? isLoadingRegions = null,Object? isLoadingStats = null,Object? selectedRegion = freezed,Object? selectedDistrict = freezed,Object? statistics = freezed,Object? error = freezed,}) {
   return _then(_self.copyWith(
 regions: null == regions ? _self.regions : regions // ignore: cast_nullable_to_non_nullable
-as List<Region>,isLoadingRegions: null == isLoadingRegions ? _self.isLoadingRegions : isLoadingRegions // ignore: cast_nullable_to_non_nullable
+as List<Region>,districts: null == districts ? _self.districts : districts // ignore: cast_nullable_to_non_nullable
+as List<District>,isLoadingRegions: null == isLoadingRegions ? _self.isLoadingRegions : isLoadingRegions // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingStats: null == isLoadingStats ? _self.isLoadingStats : isLoadingStats // ignore: cast_nullable_to_non_nullable
 as bool,selectedRegion: freezed == selectedRegion ? _self.selectedRegion : selectedRegion // ignore: cast_nullable_to_non_nullable
 as Region?,selectedDistrict: freezed == selectedDistrict ? _self.selectedDistrict : selectedDistrict // ignore: cast_nullable_to_non_nullable
@@ -736,10 +1015,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Region> regions,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Region> regions,  List<District> districts,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StatisticsState() when $default != null:
-return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
+return $default(_that.regions,_that.districts,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
   return orElse();
 
 }
@@ -757,10 +1036,10 @@ return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Region> regions,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Region> regions,  List<District> districts,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)  $default,) {final _that = this;
 switch (_that) {
 case _StatisticsState():
-return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
+return $default(_that.regions,_that.districts,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -777,10 +1056,10 @@ return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Region> regions,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Region> regions,  List<District> districts,  bool isLoadingRegions,  bool isLoadingStats,  Region? selectedRegion,  District? selectedDistrict,  StatisticsResponse? statistics,  String? error)?  $default,) {final _that = this;
 switch (_that) {
 case _StatisticsState() when $default != null:
-return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
+return $default(_that.regions,_that.districts,_that.isLoadingRegions,_that.isLoadingStats,_that.selectedRegion,_that.selectedDistrict,_that.statistics,_that.error);case _:
   return null;
 
 }
@@ -792,7 +1071,7 @@ return $default(_that.regions,_that.isLoadingRegions,_that.isLoadingStats,_that.
 
 
 class _StatisticsState implements StatisticsState {
-  const _StatisticsState({final  List<Region> regions = const [], this.isLoadingRegions = false, this.isLoadingStats = false, this.selectedRegion, this.selectedDistrict, this.statistics, this.error}): _regions = regions;
+  const _StatisticsState({final  List<Region> regions = const [], final  List<District> districts = const [], this.isLoadingRegions = false, this.isLoadingStats = false, this.selectedRegion, this.selectedDistrict, this.statistics, this.error}): _regions = regions,_districts = districts;
   
 
  final  List<Region> _regions;
@@ -800,6 +1079,13 @@ class _StatisticsState implements StatisticsState {
   if (_regions is EqualUnmodifiableListView) return _regions;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_regions);
+}
+
+ final  List<District> _districts;
+@override@JsonKey() List<District> get districts {
+  if (_districts is EqualUnmodifiableListView) return _districts;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_districts);
 }
 
 @override@JsonKey() final  bool isLoadingRegions;
@@ -819,16 +1105,16 @@ _$StatisticsStateCopyWith<_StatisticsState> get copyWith => __$StatisticsStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatisticsState&&const DeepCollectionEquality().equals(other._regions, _regions)&&(identical(other.isLoadingRegions, isLoadingRegions) || other.isLoadingRegions == isLoadingRegions)&&(identical(other.isLoadingStats, isLoadingStats) || other.isLoadingStats == isLoadingStats)&&(identical(other.selectedRegion, selectedRegion) || other.selectedRegion == selectedRegion)&&(identical(other.selectedDistrict, selectedDistrict) || other.selectedDistrict == selectedDistrict)&&(identical(other.statistics, statistics) || other.statistics == statistics)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatisticsState&&const DeepCollectionEquality().equals(other._regions, _regions)&&const DeepCollectionEquality().equals(other._districts, _districts)&&(identical(other.isLoadingRegions, isLoadingRegions) || other.isLoadingRegions == isLoadingRegions)&&(identical(other.isLoadingStats, isLoadingStats) || other.isLoadingStats == isLoadingStats)&&(identical(other.selectedRegion, selectedRegion) || other.selectedRegion == selectedRegion)&&(identical(other.selectedDistrict, selectedDistrict) || other.selectedDistrict == selectedDistrict)&&(identical(other.statistics, statistics) || other.statistics == statistics)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_regions),isLoadingRegions,isLoadingStats,selectedRegion,selectedDistrict,statistics,error);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_regions),const DeepCollectionEquality().hash(_districts),isLoadingRegions,isLoadingStats,selectedRegion,selectedDistrict,statistics,error);
 
 @override
 String toString() {
-  return 'StatisticsState(regions: $regions, isLoadingRegions: $isLoadingRegions, isLoadingStats: $isLoadingStats, selectedRegion: $selectedRegion, selectedDistrict: $selectedDistrict, statistics: $statistics, error: $error)';
+  return 'StatisticsState(regions: $regions, districts: $districts, isLoadingRegions: $isLoadingRegions, isLoadingStats: $isLoadingStats, selectedRegion: $selectedRegion, selectedDistrict: $selectedDistrict, statistics: $statistics, error: $error)';
 }
 
 
@@ -839,7 +1125,7 @@ abstract mixin class _$StatisticsStateCopyWith<$Res> implements $StatisticsState
   factory _$StatisticsStateCopyWith(_StatisticsState value, $Res Function(_StatisticsState) _then) = __$StatisticsStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Region> regions, bool isLoadingRegions, bool isLoadingStats, Region? selectedRegion, District? selectedDistrict, StatisticsResponse? statistics, String? error
+ List<Region> regions, List<District> districts, bool isLoadingRegions, bool isLoadingStats, Region? selectedRegion, District? selectedDistrict, StatisticsResponse? statistics, String? error
 });
 
 
@@ -856,10 +1142,11 @@ class __$StatisticsStateCopyWithImpl<$Res>
 
 /// Create a copy of StatisticsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? regions = null,Object? isLoadingRegions = null,Object? isLoadingStats = null,Object? selectedRegion = freezed,Object? selectedDistrict = freezed,Object? statistics = freezed,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? regions = null,Object? districts = null,Object? isLoadingRegions = null,Object? isLoadingStats = null,Object? selectedRegion = freezed,Object? selectedDistrict = freezed,Object? statistics = freezed,Object? error = freezed,}) {
   return _then(_StatisticsState(
 regions: null == regions ? _self._regions : regions // ignore: cast_nullable_to_non_nullable
-as List<Region>,isLoadingRegions: null == isLoadingRegions ? _self.isLoadingRegions : isLoadingRegions // ignore: cast_nullable_to_non_nullable
+as List<Region>,districts: null == districts ? _self._districts : districts // ignore: cast_nullable_to_non_nullable
+as List<District>,isLoadingRegions: null == isLoadingRegions ? _self.isLoadingRegions : isLoadingRegions // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingStats: null == isLoadingStats ? _self.isLoadingStats : isLoadingStats // ignore: cast_nullable_to_non_nullable
 as bool,selectedRegion: freezed == selectedRegion ? _self.selectedRegion : selectedRegion // ignore: cast_nullable_to_non_nullable
 as Region?,selectedDistrict: freezed == selectedDistrict ? _self.selectedDistrict : selectedDistrict // ignore: cast_nullable_to_non_nullable

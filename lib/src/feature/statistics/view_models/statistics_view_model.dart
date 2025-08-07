@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ibrat_debate_scanner_app/src/data/repository/app_repository.dart';
 
+import '../../../common/local/app_storage.dart';
 import '../../../data/entity/debate_models/debate_event_model.dart';
 import '../../../data/entity/stats/statistics_models.dart';
+import '../../../data/entity/user_model/user_model.dart';
 import '../../../data/repository/app_repository_impl.dart';
 
 final statisticsViewModelProvider = ChangeNotifierProvider<StatisticsViewModel>(
@@ -26,8 +30,15 @@ class StatisticsViewModel extends ChangeNotifier {
   StatisticsResponse? get statistics => _state.statistics;
   String? get error => _state.error;
 
-  List<District> get availableDistricts {
-    return _state.selectedRegion?.districts ?? [];
+  List<District> get availableDistricts => _state.districts;
+
+  StatisticsViewModel() {
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    await loadRegions();
+    await _setDefaultRegionAndDistrict();
   }
 
   void _updateState(StatisticsState newState) {
@@ -69,6 +80,53 @@ class StatisticsViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> _setDefaultRegionAndDistrict() async {
+    try {
+      final jsonString = await AppStorage.$read(key: StorageKey.user);
+
+      if (jsonString == null) return;
+
+      final Map<String, dynamic> jsonData = jsonDecode(jsonString);
+      final user = UserModel.fromJson(jsonData);
+
+      // 1️⃣ Find default region
+      final Region? defaultRegion = _state.regions
+          .where((r) => r.id == user.region)
+          .firstOrNull;
+
+      List<District> filteredDistricts = [];
+
+      // 2️⃣ If region found, get its districts
+      if (defaultRegion != null) {
+        final districtsResponse = await _repository.getDistricts();
+        filteredDistricts = districtsResponse!.results
+            .where((d) => d.region == defaultRegion.id)
+            .toList();
+      }
+
+      // 3️⃣ Find default district
+      final District? defaultDistrict = filteredDistricts
+          .where((d) => d.id == user.district)
+          .firstOrNull;
+
+      // 4️⃣ Update state
+      _updateState(
+        _state.copyWith(
+          selectedRegion: defaultRegion,
+          selectedDistrict: defaultDistrict,
+          districts: filteredDistricts,
+        ),
+      );
+
+      // 5️⃣ Load statistics automatically
+      if (defaultRegion != null) {
+        await loadStatistics();
+      }
+    } catch (e) {
+      debugPrint('⚠️ Failed to set default region/district: $e');
+    }
+  }
+
   void selectRegion(Region? region) {
     _updateState(
       _state.copyWith(
@@ -88,12 +146,11 @@ class StatisticsViewModel extends ChangeNotifier {
     _updateState(
       _state.copyWith(
         selectedDistrict: district,
-        statistics: null, // Clear previous statistics
+        statistics: null,
         error: null,
       ),
     );
 
-    // Automatically load statistics when both region and district are selected
     if (_state.selectedRegion != null && district != null) {
       loadStatistics();
     }
@@ -140,7 +197,7 @@ class StatisticsViewModel extends ChangeNotifier {
     try {
       final response = await _repository.getStatistics(
         regionId: _state.selectedRegion!.id,
-        districtId: _state.selectedDistrict?.id, // optional
+        districtId: _state.selectedDistrict?.id,
       );
 
       if (response != null) {

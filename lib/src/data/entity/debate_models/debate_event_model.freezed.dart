@@ -293,7 +293,7 @@ as int,
 /// @nodoc
 mixin _$Region {
 
- int get id; String get name;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; List<District> get districts;
+ int get id; String get name;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;
 /// Create a copy of Region
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -306,16 +306,16 @@ $RegionCopyWith<Region> get copyWith => _$RegionCopyWithImpl<Region>(this as Reg
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other.districts, districts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt,const DeepCollectionEquality().hash(districts));
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, districts: $districts)';
+  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -326,7 +326,7 @@ abstract mixin class $RegionCopyWith<$Res>  {
   factory $RegionCopyWith(Region value, $Res Function(Region) _then) = _$RegionCopyWithImpl;
 @useResult
 $Res call({
- int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, List<District> districts
+ int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt
 });
 
 
@@ -343,14 +343,13 @@ class _$RegionCopyWithImpl<$Res>
 
 /// Create a copy of Region
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,Object? districts = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,districts: null == districts ? _self.districts : districts // ignore: cast_nullable_to_non_nullable
-as List<District>,
+as String,
   ));
 }
 
@@ -435,10 +434,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Region() when $default != null:
-return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
   return orElse();
 
 }
@@ -456,10 +455,10 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.distri
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)  $default,) {final _that = this;
 switch (_that) {
 case _Region():
-return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -476,10 +475,10 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.distri
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  List<District> districts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Region() when $default != null:
-return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.districts);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
   return null;
 
 }
@@ -491,20 +490,13 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt,_that.distri
 @JsonSerializable()
 
 class _Region implements Region {
-  const _Region({required this.id, required this.name, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, required final  List<District> districts}): _districts = districts;
+  const _Region({required this.id, required this.name, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt});
   factory _Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);
 
 @override final  int id;
 @override final  String name;
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
- final  List<District> _districts;
-@override List<District> get districts {
-  if (_districts is EqualUnmodifiableListView) return _districts;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_districts);
-}
-
 
 /// Create a copy of Region
 /// with the given fields replaced by the non-null parameter values.
@@ -519,16 +511,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other._districts, _districts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Region&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt,const DeepCollectionEquality().hash(_districts));
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, districts: $districts)';
+  return 'Region(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -539,7 +531,7 @@ abstract mixin class _$RegionCopyWith<$Res> implements $RegionCopyWith<$Res> {
   factory _$RegionCopyWith(_Region value, $Res Function(_Region) _then) = __$RegionCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, List<District> districts
+ int id, String name,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt
 });
 
 
@@ -556,14 +548,13 @@ class __$RegionCopyWithImpl<$Res>
 
 /// Create a copy of Region
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,Object? districts = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_Region(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,districts: null == districts ? _self._districts : districts // ignore: cast_nullable_to_non_nullable
-as List<District>,
+as String,
   ));
 }
 

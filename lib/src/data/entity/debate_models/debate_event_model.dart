@@ -25,7 +25,6 @@ abstract class Region with _$Region {
     required String name,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
-    required List<District> districts,
   }) = _Region;
 
   factory Region.fromJson(Map<String, dynamic> json) => _$RegionFromJson(json);

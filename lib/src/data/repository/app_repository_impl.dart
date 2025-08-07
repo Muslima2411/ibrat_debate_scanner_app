@@ -6,6 +6,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:ibrat_debate_scanner_app/src/data/entity/user_model/set_pass_response.dart";
 import "package:ibrat_debate_scanner_app/src/data/entity/user_model/user_model.dart";
+import "../../common/local/app_storage.dart";
 import "../../common/server/api/api.dart";
 import "../../common/server/api/api_constants.dart";
 
@@ -84,31 +85,26 @@ final class AppRepositoryImpl implements AppRepository {
 
   @override
   Future<UserModel?> getCurrentUser() async {
-    try {
-      debugPrint('🔍 Fetching current user info...');
+    debugPrint('🔍 Запрос информации о текущем пользователе...');
 
-      final response = await ApiService.get(
-        ApiConst.meApi,
-        <String, dynamic>{}, // empty params
-      );
+    try {
+      final response = await ApiService.get(ApiConst.meApi, {});
 
       if (response == null) {
-        debugPrint('❌ No response received from user API');
+        debugPrint('⚠️ Ответ от API не получен');
         return null;
       }
 
-      debugPrint('✅ User API response received');
-      debugPrint('📄 Response data: $response');
+      debugPrint('✅ Ответ от API получен: $response');
 
-      final Map<String, dynamic> jsonData = jsonDecode(response);
-
+      final jsonData = jsonDecode(response) as Map<String, dynamic>;
       final user = UserModel.fromJson(jsonData);
-      debugPrint('👤 User parsed successfully: $user');
 
+      debugPrint('👤 Пользователь успешно получен: $user');
       return user;
     } catch (e, stackTrace) {
-      debugPrint('❌ Error fetching current user: $e');
-      debugPrint('📍 Stack trace: $stackTrace');
+      debugPrint('❌ Ошибка при получении пользователя: $e');
+      debugPrint('📍 StackTrace: $stackTrace');
       return null;
     }
   }
@@ -381,6 +377,38 @@ final class AppRepositoryImpl implements AppRepository {
   }
 
   @override
+  Future<DistrictsResponse?> getDistricts() async {
+    try {
+      debugPrint('🌍 Fetching regions...');
+
+      final response = await ApiService.get(
+        ApiConst.districtsApi,
+        ApiParams.emptyParams(),
+      );
+
+      if (response != null && response.isNotEmpty) {
+        debugPrint('✅ Districts response received');
+        debugPrint('📄 Response data: $response');
+
+        final Map<String, dynamic> jsonData = jsonDecode(response);
+        final districtsResponse = DistrictsResponse.fromJson(jsonData);
+
+        debugPrint(
+          '🏛️ Districts parsed successfully: ${districtsResponse.results.length} districts',
+        );
+        return districtsResponse;
+      } else {
+        debugPrint('❌ Failed to get regions: empty response');
+        return null;
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error fetching regions: $e');
+      debugPrint('📍 Stack trace: $stackTrace');
+      return null;
+    }
+  }
+
+  @override
   Future<StatisticsResponse?> getStatistics({
     int? regionId,
     int? districtId,
@@ -418,16 +446,43 @@ final class AppRepositoryImpl implements AppRepository {
   @override
   Future<List<TicketModel>> getTickets({bool? isChecked}) async {
     try {
-      debugPrint(' Fetching tickets (is_checked: $isChecked)...');
+      final jsonString = await AppStorage.$read(key: StorageKey.user);
 
-      final queryParams = isChecked != null
-          ? {'is_checked': isChecked.toString()}
-          : {};
+      if (jsonString == null) {
+        debugPrint('⚠ No stored user found. Cannot fetch tickets.');
+        return [];
+      }
 
-      final String url =
-          '${ApiConst.ticketsApi}?${queryParams.entries.map((e) => '${e.key}=${Uri.encodeComponent(e.value)}').join('&')}';
+      final jsonData = jsonDecode(jsonString);
+      final user = UserModel.fromJson(jsonData);
 
-      final response = await ApiService.get(url, ApiParams.emptyParams());
+      debugPrint(
+        'Fetching tickets (is_checked: $isChecked, region: ${user.region}, district: ${user.district})...',
+      );
+
+      // Build query parameters
+      final queryParams = <String, String>{};
+
+      if (user.region != null) {
+        queryParams['debate__region'] = user.region.toString();
+      }
+      if (user.district != null) {
+        queryParams['debate__district'] = user.district.toString();
+      }
+      if (isChecked != null) {
+        queryParams['is_checked'] = isChecked.toString();
+      }
+
+      final uri = Uri.parse(
+        ApiConst.ticketsApi,
+      ).replace(queryParameters: queryParams);
+
+      debugPrint('🌐 GET: $uri');
+
+      final response = await ApiService.get(
+        uri.toString(),
+        ApiParams.emptyParams(),
+      );
 
       if (response != null && response.isNotEmpty) {
         debugPrint('✅ Tickets response received');
@@ -436,7 +491,7 @@ final class AppRepositoryImpl implements AppRepository {
         final json = jsonDecode(response);
         final List<dynamic> results = json['results'] ?? [];
 
-        final List<TicketModel> tickets = results
+        final tickets = results
             .map((e) => TicketModel.fromJson(e as Map<String, dynamic>))
             .toList();
 

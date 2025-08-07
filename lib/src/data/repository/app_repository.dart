@@ -26,6 +26,7 @@ abstract class AppRepository {
   );
 
   Future<RegionsResponse?> getRegions();
+  Future<DistrictsResponse?> getDistricts();
   Future<StatisticsResponse?> getStatistics({int? regionId, int? districtId});
 
   Future<List<TicketModel>> getTickets({bool isChecked = true});

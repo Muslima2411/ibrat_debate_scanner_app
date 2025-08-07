@@ -117,13 +117,17 @@ class _InitPageState extends State<InitPage>
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
-          child: Text(
-            'Ibrat Debate Team',
-            style: context.textTheme.titleLarge?.copyWith(
-              fontSize: 28,
-              fontWeight: FontWeight.w600,
-              color: context.colorScheme.primary,
-            ),
+          child: Image.asset(
+            'assets/images/ibrat_debate.png',
+            width: 220, // Increased size
+            height: 220,
+            errorBuilder: (context, error, stackTrace) {
+              return Icon(
+                Icons.image,
+                size: 220,
+                color: context.colorScheme.primary,
+              );
+            },
           ),
         ),
       ),
