@@ -2,20 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ibrat_debate_scanner_app/src/common/routes/app_router.dart';
 import 'package:ibrat_debate_scanner_app/src/common/utils/extensions/context_extensions.dart';
 
-import '../../../common/local/app_storage.dart';
 import '../../../common/widget/app_material_context.dart';
+import '../../home/view_models/user_vm.dart';
 import '../view_models/profile_vm.dart';
+import '../widgets/flexible_user_info_section.dart';
 import '../widgets/language_bottom_sheet.dart';
 import '../widgets/log_out_button.dart';
 import '../widgets/theme_bottom_sheet.dart';
 
-final profileViewModelProvider =
-    ChangeNotifierProvider.autoDispose<ProfileViewModel>((ref) {
-      return ProfileViewModel();
-    });
+// final profileViewModelProvider =
+//     ChangeNotifierProvider.autoDispose<ProfileViewModel>((ref) {
+//       return ProfileViewModel();
+//     });
 
 @RoutePage()
 class ProfilePage extends ConsumerWidget {
@@ -67,7 +67,7 @@ class ProfilePage extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // User Info Section
-                _buildUserInfoSection(context, profileState, colors, textTheme),
+                _buildUserInfoSection(context, ref),
                 // Profile Options Section
                 _buildProfileOptionsSection(
                   context,
@@ -83,117 +83,19 @@ class ProfilePage extends ConsumerWidget {
     );
   }
 
-  Widget _buildUserInfoSection(
-    BuildContext context,
-    ProfileState profileState,
-    ColorScheme colors,
-    TextTheme textTheme,
-  ) {
-    if (profileState.isLoading) {
-      return Row(
-        children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundColor: colors.primary.withOpacity(0.3),
-            child: const CircularProgressIndicator(strokeWidth: 2),
-          ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 120,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: colors.onSurface.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                width: 160,
-                height: 16,
-                decoration: BoxDecoration(
-                  color: colors.onSurface.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-            ],
-          ),
-        ],
-      );
-    }
+  Widget _buildUserInfoSection(BuildContext context, WidgetRef ref) {
+    final profileVM = ref.watch(profileViewModelProvider);
+    final userVM = ref.watch(userVmProvider);
 
-    if (profileState.error != null) {
-      return Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: colors.errorContainer,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Icon(Icons.error_outline, color: colors.onErrorContainer),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                profileState.error!,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colors.onErrorContainer,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    final user = profileState.user;
-    final displayName = user?.username ?? '';
-    final displayEmail = user?.name ?? '';
-
-    final initials = _getInitials(displayName);
-
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 40,
-          backgroundColor: colors.primary,
-          child: Text(
-            initials,
-            style: textTheme.titleLarge?.copyWith(
-              color: colors.onPrimary,
-              fontSize: 50.sp,
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                displayName,
-                style: textTheme.titleMedium?.copyWith(
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                displayEmail.toString(),
-                style: textTheme.bodySmall?.copyWith(
-                  color: colors.onSurface.withOpacity(0.7),
-                  fontSize: 14.sp,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
-        ),
-      ],
+    return FlexibleUserInfoSection(
+      isLoading: profileVM.state.isLoading,
+      isUserLoading: userVM.state.isLoading,
+      error: profileVM.state.error,
+      userError: userVM.state.error,
+      user: profileVM.user,
+      displayUsername: profileVM.displayUsername,
+      onRetry: () => ref.read(profileViewModelProvider).refreshUserData(),
+      onRefresh: () => ref.read(profileViewModelProvider).refreshUserData(),
     );
   }
 
@@ -213,6 +115,33 @@ class ProfilePage extends ConsumerWidget {
           textTheme: textTheme,
           onTap: () {
             // context.router.push(SettingsRoute(user: profileState.user));
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: colors.surfaceVariant,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                duration: const Duration(seconds: 2),
+                content: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.info_outline, color: colors.onSurfaceVariant),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        context.localized.featureNotAvailableMessage,
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
           },
         ),
         Divider(color: colors.onSurface.withOpacity(0.1), thickness: 1),

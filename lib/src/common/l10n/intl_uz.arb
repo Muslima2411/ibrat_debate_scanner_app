@@ -122,5 +122,7 @@
   "event_info": "Tadbir haqida ma'lumot",
   "cancel_ticket_title": "Chiptani bekor qilasizmi?",
   "cancel_ticket_confirmation": "Ushbu chiptani bekor qilmoqchimisiz? Bu amal qaytarib bo'lmaydi.",
-  "keep_ticket": "Chiptani saqlash"
+  "keep_ticket": "Chiptani saqlash",
+  "telegram_link": "Telegram kanal havolasi",
+  "featureNotAvailableMessage": "Ushbu funksiya hali mavjud emas. Iltimos, keyinroq qaytib keling."
 }

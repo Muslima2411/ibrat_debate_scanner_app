@@ -831,6 +831,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Keep Ticket'**
   String get keep_ticket;
+
+  /// No description provided for @telegram_link.
+  ///
+  /// In en, this message translates to:
+  /// **'telegram channel link'**
+  String get telegram_link;
+
+  /// No description provided for @featureNotAvailableMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is not available yet. Please check back later.'**
+  String get featureNotAvailableMessage;
 }
 
 class _AppLocalizationsDelegate

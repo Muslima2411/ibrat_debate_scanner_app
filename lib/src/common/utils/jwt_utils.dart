@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 
-bool isAccessTokenExpired(String token) {
+import '../local/app_storage.dart';
+
+Future<bool> isAccessTokenExpired(String token) async {
   try {
     debugPrint('🔍 Checking token expiry...');
 
@@ -58,7 +60,9 @@ bool isAccessTokenExpired(String token) {
     }
 
     if (payloadMap.containsKey('user_id')) {
-      debugPrint('👤 User ID: ${payloadMap['user_id']}');
+      final userId = payloadMap['user_id'];
+      debugPrint('👤 User ID: $userId');
+      await AppStorage.$write(key: StorageKey.userId, value: userId.toString());
     }
 
     return isExpired;

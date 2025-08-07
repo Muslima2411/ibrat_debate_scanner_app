@@ -90,6 +90,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "event_info": MessageLookupByLibrary.simpleMessage(
       "Информация о мероприятии",
     ),
+    "featureNotAvailableMessage": MessageLookupByLibrary.simpleMessage(
+      "Эта функция пока недоступна. Пожалуйста, попробуйте позже.",
+    ),
     "filter": MessageLookupByLibrary.simpleMessage("Фильтр"),
     "filter_tickets": MessageLookupByLibrary.simpleMessage(
       "Фильтровать билеты",
@@ -188,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Успешно отсканирован QR-код:",
     ),
     "telegram": MessageLookupByLibrary.simpleMessage("Телеграм"),
+    "telegram_link": MessageLookupByLibrary.simpleMessage("Ссылка на Telegram"),
     "theme": MessageLookupByLibrary.simpleMessage("Тема"),
     "ticket_id": MessageLookupByLibrary.simpleMessage("ID билета"),
     "ticket_info": MessageLookupByLibrary.simpleMessage("Информация о билете"),

@@ -113,7 +113,6 @@ final class AppRepositoryImpl implements AppRepository {
     }
   }
 
-  // 🆕 NEW: Update user information
   @override
   Future<UserModel?> updateUserInfo(UserModel updatedUser) async {
     try {

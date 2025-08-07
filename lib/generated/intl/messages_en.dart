@@ -81,6 +81,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Error restarting camera:",
     ),
     "event_info": MessageLookupByLibrary.simpleMessage("Event Information"),
+    "featureNotAvailableMessage": MessageLookupByLibrary.simpleMessage(
+      "This feature is not available yet. Please check back later.",
+    ),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "filter_tickets": MessageLookupByLibrary.simpleMessage("Filter Tickets"),
     "found_tickets_with_filters": m0,
@@ -175,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Successfully scanned QR code:",
     ),
     "telegram": MessageLookupByLibrary.simpleMessage("Telegram"),
+    "telegram_link": MessageLookupByLibrary.simpleMessage(
+      "telegram channel link",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "ticket_id": MessageLookupByLibrary.simpleMessage("Ticket ID"),
     "ticket_info": MessageLookupByLibrary.simpleMessage("Ticket Info"),

@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ibrat_debate_scanner_app/src/data/repository/app_repository_impl.dart';
 
+import '../../../common/local/app_storage.dart';
 import '../../../data/entity/ticket_model/ticket_model.dart';
 import '../../../data/entity/debate_models/debate_event_model.dart';
+import '../../../data/entity/user_model/user_model.dart';
 
 part 'history_view_model.freezed.dart';
 
@@ -55,7 +59,7 @@ class HistoryViewModel extends ChangeNotifier {
     if (_state.selectedRegion != null) {
       tickets = tickets
           .where(
-            (ticket) => ticket.debate.region.id == _state.selectedRegion!.id,
+            (ticket) => ticket.debate.region!.id == _state.selectedRegion!.id,
           )
           .toList();
     }
@@ -65,7 +69,7 @@ class HistoryViewModel extends ChangeNotifier {
       tickets = tickets
           .where(
             (ticket) =>
-                ticket.debate.district.id == _state.selectedDistrict!.id,
+                ticket.debate.district!.id == _state.selectedDistrict!.id,
           )
           .toList();
     }
@@ -83,7 +87,39 @@ class HistoryViewModel extends ChangeNotifier {
 
   Future<void> _initializeData() async {
     await loadRegions();
+    await _setDefaultRegionAndDistrict(); // Add this line
     await loadTickets();
+  }
+
+  // Add this new method
+  Future<void> _setDefaultRegionAndDistrict() async {
+    try {
+      String? jsonString = await AppStorage.$read(key: StorageKey.user);
+      if (jsonString != null) {
+        Map<String, dynamic> jsonData = jsonDecode(jsonString);
+        UserModel user = UserModel.fromJson(jsonData);
+
+        // Find the matching region and district from loaded regions
+        Region? defaultRegion = _state.regions
+            .where((r) => r.id == user.region)
+            .firstOrNull;
+
+        District? defaultDistrict = defaultRegion?.districts
+            .where((d) => d.id == user.district)
+            .firstOrNull;
+
+        // Set default filters
+        _updateState(
+          _state.copyWith(
+            selectedRegion: defaultRegion,
+            selectedDistrict: defaultDistrict,
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error setting default region/district: $e');
+      // Don't update error state here since this is optional
+    }
   }
 
   void _updateState(HistoryState newState) {

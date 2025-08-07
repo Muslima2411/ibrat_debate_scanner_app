@@ -120,5 +120,7 @@
   "event_info": "Информация о мероприятии",
   "cancel_ticket_title": "Отменить билет?",
   "cancel_ticket_confirmation": "Вы уверены, что хотите отменить этот билет? Это действие необратимо.",
-  "keep_ticket": "Оставить билет"
+  "keep_ticket": "Оставить билет",
+  "telegram_link": "Ссылка на Telegram",
+  "featureNotAvailableMessage": "Эта функция пока недоступна. Пожалуйста, попробуйте позже."
 }

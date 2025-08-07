@@ -171,13 +171,13 @@ class TicketDetailDialog extends StatelessWidget {
                     context,
                     Icons.location_on,
                     context.localized.region,
-                    ticket.debate.region.name,
+                    ticket.debate.region!.name,
                   ),
                   _buildInfoRow(
                     context,
                     Icons.location_city,
                     context.localized.district,
-                    ticket.debate.district.name,
+                    ticket.debate.district!.name,
                   ),
                   if (ticket.debate.date != null)
                     _buildInfoRow(

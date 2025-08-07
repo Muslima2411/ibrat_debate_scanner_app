@@ -381,4 +381,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get keep_ticket => 'Chiptani saqlash';
+
+  @override
+  String get telegram_link => 'Telegram kanal havolasi';
+
+  @override
+  String get featureNotAvailableMessage =>
+      'Ushbu funksiya hali mavjud emas. Iltimos, keyinroq qaytib keling.';
 }

@@ -381,4 +381,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get keep_ticket => 'Keep Ticket';
+
+  @override
+  String get telegram_link => 'telegram channel link';
+
+  @override
+  String get featureNotAvailableMessage =>
+      'This feature is not available yet. Please check back later.';
 }

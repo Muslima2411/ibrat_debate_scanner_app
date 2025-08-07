@@ -334,7 +334,7 @@ class HistoryPage extends ConsumerWidget {
 
                 // Location
                 Text(
-                  '${ticket.debate.region.name} • ${ticket.debate.district.name}',
+                  '${ticket.debate.region!.name} • ${ticket.debate.district!.name}',
                   style: context.textTheme.bodySmall?.copyWith(
                     fontSize: 12.sp,
                     color: isDark ? Colors.grey[300] : Colors.grey[700],

@@ -379,4 +379,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get keep_ticket => 'Оставить билет';
+
+  @override
+  String get telegram_link => 'Ссылка на Telegram';
+
+  @override
+  String get featureNotAvailableMessage =>
+      'Эта функция пока недоступна. Пожалуйста, попробуйте позже.';
 }

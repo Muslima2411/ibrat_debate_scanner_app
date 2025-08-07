@@ -252,58 +252,70 @@ class _FilterDialogState extends State<FilterDialog> {
         ),
       ),
       actions: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(
-                context.localized.cancel,
-                style: TextStyle(
-                  color: context.colorScheme.onSurface,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    context.localized.cancel,
+                    style: TextStyle(
+                      color: context.colorScheme.onSurface,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.sp, // Slightly smaller
+                    ),
+                  ),
                 ),
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  selectedRegion = null;
-                  selectedDistrict = null;
-                  showCheckedOnly = null;
-                });
-              },
-              child: Text(
-                context.localized.clearAll,
-                style: TextStyle(
-                  color: context.colorScheme.onSurface,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
+              SizedBox(width: 8.w),
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedRegion = null;
+                      selectedDistrict = null;
+                      showCheckedOnly = null;
+                    });
+                  },
+                  child: Text(
+                    context.localized.clearAll,
+                    style: TextStyle(
+                      color: context.colorScheme.onSurface,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.sp,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                widget.ref
-                    .read(historyViewModelProvider.notifier)
-                    .applyFilters(
-                      region: selectedRegion,
-                      district: selectedDistrict,
-                      showCheckedOnly: showCheckedOnly,
-                    );
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                context.localized.apply,
-                style: TextStyle(
-                  color: context.colorScheme.primary,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
+              SizedBox(width: 8.w),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    widget.ref
+                        .read(historyViewModelProvider.notifier)
+                        .applyFilters(
+                          region: selectedRegion,
+                          district: selectedDistrict,
+                          showCheckedOnly: showCheckedOnly,
+                        );
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                  ),
+                  child: Text(
+                    context.localized.apply,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.sp,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

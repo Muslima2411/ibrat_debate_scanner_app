@@ -68,7 +68,7 @@ class _InitPageState extends State<InitPage>
     }
 
     // Check if token is expired
-    if (isAccessTokenExpired(token)) {
+    if (await isAccessTokenExpired(token)) {
       debugPrint('⏳ Access token expired. Attempting refresh...');
 
       final refreshed = await ApiService.refreshAccessToken();
@@ -81,7 +81,7 @@ class _InitPageState extends State<InitPage>
           debugPrint('🔄 Analyzing new token after refresh...');
           analyzeToken(newToken, tokenType: 'New Access Token');
 
-          if (!isAccessTokenExpired(newToken)) {
+          if (!await isAccessTokenExpired(newToken)) {
             debugPrint('✅ Token refreshed successfully.');
             context.router.replaceAll([const MainWrapperRoute()]);
           } else {

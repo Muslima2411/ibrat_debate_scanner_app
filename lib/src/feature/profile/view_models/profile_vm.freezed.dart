@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileState implements DiagnosticableTreeMixin {
 
- bool get isLoading; bool get isRefreshing; UserModel? get user; String? get error;
+ bool get isLoading; bool get isRefreshing; String? get error; bool get isLogoutLoading; bool get isUpdating;
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $ProfileStateCopyWith<ProfileState> get copyWith => _$ProfileStateCopyWithImpl<P
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProfileState'))
-    ..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('isRefreshing', isRefreshing))..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('error', error));
+    ..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('isRefreshing', isRefreshing))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('isLogoutLoading', isLogoutLoading))..add(DiagnosticsProperty('isUpdating', isUpdating));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing)&&(identical(other.error, error) || other.error == error)&&(identical(other.isLogoutLoading, isLogoutLoading) || other.isLogoutLoading == isLogoutLoading)&&(identical(other.isUpdating, isUpdating) || other.isUpdating == isUpdating));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isRefreshing,user,error);
+int get hashCode => Object.hash(runtimeType,isLoading,isRefreshing,error,isLogoutLoading,isUpdating);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProfileState(isLoading: $isLoading, isRefreshing: $isRefreshing, user: $user, error: $error)';
+  return 'ProfileState(isLoading: $isLoading, isRefreshing: $isRefreshing, error: $error, isLogoutLoading: $isLogoutLoading, isUpdating: $isUpdating)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProfileStateCopyWith<$Res>  {
   factory $ProfileStateCopyWith(ProfileState value, $Res Function(ProfileState) _then) = _$ProfileStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoading, bool isRefreshing, UserModel? user, String? error
+ bool isLoading, bool isRefreshing, String? error, bool isLogoutLoading, bool isUpdating
 });
 
 
@@ -68,13 +68,14 @@ class _$ProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isRefreshing = null,Object? user = freezed,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isRefreshing = null,Object? error = freezed,Object? isLogoutLoading = null,Object? isUpdating = null,}) {
   return _then(_self.copyWith(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isRefreshing: null == isRefreshing ? _self.isRefreshing : isRefreshing // ignore: cast_nullable_to_non_nullable
-as bool,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserModel?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String?,
+as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,isLogoutLoading: null == isLogoutLoading ? _self.isLogoutLoading : isLogoutLoading // ignore: cast_nullable_to_non_nullable
+as bool,isUpdating: null == isUpdating ? _self.isUpdating : isUpdating // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isRefreshing,  UserModel? user,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isRefreshing,  String? error,  bool isLogoutLoading,  bool isUpdating)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileState() when $default != null:
-return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case _:
+return $default(_that.isLoading,_that.isRefreshing,_that.error,_that.isLogoutLoading,_that.isUpdating);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isRefreshing,  UserModel? user,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isRefreshing,  String? error,  bool isLogoutLoading,  bool isUpdating)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileState():
-return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case _:
+return $default(_that.isLoading,_that.isRefreshing,_that.error,_that.isLogoutLoading,_that.isUpdating);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +201,10 @@ return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isRefreshing,  UserModel? user,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isRefreshing,  String? error,  bool isLogoutLoading,  bool isUpdating)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileState() when $default != null:
-return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case _:
+return $default(_that.isLoading,_that.isRefreshing,_that.error,_that.isLogoutLoading,_that.isUpdating);case _:
   return null;
 
 }
@@ -215,13 +216,14 @@ return $default(_that.isLoading,_that.isRefreshing,_that.user,_that.error);case 
 
 
 class _ProfileState with DiagnosticableTreeMixin implements ProfileState {
-  const _ProfileState({this.isLoading = false, this.isRefreshing = false, this.user, this.error});
+  const _ProfileState({this.isLoading = false, this.isRefreshing = false, this.error, this.isLogoutLoading = false, this.isUpdating = false});
   
 
 @override@JsonKey() final  bool isLoading;
 @override@JsonKey() final  bool isRefreshing;
-@override final  UserModel? user;
 @override final  String? error;
+@override@JsonKey() final  bool isLogoutLoading;
+@override@JsonKey() final  bool isUpdating;
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
@@ -234,21 +236,21 @@ _$ProfileStateCopyWith<_ProfileState> get copyWith => __$ProfileStateCopyWithImp
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProfileState'))
-    ..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('isRefreshing', isRefreshing))..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('error', error));
+    ..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('isRefreshing', isRefreshing))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('isLogoutLoading', isLogoutLoading))..add(DiagnosticsProperty('isUpdating', isUpdating));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing)&&(identical(other.error, error) || other.error == error)&&(identical(other.isLogoutLoading, isLogoutLoading) || other.isLogoutLoading == isLogoutLoading)&&(identical(other.isUpdating, isUpdating) || other.isUpdating == isUpdating));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isRefreshing,user,error);
+int get hashCode => Object.hash(runtimeType,isLoading,isRefreshing,error,isLogoutLoading,isUpdating);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProfileState(isLoading: $isLoading, isRefreshing: $isRefreshing, user: $user, error: $error)';
+  return 'ProfileState(isLoading: $isLoading, isRefreshing: $isRefreshing, error: $error, isLogoutLoading: $isLogoutLoading, isUpdating: $isUpdating)';
 }
 
 
@@ -259,7 +261,7 @@ abstract mixin class _$ProfileStateCopyWith<$Res> implements $ProfileStateCopyWi
   factory _$ProfileStateCopyWith(_ProfileState value, $Res Function(_ProfileState) _then) = __$ProfileStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoading, bool isRefreshing, UserModel? user, String? error
+ bool isLoading, bool isRefreshing, String? error, bool isLogoutLoading, bool isUpdating
 });
 
 
@@ -276,13 +278,14 @@ class __$ProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isRefreshing = null,Object? user = freezed,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isRefreshing = null,Object? error = freezed,Object? isLogoutLoading = null,Object? isUpdating = null,}) {
   return _then(_ProfileState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isRefreshing: null == isRefreshing ? _self.isRefreshing : isRefreshing // ignore: cast_nullable_to_non_nullable
-as bool,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserModel?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String?,
+as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,isLogoutLoading: null == isLogoutLoading ? _self.isLogoutLoading : isLogoutLoading // ignore: cast_nullable_to_non_nullable
+as bool,isUpdating: null == isUpdating ? _self.isUpdating : isUpdating // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

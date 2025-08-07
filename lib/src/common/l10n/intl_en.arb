@@ -121,6 +121,7 @@
   "attended": "Attended",
   "cancel_ticket_title": "Cancel Ticket?",
   "cancel_ticket_confirmation": "Are you sure you want to cancel this ticket? This action cannot be undone.",
-  "keep_ticket": "Keep Ticket"
-
+  "keep_ticket": "Keep Ticket",
+  "telegram_link": "telegram channel link",
+  "featureNotAvailableMessage": "This feature is not available yet. Please check back later."
 }

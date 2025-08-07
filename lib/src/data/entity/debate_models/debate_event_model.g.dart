@@ -44,8 +44,12 @@ Map<String, dynamic> _$RegionToJson(_Region instance) => <String, dynamic>{
 
 _DebateEvent _$DebateEventFromJson(Map<String, dynamic> json) => _DebateEvent(
   id: (json['id'] as num).toInt(),
-  region: Region.fromJson(json['region'] as Map<String, dynamic>),
-  district: District.fromJson(json['district'] as Map<String, dynamic>),
+  region: json['region'] == null
+      ? null
+      : Region.fromJson(json['region'] as Map<String, dynamic>),
+  district: json['district'] == null
+      ? null
+      : District.fromJson(json['district'] as Map<String, dynamic>),
   createdAt: json['created_at'] as String,
   updatedAt: json['updated_at'] as String,
   date: json['date'] as String?,

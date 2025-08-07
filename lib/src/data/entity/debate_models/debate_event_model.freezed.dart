@@ -574,7 +574,7 @@ as List<District>,
 /// @nodoc
 mixin _$DebateEvent {
 
- int get id; Region get region; District get district;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; String? get date; String? get time;@JsonKey(name: 'is_passed') bool get isPassed;
+ int get id; Region? get region; District? get district;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt; String? get date; String? get time;@JsonKey(name: 'is_passed') bool get isPassed;
 /// Create a copy of DebateEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -607,11 +607,11 @@ abstract mixin class $DebateEventCopyWith<$Res>  {
   factory $DebateEventCopyWith(DebateEvent value, $Res Function(DebateEvent) _then) = _$DebateEventCopyWithImpl;
 @useResult
 $Res call({
- int id, Region region, District district,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String? date, String? time,@JsonKey(name: 'is_passed') bool isPassed
+ int id, Region? region, District? district,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String? date, String? time,@JsonKey(name: 'is_passed') bool isPassed
 });
 
 
-$RegionCopyWith<$Res> get region;$DistrictCopyWith<$Res> get district;
+$RegionCopyWith<$Res>? get region;$DistrictCopyWith<$Res>? get district;
 
 }
 /// @nodoc
@@ -624,12 +624,12 @@ class _$DebateEventCopyWithImpl<$Res>
 
 /// Create a copy of DebateEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? region = null,Object? district = null,Object? createdAt = null,Object? updatedAt = null,Object? date = freezed,Object? time = freezed,Object? isPassed = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? region = freezed,Object? district = freezed,Object? createdAt = null,Object? updatedAt = null,Object? date = freezed,Object? time = freezed,Object? isPassed = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,region: null == region ? _self.region : region // ignore: cast_nullable_to_non_nullable
-as Region,district: null == district ? _self.district : district // ignore: cast_nullable_to_non_nullable
-as District,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as int,region: freezed == region ? _self.region : region // ignore: cast_nullable_to_non_nullable
+as Region?,district: freezed == district ? _self.district : district // ignore: cast_nullable_to_non_nullable
+as District?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
@@ -641,18 +641,24 @@ as bool,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$RegionCopyWith<$Res> get region {
-  
-  return $RegionCopyWith<$Res>(_self.region, (value) {
+$RegionCopyWith<$Res>? get region {
+    if (_self.region == null) {
+    return null;
+  }
+
+  return $RegionCopyWith<$Res>(_self.region!, (value) {
     return _then(_self.copyWith(region: value));
   });
 }/// Create a copy of DebateEvent
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$DistrictCopyWith<$Res> get district {
-  
-  return $DistrictCopyWith<$Res>(_self.district, (value) {
+$DistrictCopyWith<$Res>? get district {
+    if (_self.district == null) {
+    return null;
+  }
+
+  return $DistrictCopyWith<$Res>(_self.district!, (value) {
     return _then(_self.copyWith(district: value));
   });
 }
@@ -737,7 +743,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  Region region,  District district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  Region? region,  District? district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DebateEvent() when $default != null:
 return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updatedAt,_that.date,_that.time,_that.isPassed);case _:
@@ -758,7 +764,7 @@ return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updat
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  Region region,  District district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  Region? region,  District? district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)  $default,) {final _that = this;
 switch (_that) {
 case _DebateEvent():
 return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updatedAt,_that.date,_that.time,_that.isPassed);case _:
@@ -778,7 +784,7 @@ return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updat
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  Region region,  District district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  Region? region,  District? district, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt,  String? date,  String? time, @JsonKey(name: 'is_passed')  bool isPassed)?  $default,) {final _that = this;
 switch (_that) {
 case _DebateEvent() when $default != null:
 return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updatedAt,_that.date,_that.time,_that.isPassed);case _:
@@ -793,12 +799,12 @@ return $default(_that.id,_that.region,_that.district,_that.createdAt,_that.updat
 @JsonSerializable()
 
 class _DebateEvent implements DebateEvent {
-  const _DebateEvent({required this.id, required this.region, required this.district, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, this.date, this.time, @JsonKey(name: 'is_passed') required this.isPassed});
+  const _DebateEvent({required this.id, this.region, this.district, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt, this.date, this.time, @JsonKey(name: 'is_passed') required this.isPassed});
   factory _DebateEvent.fromJson(Map<String, dynamic> json) => _$DebateEventFromJson(json);
 
 @override final  int id;
-@override final  Region region;
-@override final  District district;
+@override final  Region? region;
+@override final  District? district;
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
 @override final  String? date;
@@ -838,11 +844,11 @@ abstract mixin class _$DebateEventCopyWith<$Res> implements $DebateEventCopyWith
   factory _$DebateEventCopyWith(_DebateEvent value, $Res Function(_DebateEvent) _then) = __$DebateEventCopyWithImpl;
 @override @useResult
 $Res call({
- int id, Region region, District district,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String? date, String? time,@JsonKey(name: 'is_passed') bool isPassed
+ int id, Region? region, District? district,@JsonKey(name: 'created_at') String createdAt,@JsonKey(name: 'updated_at') String updatedAt, String? date, String? time,@JsonKey(name: 'is_passed') bool isPassed
 });
 
 
-@override $RegionCopyWith<$Res> get region;@override $DistrictCopyWith<$Res> get district;
+@override $RegionCopyWith<$Res>? get region;@override $DistrictCopyWith<$Res>? get district;
 
 }
 /// @nodoc
@@ -855,12 +861,12 @@ class __$DebateEventCopyWithImpl<$Res>
 
 /// Create a copy of DebateEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? region = null,Object? district = null,Object? createdAt = null,Object? updatedAt = null,Object? date = freezed,Object? time = freezed,Object? isPassed = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? region = freezed,Object? district = freezed,Object? createdAt = null,Object? updatedAt = null,Object? date = freezed,Object? time = freezed,Object? isPassed = null,}) {
   return _then(_DebateEvent(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,region: null == region ? _self.region : region // ignore: cast_nullable_to_non_nullable
-as Region,district: null == district ? _self.district : district // ignore: cast_nullable_to_non_nullable
-as District,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as int,region: freezed == region ? _self.region : region // ignore: cast_nullable_to_non_nullable
+as Region?,district: freezed == district ? _self.district : district // ignore: cast_nullable_to_non_nullable
+as District?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
@@ -873,18 +879,24 @@ as bool,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$RegionCopyWith<$Res> get region {
-  
-  return $RegionCopyWith<$Res>(_self.region, (value) {
+$RegionCopyWith<$Res>? get region {
+    if (_self.region == null) {
+    return null;
+  }
+
+  return $RegionCopyWith<$Res>(_self.region!, (value) {
     return _then(_self.copyWith(region: value));
   });
 }/// Create a copy of DebateEvent
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$DistrictCopyWith<$Res> get district {
-  
-  return $DistrictCopyWith<$Res>(_self.district, (value) {
+$DistrictCopyWith<$Res>? get district {
+    if (_self.district == null) {
+    return null;
+  }
+
+  return $DistrictCopyWith<$Res>(_self.district!, (value) {
     return _then(_self.copyWith(district: value));
   });
 }

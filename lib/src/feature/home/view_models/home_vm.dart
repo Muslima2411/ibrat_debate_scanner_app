@@ -1,70 +1,103 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/local/app_storage.dart';
 import '../../../data/entity/debate_models/debate_event_model.dart';
+import '../../../data/entity/user_model/user_model.dart';
 import '../../../data/repository/app_repository.dart';
 import '../../../data/repository/app_repository_impl.dart';
+import 'user_vm.dart'; // Import UserVM
 
-final homeViewModelProvider = ChangeNotifierProvider.autoDispose<HomeViewModel>(
-  (ref) => HomeViewModel(AppRepositoryImpl()),
+final homeViewModelProvider = ChangeNotifierProvider<HomeViewModel>(
+  (ref) => HomeViewModel(AppRepositoryImpl(), ref),
 );
 
 class HomeViewModel extends ChangeNotifier {
   final AppRepository _repository;
+  final Ref _ref;
 
-  String username = '';
   final List<DebateEvent> _events = [];
-
-  // int _currentPage = 1;
-  // final int _pageSize = 10;
-  // bool _hasMore = true;
   bool _isLoading = false;
+  String? _error;
 
   List<DebateEvent> get events => _events;
   bool get isLoading => _isLoading;
-  // bool get hasMore => _hasMore;
+  String? get error => _error;
 
-  HomeViewModel(this._repository) {
-    _loadUser();
-    fetchEvents();
+  // Get username from UserVM (raw)
+  String get username {
+    final userVM = _ref.read(userVmProvider);
+    return userVM.username;
   }
 
-  void _loadUser() async {
-    final user = await AppStorage.$read(key: StorageKey.user);
-    username = user ?? 'Guest';
-    notifyListeners();
+  // Get processed username for display (removes id_admin prefix)
+  String get displayUsername {
+    final userVM = _ref.read(userVmProvider);
+    return userVM.displayUsername;
+  }
+
+  // Check if user is available
+  bool get hasUser {
+    final userVM = _ref.read(userVmProvider);
+    return userVM.hasUser;
+  }
+
+  // Get full user data if needed
+  UserModel? get currentUser {
+    final userVM = _ref.read(userVmProvider);
+    return userVM.state.user;
+  }
+
+  HomeViewModel(this._repository, this._ref) {
+    _initializeData();
+  }
+
+  // Simplified initialization - only handle events
+  Future<void> _initializeData() async {
+    await fetchEvents();
   }
 
   Future<void> fetchEvents() async {
     if (_isLoading) return;
 
     _isLoading = true;
+    _error = null;
     notifyListeners();
 
     try {
       final response = await _repository.getDebateEvents(
-        page: 1, // Fixed page for now
-        pageSize: 1000, // Large value to fetch all
+        page: 1,
+        pageSize: 1000,
       );
 
       if (response != null && response.results.isNotEmpty) {
         _events.clear();
         _events.addAll(response.results);
-
-        // Pagination temporarily disabled
-        // _currentPage++;
-        // if (response.data.length < _pageSize) {
-        //   _hasMore = false;
-        // }
-      } else {
-        // _hasMore = false;
       }
     } catch (e) {
       debugPrint('Error fetching events: $e');
+      _error = 'Failed to load events';
     } finally {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  // Method to refresh all data
+  Future<void> refresh() async {
+    // Refresh user data through UserVM
+    final userVM = _ref.read(userVmProvider);
+    await userVM.refreshUser();
+
+    // Refresh events
+    await fetchEvents();
+  }
+
+  // Method to clear error
+  void clearError() {
+    _error = null;
+    notifyListeners();
   }
 }

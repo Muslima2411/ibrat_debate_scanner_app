@@ -96,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "event_info": MessageLookupByLibrary.simpleMessage(
       "Tadbir haqida ma\'lumot",
     ),
+    "featureNotAvailableMessage": MessageLookupByLibrary.simpleMessage(
+      "Ushbu funksiya hali mavjud emas. Iltimos, keyinroq qaytib keling.",
+    ),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "filter_tickets": MessageLookupByLibrary.simpleMessage(
       "Chiptalarni filtrlash",
@@ -198,6 +201,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "QR kod muvaffaqiyatli skanerlendi:",
     ),
     "telegram": MessageLookupByLibrary.simpleMessage("Telegram"),
+    "telegram_link": MessageLookupByLibrary.simpleMessage(
+      "Telegram kanal havolasi",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("Mavzu"),
     "ticket_id": MessageLookupByLibrary.simpleMessage("Chipta ID"),
     "ticket_info": MessageLookupByLibrary.simpleMessage("Chipta haqida"),

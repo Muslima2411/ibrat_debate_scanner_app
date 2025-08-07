@@ -952,6 +952,26 @@ class GeneratedLocalization {
   String get keep_ticket {
     return Intl.message('Keep Ticket', name: 'keep_ticket', desc: '', args: []);
   }
+
+  /// `telegram channel link`
+  String get telegram_link {
+    return Intl.message(
+      'telegram channel link',
+      name: 'telegram_link',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This feature is not available yet. Please check back later.`
+  String get featureNotAvailableMessage {
+    return Intl.message(
+      'This feature is not available yet. Please check back later.',
+      name: 'featureNotAvailableMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

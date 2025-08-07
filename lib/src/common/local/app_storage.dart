@@ -11,6 +11,7 @@ enum StorageKey {
   isBioOn,
   accessToken,
   refreshToken,
+  userId,
 }
 
 class AppStorage extends FlutterSecureStorage {

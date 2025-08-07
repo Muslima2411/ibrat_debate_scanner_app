@@ -35,8 +35,8 @@ abstract class Region with _$Region {
 abstract class DebateEvent with _$DebateEvent {
   const factory DebateEvent({
     required int id,
-    required Region region,
-    required District district,
+    Region? region,
+    District? district,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
     String? date,

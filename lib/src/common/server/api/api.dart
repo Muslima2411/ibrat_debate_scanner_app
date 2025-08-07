@@ -65,7 +65,9 @@ class ApiService {
     String? token = await AppStorage.$read(key: StorageKey.accessToken) ?? "";
 
     // Only refresh token if not already refreshing and not skipping
-    if (!skipTokenRefresh && !_isRefreshing && isAccessTokenExpired(token)) {
+    if (!skipTokenRefresh &&
+        !_isRefreshing &&
+        await isAccessTokenExpired(token)) {
       debugPrint('⏳ Access token expired. Refreshing...');
       final success = await ApiService.refreshAccessToken();
       if (success) {
@@ -206,7 +208,7 @@ class ApiService {
       analyzeToken(refreshToken, tokenType: 'Refresh Token');
 
       // Check if refresh token is expired
-      if (isAccessTokenExpired(refreshToken)) {
+      if (await isAccessTokenExpired(refreshToken)) {
         debugPrint('🔑 Refresh token is also expired.');
         return false;
       }
