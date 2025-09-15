@@ -100,137 +100,181 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
                 ),
               ),
 
-            // Dropdowns
-            Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Region Dropdown
-                Expanded(
-                  child: DropdownButtonFormField2<Region>(
-                    value: selectedRegion,
-                    isExpanded: true,
-                    decoration: InputDecoration(
-                      labelText: context.localized.region,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 4.h,
-                      ),
-                      isDense: true,
-                    ),
-                    buttonStyleData: ButtonStyleData(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w),
-                      height: 48.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                    ),
-                    dropdownStyleData: DropdownStyleData(
-                      maxHeight: 300.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                    ),
-                    iconStyleData: IconStyleData(
-                      icon: isLoadingRegions
-                          ? SizedBox(
-                              width: 20.w,
-                              height: 20.h,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              size: 24.sp,
-                            ),
-                    ),
+                // Region text
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 12.h,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(color: context.colorScheme.outline),
+                  ),
+                  child: Text(
+                    selectedRegion!.name,
                     style: context.textTheme.bodyMedium?.copyWith(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: context.colorScheme.onSurface,
                     ),
-                    items: regions.map((region) {
-                      return DropdownMenuItem<Region>(
-                        value: region,
-                        child: Text(
-                          region.name,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: isLoadingRegions
-                        ? null
-                        : (region) {
-                            ref
-                                .read(statisticsViewModelProvider)
-                                .selectRegion(region);
-                          },
                   ),
                 ),
-
-                SizedBox(width: 12.w),
-
-                // District Dropdown
-                Expanded(
-                  child: DropdownButtonFormField2<District>(
-                    value: selectedDistrict,
-                    isExpanded: true,
-                    decoration: InputDecoration(
-                      labelText: context.localized.district,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 4.h,
-                      ),
-                      isDense: true,
-                    ),
-                    buttonStyleData: ButtonStyleData(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w),
-                      height: 48.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                    ),
-                    dropdownStyleData: DropdownStyleData(
-                      maxHeight: 300.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                    ),
-                    iconStyleData: IconStyleData(
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: 24.sp,
-                      ),
-                    ),
+                SizedBox(height: 12.h),
+                // District/City text
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 12.h,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(color: context.colorScheme.outline),
+                  ),
+                  child: Text(
+                    selectedDistrict!.name,
                     style: context.textTheme.bodyMedium?.copyWith(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: context.colorScheme.onSurface,
                     ),
-                    items: availableDistricts.map((district) {
-                      return DropdownMenuItem<District>(
-                        value: district,
-                        child: Text(
-                          district.name,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: selectedRegion == null
-                        ? null
-                        : (district) {
-                            ref
-                                .read(statisticsViewModelProvider)
-                                .selectDistrict(district);
-                          },
                   ),
                 ),
               ],
             ),
 
+            // // Dropdowns
+            // Column(
+            //   children: [
+            //     // Region Dropdown
+            //     Expanded(
+            //       child: DropdownButtonFormField2<Region>(
+            //         value: selectedRegion,
+            //         isExpanded: true,
+            //         decoration: InputDecoration(
+            //           labelText: context.localized.region,
+            //           border: OutlineInputBorder(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //           contentPadding: EdgeInsets.symmetric(
+            //             horizontal: 8.w,
+            //             vertical: 4.h,
+            //           ),
+            //           isDense: true,
+            //         ),
+            //         buttonStyleData: ButtonStyleData(
+            //           padding: EdgeInsets.symmetric(horizontal: 12.w),
+            //           height: 48.h,
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //         ),
+            //         dropdownStyleData: DropdownStyleData(
+            //           maxHeight: 300.h,
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //         ),
+            //         iconStyleData: IconStyleData(
+            //           icon: isLoadingRegions
+            //               ? SizedBox(
+            //                   width: 20.w,
+            //                   height: 20.h,
+            //                   child: CircularProgressIndicator(strokeWidth: 2),
+            //                 )
+            //               : Icon(
+            //                   Icons.keyboard_arrow_down_rounded,
+            //                   size: 24.sp,
+            //                 ),
+            //         ),
+            //         style: context.textTheme.bodyMedium?.copyWith(
+            //           fontSize: 18.sp,
+            //           fontWeight: FontWeight.w500,
+            //           color: context.colorScheme.onSurface,
+            //         ),
+            //         items: regions.map((region) {
+            //           return DropdownMenuItem<Region>(
+            //             value: region,
+            //             child: Text(
+            //               region.name,
+            //               overflow: TextOverflow.ellipsis,
+            //             ),
+            //           );
+            //         }).toList(),
+            //         onChanged: isLoadingRegions
+            //             ? null
+            //             : (region) {
+            //                 ref
+            //                     .read(statisticsViewModelProvider)
+            //                     .selectRegion(region);
+            //               },
+            //       ),
+            //     ),
+            //
+            //     SizedBox(width: 12.w),
+            //
+            //     // District Dropdown
+            //     Expanded(
+            //       child: DropdownButtonFormField2<District>(
+            //         value: selectedDistrict,
+            //         isExpanded: true,
+            //         decoration: InputDecoration(
+            //           labelText: context.localized.district,
+            //           border: OutlineInputBorder(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //           contentPadding: EdgeInsets.symmetric(
+            //             horizontal: 8.w,
+            //             vertical: 4.h,
+            //           ),
+            //           isDense: true,
+            //         ),
+            //         buttonStyleData: ButtonStyleData(
+            //           padding: EdgeInsets.symmetric(horizontal: 12.w),
+            //           height: 48.h,
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //         ),
+            //         dropdownStyleData: DropdownStyleData(
+            //           maxHeight: 300.h,
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(8.r),
+            //           ),
+            //         ),
+            //         iconStyleData: IconStyleData(
+            //           icon: Icon(
+            //             Icons.keyboard_arrow_down_rounded,
+            //             size: 24.sp,
+            //           ),
+            //         ),
+            //         style: context.textTheme.bodyMedium?.copyWith(
+            //           fontSize: 18.sp,
+            //           fontWeight: FontWeight.w500,
+            //           color: context.colorScheme.onSurface,
+            //         ),
+            //         items: availableDistricts.map((district) {
+            //           return DropdownMenuItem<District>(
+            //             value: district,
+            //             child: Text(
+            //               district.name,
+            //               overflow: TextOverflow.ellipsis,
+            //             ),
+            //           );
+            //         }).toList(),
+            //         onChanged: selectedRegion == null
+            //             ? null
+            //             : (district) {
+            //                 ref
+            //                     .read(statisticsViewModelProvider)
+            //                     .selectDistrict(district);
+            //               },
+            //       ),
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: 30.h),
 
             // Statistics Content
